@@ -26,7 +26,7 @@ export default defineConfig({
         test: {
           name: 'feathers-keycloak-listener',
           root: 'packages/feathers-keycloak-listener',
-          include: ['test/**/*.js']
+          include: ['test/**/*.test.js']
         }
       }
     ]
