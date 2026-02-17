@@ -24,6 +24,7 @@
     "prepare": "husky",
     "lint": "standard 'packages/**/*.js' --fix",
     "test": "vitest run --coverage",
+    "test:feathers-keycloak-listener": "pnpm run test --project feathers-keycloak-listener",
     "build": "",
     "changeset": "changeset",
     "changeset:status": "changeset status",
@@ -55,7 +56,7 @@
     "quasar": "catalog:"
   },
   "devDependencies": {
-   "@changesets/cli": "catalog:",
+    "@changesets/cli": "catalog:",
     "@kalisio/meta-ekosystem": "^0.2.0",
     "@vitest/coverage-v8": "catalog:",
     "cross-env": "catalog:",

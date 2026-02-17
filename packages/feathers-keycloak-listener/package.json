@@ -19,8 +19,9 @@
     "build": "vite build"
   },
   "keywords": [
-    "check",
-    "basik"
+    "feathersjs",
+    "keycloak",
+    "kalisio"
   ],
   "author": {
     "name": "KALISIO <contact@kalisio.com>",

@@ -22,7 +22,13 @@ export default defineConfig({
     silent: false,
     testTimeout: 30000,
     projects: [
-      // a faire
+      {
+        test: {
+          name: 'feathers-keycloak-listener',
+          root: 'packages/feathers-keycloak-listener',
+          include: ['test/**/*.js']
+        }
+      }
     ]
   }
 })

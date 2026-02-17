@@ -1,8 +1,24 @@
 packages:
-  - "packages/*"
+  - packages/*
 catalog:
   "@changesets/changelog-github": ^0.5.2
   "@changesets/cli": ^2.29.8
+  "@feathersjs/adapter-commons": ^5.0.8
+  "@feathersjs/adapter-tests": ^5.0.8
+  "@feathersjs/authentication": ^5.0..8
+  "@feathersjs/authentication-client": ^5.0.8
+  "@feathersjs/authentication-local": ^5.0.8
+  "@feathersjs/client": ^5.0.8
+  "@feathersjs/commons": ^5.0.8
+  "@feathersjs/configuration": ^5.0.8
+  "@feathersjs/errors": ^5.0.8
+  "@feathersjs/express": ^5.0.8
+  "@feathersjs/feathers": ^5.0.8
+  "@feathersjs/memory": ^5.0.8
+  "@feathersjs/mongodb": ^5.0.8
+  "@feathersjs/rest-client": ^5.0.8
+  "@feathersjs/socketio": ^5.0.8
+  "@feathersjs/socketio-client": ^5.0.8
   "@logtape/logtape": ^0.7.0
   "@vitest/coverage-v8": ^4.0.17
   cross-env: ^10.1.0
