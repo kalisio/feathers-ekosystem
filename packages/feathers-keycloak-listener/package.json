@@ -1,0 +1,42 @@
+{
+  "name": "@kalisio/feathers-keycloak-listener",
+  "description": "Bridge Keycloak authentication events into your FeathersJS application",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "development": "./src/index.js",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "check",
+    "basik"
+  ],
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kalisio/feathers-ekosystem.git",
+    "directory": "packages/feathers-keycloak-listener"
+  },
+  "bugs": {
+    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+  },
+  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/check#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}

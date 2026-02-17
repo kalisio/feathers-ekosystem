@@ -1,0 +1,60 @@
+# Node dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build artifacts
+dist/
+build/
+lib/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Optional lockfiles
+# Uncomment if you prefer to ignore them
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage and temporary test outputs
+coverage/
+.nyc_output/
+jest-*.json
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Husky hooks
+.husky/_
+
+# Misc archives
+*.zip
+*.tar.gz
+*.tgz
+*.bkp

@@ -1,0 +1,72 @@
+{
+  "name": "feathers-ekosystem",
+  "type": "module",
+  "packageManager": "pnpm@10.1.0",
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach",
+      "Image"
+    ],
+    "ignore": [
+      "dist/**"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,cjs,mjs}": [
+      "pnpm lint"
+    ]
+  },
+  "scripts": {
+    "prepare": "husky",
+    "lint": "standard 'packages/**/*.js' --fix",
+    "test": "vitest run --coverage",
+    "build": "",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "changeset:version": "changeset version",
+    "changeset:release": "pnpm build && changeset publish"
+  },
+  "keywords": [
+    "ekosystem",
+    "kalisio"
+  ],
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kalisio/feathers-ekosystem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+  },
+  "homepage": "git://github.com/kalisio/feathers-ekosystem#readme",
+  "dependencies": {
+    "keycloak-js": "catalog:",
+    "lodash": "catalog:",
+    "moment": "catalog:",
+    "quasar": "catalog:"
+  },
+  "devDependencies": {
+   "@changesets/cli": "catalog:",
+    "@kalisio/meta-ekosystem": "^0.2.0",
+    "@vitest/coverage-v8": "catalog:",
+    "cross-env": "catalog:",
+    "husky": "catalog:",
+    "lint-staged": "catalog:",
+    "mermaid": "catalog:",
+    "standard": "catalog:",
+    "vite": "catalog:",
+    "vitepress": "catalog:",
+    "vitepress-plugin-mermaid": "catalog:",
+    "vitepress-theme-kalisio": "catalog:",
+    "vitest": "catalog:"
+  }
+}

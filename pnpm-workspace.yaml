@@ -1,0 +1,21 @@
+packages:
+  - "packages/*"
+catalog:
+  "@changesets/changelog-github": ^0.5.2
+  "@changesets/cli": ^2.29.8
+  "@logtape/logtape": ^0.7.0
+  "@vitest/coverage-v8": ^4.0.17
+  cross-env: ^10.1.0
+  husky: ^9.1.7
+  keycloak-js: ^23.0.4
+  lint-staged: ^16.2.7
+  lodash: ^4.17.21
+  mermaid: ^10.8.0
+  moment: ^2.30.1
+  quasar: ^2.14.3
+  standard: ^17.1.2
+  vite: ^7.1.9
+  vitepress: ^1.6.3
+  vitepress-plugin-mermaid: ^2.0.16
+  vitepress-theme-kalisio: https://github.com/kalisio/vitepress-theme-kalisio
+  vitest: ^4.0.17
