@@ -22,6 +22,7 @@ catalog:
   "@logtape/logtape": ^0.7.0
   "@vitest/coverage-v8": ^4.0.17
   cross-env: ^10.1.0
+  debug: ^4.1.0
   husky: ^9.1.7
   keycloak-js: ^23.0.4
   lint-staged: ^16.2.7

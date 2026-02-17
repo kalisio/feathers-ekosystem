@@ -38,6 +38,14 @@
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
   "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/check#readme",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@feathersjs/errors": "catalog:",
+    "debug": "catalog:",
+    "lodash": "catalog:"
+  },
+  "devDependencies": {
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/memory": "catalog:"
+  }
 }
