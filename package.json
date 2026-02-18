@@ -1,5 +1,6 @@
 {
   "name": "feathers-ekosystem",
+  "description": "A collection of Kalisio maintained modules for FeathersJS",
   "type": "module",
   "packageManager": "pnpm@10.1.0",
   "standard": {
@@ -69,5 +70,10 @@
     "vitepress-plugin-mermaid": "catalog:",
     "vitepress-theme-kalisio": "catalog:",
     "vitest": "catalog:"
+  },
+  "pnpm": {
+    "overrides": {
+      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
+    }
   }
 }
