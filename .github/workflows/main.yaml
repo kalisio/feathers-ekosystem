@@ -65,3 +65,25 @@ jobs:
           SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
         run: bash ./scripts/run_tests.sh -n ${{ matrix.node }}
 
+  build_docs:
+    name: Build doc
+    if: ${{
+      github.event_name == 'workflow_dispatch' && inputs.build_docs ||
+      github.event_name == 'push' && contains(github.event.head_commit.message, 'doc')
+      }}
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Init runner
+        run: bash ./scripts/init_runner.sh ${{ github.job }}
+      - name: Setup workspace
+        env:
+          KALISIO_GITHUB_URL: ${{ secrets.KALISIO_GITHUB_URL }}
+        run: bash ./scripts/setup_workspace.sh -k nokli
+      - name: Build docs
+        env:
+          SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+        run: bash ./scripts/build_docs.sh -p -r ${{ github.job }}
