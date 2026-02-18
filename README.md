@@ -12,7 +12,7 @@
 
 ## Documentation
 
-Refer to the [documentation](https://github.com/kalisio/feathers-ekosystem)
+Detailed documentation is available at the following [link](https://github.com/kalisio/feathers-ekosystem).
 
 ## License
 
