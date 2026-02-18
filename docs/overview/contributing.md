@@ -1,3 +1,7 @@
+---
+outline: [2, 3]
+---
+
 # Contributing
 
 ## Development
@@ -59,7 +63,7 @@ pnpm -r build
 pnpm --filter @kalisio/<package> build
 ```
 
-### committing
+### Committing
 
 feathers-ekosystem follows the [Conventional commits specifications](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
 which provides a set of rules to make commit messages more readable when looking through the project history.
@@ -119,7 +123,7 @@ but it may simply be that you do not have the same context or information regard
 members have. We value the time you take to put together any contributions so we pledge to always be respectful of
 that time and will try to be as open as possible so that you don't waste it.
 
-## Contributor Code of Conduct
+## Code of Conduct
 
 As contributors and maintainers of this project, we pledge to respect all people who contribute through reporting issues,
 posting feature requests, updating documentation, submitting pull requests or patches, and other activities.

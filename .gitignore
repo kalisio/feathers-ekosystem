@@ -33,11 +33,6 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Test coverage and temporary test outputs
-coverage/
-.nyc_output/
-jest-*.json
-
 # Temporary files
 *.tmp
 *.temp
@@ -50,11 +45,19 @@ jest-*.json
 .env.local
 .env.*.local
 
-# Husky hooks
-.husky/_
-
 # Misc archives
 *.zip
 *.tar.gz
 *.tgz
 *.bkp
+
+# Test coverage and temporary test outputs
+coverage/
+.nyc_output/
+jest-*.json
+
+# Husky hooks
+.husky/_
+
+# Vitepress cache 
+docs/.vitepress/cache/
