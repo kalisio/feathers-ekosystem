@@ -65,7 +65,7 @@ pnpm --filter @kalisio/<package> build
 
 ### Committing
 
-feathers-ekosystem follows the [Conventional commits specifications](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
+**feathers-ekosystem** follows the [Conventional commits specifications](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
 which provides a set of rules to make commit messages more readable when looking through the project history.
 
 The commit message should be structured as follows:
