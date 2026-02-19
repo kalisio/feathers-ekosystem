@@ -13,6 +13,11 @@ on:
         default: false
         required: false
         type: boolean
+      build_docs:
+        description: "Build docs"
+        default: false
+        required: false
+        type: boolean
 
 jobs:
   run_tests:

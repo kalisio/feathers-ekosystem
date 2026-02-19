@@ -1,8 +1,8 @@
 {
   "name": "feathers-ekosystem",
   "description": "A collection of Kalisio maintained modules for FeathersJS",
-  "type": "module",
   "packageManager": "pnpm@10.1.0",
+  "type": "module",
   "standard": {
     "globals": [
       "describe",
