@@ -8,8 +8,8 @@ title: hooks.users
 
 ### Signature
 
-```javascript
-createUser(hook, hook.type, hook.data, hook.data.eventType, hook.data.resourcePath, hook.data.value, hook.app, hook.service, hook.service.usersServicePath)
+```js
+createUser(context)
 ```
 
 ### Description
@@ -24,25 +24,17 @@ in the users service, merging `keycloakId`, `name`, and all properties from `eve
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| hook | object | yes | The FeathersJS hook context. |
-| hook.type | `after` | yes | Must be `after`. |
-| hook.data | object | yes | The Keycloak admin event object. |
-| hook.data.eventType | string | yes | The Keycloak event type. Only `AdminEvent.CREATE.USER` is processed. |
-| hook.data.resourcePath | string | yes | Resource path containing the Keycloak user ID (e.g. `users/<keycloakId>`). |
-| hook.data.value | object | yes | The Keycloak user payload (must include at least `username`). |
-| hook.app | object | yes | The FeathersJS application instance. |
-| hook.service | object | yes | The service that triggered the hook. |
-| hook.service.usersServicePath | string | yes | Path to the users service (e.g. `users`). |
+| `context` | object | yes | The FeathersJS hook context. |
 
 ### Returns
 
 | Type | Description |
 |------|-------------|
-| Promise.<object>; | The hook context, unmodified if the event type is not `AdminEvent.CREATE.USER`. |
+| `Promise<object>` | The hook context, unmodified if the event type is not `AdminEvent.CREATE.USER`. |
 
 ### Examples
 
-```javascript
+```js
 import { createUser } from './hooks/users'
 
 app.service('keycloak-events').hooks({
@@ -56,8 +48,8 @@ app.service('keycloak-events').hooks({
 
 ### Signature
 
-```javascript
-updateUser(hook, hook.type, hook.data, hook.data.eventType, hook.data.resourcePath, hook.data.value, hook.app, hook.service, hook.service.usersServicePath)
+```js
+updateUser(context)
 ```
 
 ### Description
@@ -72,25 +64,17 @@ properties from `event.value`.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| hook | object | yes | The FeathersJS hook context. |
-| hook.type | `after` | yes | Must be `after`. |
-| hook.data | object | yes | The Keycloak admin event object. |
-| hook.data.eventType | string | yes | The Keycloak event type. Only `AdminEvent.UPDATE.USER` is processed. |
-| hook.data.resourcePath | string | yes | Resource path containing the Keycloak user ID (e.g. `users/<keycloakId>`). |
-| hook.data.value | object | yes | The updated Keycloak user payload to patch onto the local document. |
-| hook.app | object | yes | The FeathersJS application instance. |
-| hook.service | object | yes | The service that triggered the hook. |
-| hook.service.usersServicePath | string | yes | Path to the users service (e.g. `users`). |
+| `context` | object | yes | The FeathersJS hook context. |
 
 ### Returns
 
 | Type | Description |
 |------|-------------|
-| Promise.<object>; | The hook context, unmodified if the event type is not `AdminEvent.UPDATE.USER`. |
+| `Promise<object>` | The hook context, unmodified if the event type is not `AdminEvent.UPDATE.USER`. |
 
 ### Examples
 
-```javascript
+```js
 import { updateUser } from './hooks/users'
 
 app.service('keycloak-events').hooks({
@@ -104,8 +88,8 @@ app.service('keycloak-events').hooks({
 
 ### Signature
 
-```javascript
-deleteUser(hook, hook.type, hook.data, hook.data.eventType, hook.data.resourcePath, hook.app, hook.service, hook.service.usersServicePath)
+```js
+deleteUser(context)
 ```
 
 ### Description
@@ -120,24 +104,17 @@ users service.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| hook | object | yes | The FeathersJS hook context. |
-| hook.type | `after` | yes | Must be `after`. |
-| hook.data | object | yes | The Keycloak admin event object. |
-| hook.data.eventType | string | yes | The Keycloak event type. Only `AdminEvent.DELETE.USER` is processed. |
-| hook.data.resourcePath | string | yes | Resource path containing the Keycloak user ID (e.g. `users/<keycloakId>`). |
-| hook.app | object | yes | The FeathersJS application instance. |
-| hook.service | object | yes | The service that triggered the hook. |
-| hook.service.usersServicePath | string | yes | Path to the users service (e.g. `users`). |
+| `context` | object | yes | The FeathersJS hook context. |
 
 ### Returns
 
 | Type | Description |
 |------|-------------|
-| Promise.<object>; | The hook context, unmodified if the event type is not `AdminEvent.DELETE.USER`. |
+| `Promise<object>` | The hook context, unmodified if the event type is not `AdminEvent.DELETE.USER`. |
 
 ### Examples
 
-```javascript
+```js
 import { deleteUser } from './hooks/users'
 
 app.service('keycloak-events').hooks({
