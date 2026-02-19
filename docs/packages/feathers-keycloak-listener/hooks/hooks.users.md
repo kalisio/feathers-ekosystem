@@ -2,7 +2,7 @@
 title: hooks.users
 ---
 
-# hooks.users
+# Users
 
 ## createUser
 

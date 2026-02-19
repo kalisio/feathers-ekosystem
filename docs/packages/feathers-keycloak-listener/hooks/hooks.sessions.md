@@ -2,7 +2,7 @@
 title: contexts.sessions
 ---
 
-# contexts.sessions
+# Sessions
 
 ## setSession
 
@@ -14,7 +14,7 @@ setSession(context)
 
 ### Description
 
-After context that stores Keycloak session data on the matching user document upon login.
+After hook that stores Keycloak session data on the matching user document upon login.
 
 Listens for Keycloak events of type `Event.LOGIN`. When triggered, it looks up
 the user by their `keycloakId` and patches their document with a `session` field
@@ -24,7 +24,7 @@ containing the relevant event data.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| context | object | yes | The FeathersJS hook context. |
+| `context` | object | yes | The FeathersJS hook context. |
 
 ### Returns
 
@@ -35,9 +35,9 @@ containing the relevant event data.
 ### Examples
 
 ```js
-import { setSession } from './contexts/sessions'
+import { setSession } from './hooks/sessions'
 
-app.service('keycloak-events').contexts({
+app.service('keycloak-events').hooks({
   after: {
     create: [setSession]
   }
@@ -54,7 +54,7 @@ unsetSession(context)
 
 ### Description
 
-After context that clears the session data on the matching user document upon logout.
+After hook that clears the session data on the matching user document upon logout.
 
 Listens for Keycloak events of type `Event.LOGOUT`. When triggered, it looks up
 the user by their `keycloakId` and patches their document by setting the `session`
@@ -64,20 +64,20 @@ field to `null`.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| context | object | yes | The FeathersJS hook context. |
+| `context` | object | yes | The FeathersJS hook context. |
 
 ### Returns
 
 | Type | Description |
 |------|-------------|
-| `Promise<object>` | The context context, unmodified if the event type is not `Event.LOGOUT`. |
+| `Promise<object>` | The hook context, unmodified if the event type is not `Event.LOGOUT`. |
 
 ### Examples
 
 ```js
-import { unsetSession } from './contexts/sessions'
+import { unsetSession } from './hooks/sessions'
 
-app.service('keycloak-events').contexts({
+app.service('keycloak-events').hooks({
   after: {
     create: [unsetSession]
   }
