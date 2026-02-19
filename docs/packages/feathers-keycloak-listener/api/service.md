@@ -37,7 +37,7 @@ After this method runs, registered `after` hooks receive the mutated `data` obje
 
 | Type | Description |
 |------|-------------|
-| `Promise<object>` | Always resolves with &#x60;{ success: true }&#x60; on success. |
+| `Promise<object>` | Always resolves with `{ success: true }` on success. |
 
 ### Examples
 
