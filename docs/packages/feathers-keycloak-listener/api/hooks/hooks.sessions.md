@@ -2,7 +2,7 @@
 title: contexts.sessions
 ---
 
-# Sessions
+# sessions
 
 ## setSession
 

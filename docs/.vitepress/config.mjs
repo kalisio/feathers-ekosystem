@@ -36,10 +36,12 @@ export default withMermaid(
         ,
         '/packages/feathers-keycloak-listener/': [
           { text: 'Usage', link: '/packages/feathers-keycloak-listener/index' },
-          { text: 'Service', link: '/packages/feathers-keycloak-listener/service' },
-          { text: 'Hooks', items: [
-            { text: 'Sessions', link: '/packages/feathers-keycloak-listener/hooks/hooks.sessions' },
-            { text: 'Users', link: '/packages/feathers-keycloak-listener/hooks/hooks.users' }
+          { text: 'API', items: [
+            { text: 'service', link: '/packages/feathers-keycloak-listener/api/service' },
+            { text: 'hooks', items: [
+              { text: 'sessions', link: '/packages/feathers-keycloak-listener/api/hooks/hooks.sessions' },
+              { text: 'users', link: '/packages/feathers-keycloak-listener/api/hooks/hooks.users' }
+            ]}
           ]}
         ]
       },

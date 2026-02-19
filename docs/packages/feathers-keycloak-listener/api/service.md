@@ -4,12 +4,12 @@ title: service
 
 # service
 
-
 ## create
 
 ### Signature
-```javascript
-create(data, data.eventClass, data.operationType, data.resourceType, data.type, params)
+
+```js
+create(data, params)
 ```
 
 ### Description
@@ -23,25 +23,21 @@ The `eventType` is built differently depending on `data.eventClass`:
 - **User event** → `<eventClass>.<type>`
   (e.g. `Event.LOGIN`)
 
-After this method runs, registered `after` hooks receive the mutated `data`
-object (with `eventType` set) and can act on it accordingly.
+After this method runs, registered `after` hooks receive the mutated `data` object 
+(with `eventType` set) and can act on it accordingly.
 
 ### Parameters
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | data | object | yes | The raw Keycloak event payload. |
-| data.eventClass | string | yes | The event class, either &#x60;AdminEvent&#x60; or a user event class (e.g. &#x60;Event&#x60;). |
-| data.operationType | string | no | The operation type for admin events (e.g. &#x60;CREATE&#x60;, &#x60;UPDATE&#x60;, &#x60;DELETE&#x60;). |
-| data.resourceType | string | no | The resource type for admin events (e.g. &#x60;USER&#x60;). |
-| data.type | string | no | The event type for user events (e.g. &#x60;LOGIN&#x60;, &#x60;LOGOUT&#x60;). |
 | params | object | yes | The FeathersJS service call parameters. |
 
 ### Returns
 
 | Type | Description |
 |------|-------------|
-| Promise.&lt;{success: boolean}&gt; | Always resolves with &#x60;{ success: true }&#x60; on success. |
+| `Promise<object>` | Always resolves with &#x60;{ success: true }&#x60; on success. |
 
 ### Examples
 

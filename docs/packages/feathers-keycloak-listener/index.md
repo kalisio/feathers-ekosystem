@@ -34,7 +34,7 @@ app.getService('keycloak-events').hooks({
    before: {
       createUser: [
         async (context) => {
-          const event = context.arguments[0];
+          const event = context.arguments[0]
           
           ...
           
