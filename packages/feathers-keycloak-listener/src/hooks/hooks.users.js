@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import createDebug from 'debug'
+
 const debug = createDebug('feathers-keycloak-listener:hooks:users')
 
 /**
@@ -12,14 +13,14 @@ const debug = createDebug('feathers-keycloak-listener:hooks:users')
  * @async
  * @function createUser
  * @param {object} hook - The FeathersJS hook context.
- * @param {'after'} hook.type - Must be `'after'`.
+ * @param {'after'} hook.type - Must be `after`.
  * @param {object} hook.data - The Keycloak admin event object.
- * @param {string} hook.data.eventType - The Keycloak event type. Only `'AdminEvent.CREATE.USER'` is processed.
- * @param {string} hook.data.resourcePath - Resource path containing the Keycloak user ID (e.g. `'users/<keycloakId>'`).
+ * @param {string} hook.data.eventType - The Keycloak event type. Only `AdminEvent.CREATE.USER` is processed.
+ * @param {string} hook.data.resourcePath - Resource path containing the Keycloak user ID (e.g. `users/<keycloakId>`).
  * @param {object} hook.data.value - The Keycloak user payload (must include at least `username`).
  * @param {object} hook.app - The FeathersJS application instance.
  * @param {object} hook.service - The service that triggered the hook.
- * @param {string} hook.service.usersServicePath - Path to the users service (e.g. `'users'`).
+ * @param {string} hook.service.usersServicePath - Path to the users service (e.g. `users`).
  * @returns {Promise<object>} The hook context, unmodified if the event type is not `AdminEvent.CREATE.USER`.
  * @throws {Error} If the hook is not used as an `after` hook.
  * @throws {Error} If `event.resourcePath` is missing.
@@ -42,16 +43,14 @@ export async function createUser (hook) {
   const event = hook.data
   // Skip the KC event if it does not have the correct type
   if (event.eventType !== 'AdminEvent.CREATE.USER') return hook
-
   // Check the KC event
-  if (!event.resourcePath) throw new Error('\'createUser\' hook: missing `resourcePath`')
-  if (!event.value) throw new Error('\'createUser\' hook: missing `value`')
+  if (!event.resourcePath) throw new Error('\'createUser\' hook: missing \'resourcePath\'')
+  if (!event.value) throw new Error('\'createUser\' hook: missing \'value\'')
   debug('\'createUser\' called')
-
   // Create the user
   const keycloakId = event.resourcePath.substr(6)
   const name = _.get(event, 'value.username')
-  debug(`'createUser' called for ${name} with keycloak Id '${keycloakId}'`)
+  debug(`createUser' called for ${name} with keycloak Id '${keycloakId}`)
   const usersService = hook.app.service(hook.service.usersServicePath)
   await usersService.create(Object.assign({ keycloakId, name }, event.value))
   return hook
@@ -67,14 +66,14 @@ export async function createUser (hook) {
  * @async
  * @function updateUser
  * @param {object} hook - The FeathersJS hook context.
- * @param {'after'} hook.type - Must be `'after'`.
+ * @param {'after'} hook.type - Must be `after`.
  * @param {object} hook.data - The Keycloak admin event object.
- * @param {string} hook.data.eventType - The Keycloak event type. Only `'AdminEvent.UPDATE.USER'` is processed.
- * @param {string} hook.data.resourcePath - Resource path containing the Keycloak user ID (e.g. `'users/<keycloakId>'`).
+ * @param {string} hook.data.eventType - The Keycloak event type. Only `AdminEvent.UPDATE.USER` is processed.
+ * @param {string} hook.data.resourcePath - Resource path containing the Keycloak user ID (e.g. `users/<keycloakId>`).
  * @param {object} hook.data.value - The updated Keycloak user payload to patch onto the local document.
  * @param {object} hook.app - The FeathersJS application instance.
  * @param {object} hook.service - The service that triggered the hook.
- * @param {string} hook.service.usersServicePath - Path to the users service (e.g. `'users'`).
+ * @param {string} hook.service.usersServicePath - Path to the users service (e.g. `users`).
  * @returns {Promise<object>} The hook context, unmodified if the event type is not `AdminEvent.UPDATE.USER`.
  * @throws {Error} If the hook is not used as an `after` hook.
  * @throws {Error} If `event.resourcePath` is missing.
@@ -92,18 +91,18 @@ export async function createUser (hook) {
  */
 export async function updateUser (hook) {
   if (hook.type !== 'after') {
-    throw new Error('The \'updateUser\' hook should only be used as a \'after\' hook.')
+    throw new Error('The \'updateUser\' hook should only be used as a \'after\' hook')
   }
   // Retrieve the KC event
   const event = hook.data
   // Skip the KC event if it does not have the correct type
   if (event.eventType !== 'AdminEvent.UPDATE.USER') return hook
   // Check the KC event
-  if (!event.resourcePath) throw new Error('\'createUser\' hook: missing `resourcePath`')
-  if (!event.value) throw new Error('\'createUser\' hook: missing `value`')
+  if (!event.resourcePath) throw new Error('\'createUser\' hook: missing \'resourcePath\'')
+  if (!event.value) throw new Error('\'createUser\' hook: missing \'value\'')
   // Retrieve the user
   const keycloakId = event.resourcePath.substr(6)
-  debug(`'updateUser' called with keycloakId '${keycloakId}'`)
+  debug(`'updateUser' called with keycloakId '${keycloakId}`)
   const usersService = hook.app.service(hook.service.usersServicePath)
   const response = await usersService.find({ query: { keycloakId } })
   const user = _.get(response, 'data[0]')
@@ -111,7 +110,7 @@ export async function updateUser (hook) {
   if (user) {
     await usersService.patch(user._id, event.value)
   } else {
-    throw new Error(`Cannot find user with keycloadId '${keycloakId}'`)
+    throw new Error(`Cannot find user with keycloadId '${keycloakId}`)
   }
   return hook
 }
@@ -126,13 +125,13 @@ export async function updateUser (hook) {
  * @async
  * @function deleteUser
  * @param {object} hook - The FeathersJS hook context.
- * @param {'after'} hook.type - Must be `'after'`.
+ * @param {'after'} hook.type - Must be `after`.
  * @param {object} hook.data - The Keycloak admin event object.
- * @param {string} hook.data.eventType - The Keycloak event type. Only `'AdminEvent.DELETE.USER'` is processed.
- * @param {string} hook.data.resourcePath - Resource path containing the Keycloak user ID (e.g. `'users/<keycloakId>'`).
+ * @param {string} hook.data.eventType - The Keycloak event type. Only `AdminEvent.DELETE.USER` is processed.
+ * @param {string} hook.data.resourcePath - Resource path containing the Keycloak user ID (e.g. `users/<keycloakId>`).
  * @param {object} hook.app - The FeathersJS application instance.
  * @param {object} hook.service - The service that triggered the hook.
- * @param {string} hook.service.usersServicePath - Path to the users service (e.g. `'users'`).
+ * @param {string} hook.service.usersServicePath - Path to the users service (e.g. `users`).
  * @returns {Promise<object>} The hook context, unmodified if the event type is not `AdminEvent.DELETE.USER`.
  * @throws {Error} If the hook is not used as an `after` hook.
  * @throws {Error} If `event.resourcePath` is missing.
@@ -149,17 +148,17 @@ export async function updateUser (hook) {
  */
 export async function deleteUser (hook) {
   if (hook.type !== 'after') {
-    throw new Error('The \'createUser\' hook should only be used as a \'after\' hook.')
+    throw new Error('The \'createUser\' hook should only be used as a \'after\' hook')
   }
   // Retrieve the KC event
   const event = hook.data
   // Skip the KC event if it does not have the correct type
   if (event.eventType !== 'AdminEvent.DELETE.USER') return hook
   // Check the KC event
-  if (!event.resourcePath) throw new Error('\'createUser\' hook: missing `resourcePath`')
+  if (!event.resourcePath) throw new Error('\'createUser\' hook: missing \'resourcePath\'')
   // Retrieve the user
   const keycloakId = event.resourcePath.substr(6)
-  debug(`'deleteUser' called with keycloakId '${keycloakId}'`)
+  debug(`'deleteUser' called with keycloakId '${keycloakId}`)
   const usersService = hook.app.service(hook.service.usersServicePath)
   const response = await usersService.find({ query: { keycloakId } })
   const user = _.get(response, 'data[0]')
@@ -167,7 +166,7 @@ export async function deleteUser (hook) {
   if (user) {
     await usersService.remove(user._id)
   } else {
-    throw new Error(`Cannot find user with keycloadId '${keycloakId}'`)
+    throw new Error(`Cannot find user with keycloadId '${keycloakId}`)
   }
   return hook
 }

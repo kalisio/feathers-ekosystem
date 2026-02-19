@@ -4,6 +4,7 @@ title: service
 
 # service
 
+
 ## create
 
 ### Signature
@@ -17,10 +18,10 @@ Normalizes a Keycloak event by computing and attaching an `eventType` string,
 then returns a success acknowledgement.
 
 The `eventType` is built differently depending on `data.eventClass`:
-- **AdminEvent** → `'AdminEvent.<operationType>.<resourceType>'`
-  (e.g. `'AdminEvent.CREATE.USER'`)
-- **User event** → `'<eventClass>.<type>'`
-  (e.g. `'Event.LOGIN'`)
+- **AdminEvent** → `AdminEvent.<operationType>.<resourceType>`
+  (e.g. `AdminEvent.CREATE.USER`)
+- **User event** → `<eventClass>.<type>`
+  (e.g. `Event.LOGIN`)
 
 After this method runs, registered `after` hooks receive the mutated `data`
 object (with `eventType` set) and can act on it accordingly.
@@ -30,10 +31,10 @@ object (with `eventType` set) and can act on it accordingly.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | data | object | yes | The raw Keycloak event payload. |
-| data.eventClass | string | yes | The event class, either &#x60;&#x27;AdminEvent&#x27;&#x60; or a user event class (e.g. &#x60;&#x27;Event&#x27;&#x60;). |
-| data.operationType | string | no | The operation type for admin events (e.g. &#x60;&#x27;CREATE&#x27;&#x60;, &#x60;&#x27;UPDATE&#x27;&#x60;, &#x60;&#x27;DELETE&#x27;&#x60;). |
-| data.resourceType | string | no | The resource type for admin events (e.g. &#x60;&#x27;USER&#x27;&#x60;). |
-| data.type | string | no | The event type for user events (e.g. &#x60;&#x27;LOGIN&#x27;&#x60;, &#x60;&#x27;LOGOUT&#x27;&#x60;). |
+| data.eventClass | string | yes | The event class, either &#x60;AdminEvent&#x60; or a user event class (e.g. &#x60;Event&#x60;). |
+| data.operationType | string | no | The operation type for admin events (e.g. &#x60;CREATE&#x60;, &#x60;UPDATE&#x60;, &#x60;DELETE&#x60;). |
+| data.resourceType | string | no | The resource type for admin events (e.g. &#x60;USER&#x60;). |
+| data.type | string | no | The event type for user events (e.g. &#x60;LOGIN&#x60;, &#x60;LOGOUT&#x60;). |
 | params | object | yes | The FeathersJS service call parameters. |
 
 ### Returns

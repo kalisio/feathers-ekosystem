@@ -33,20 +33,20 @@ export class Service {
    * then returns a success acknowledgement.
    *
    * The `eventType` is built differently depending on `data.eventClass`:
-   * - **AdminEvent** → `'AdminEvent.<operationType>.<resourceType>'`
-   *   (e.g. `'AdminEvent.CREATE.USER'`)
-   * - **User event** → `'<eventClass>.<type>'`
-   *   (e.g. `'Event.LOGIN'`)
+   * - **AdminEvent** → `AdminEvent.<operationType>.<resourceType>`
+   *   (e.g. `AdminEvent.CREATE.USER`)
+   * - **User event** → `<eventClass>.<type>`
+   *   (e.g. `Event.LOGIN`)
    *
    * After this method runs, registered `after` hooks receive the mutated `data`
    * object (with `eventType` set) and can act on it accordingly.
    *
    * @async
    * @param {object} data - The raw Keycloak event payload.
-   * @param {string} data.eventClass - The event class, either `'AdminEvent'` or a user event class (e.g. `'Event'`).
-   * @param {string} [data.operationType] - The operation type for admin events (e.g. `'CREATE'`, `'UPDATE'`, `'DELETE'`).
-   * @param {string} [data.resourceType] - The resource type for admin events (e.g. `'USER'`).
-   * @param {string} [data.type] - The event type for user events (e.g. `'LOGIN'`, `'LOGOUT'`).
+   * @param {string} data.eventClass - The event class, either `AdminEvent` or a user event class (e.g. `Event`).
+   * @param {string} [data.operationType] - The operation type for admin events (e.g. `CREATE`, `UPDATE`, `DELETE`).
+   * @param {string} [data.resourceType] - The resource type for admin events (e.g. `USER`).
+   * @param {string} [data.type] - The event type for user events (e.g. `LOGIN`, `LOGOUT`).
    * @param {object} params - The FeathersJS service call parameters.
    * @returns {Promise<{ success: boolean }>} Always resolves with `{ success: true }` on success.
    * @throws {BadRequest} If `data.eventClass` is missing.
