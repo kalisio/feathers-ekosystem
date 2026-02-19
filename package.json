@@ -77,5 +77,10 @@
     "vitepress-plugin-mermaid": "catalog:",
     "vitepress-theme-kalisio": "catalog:",
     "vitest": "catalog:"
+  },
+  "pnpm": {
+    "overrides": {
+      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
+    }
   }
 }

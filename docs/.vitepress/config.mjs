@@ -34,7 +34,14 @@ export default withMermaid(
           { text: 'Contact', link: '/overview/contact' }
         ]
         ,
-        '/feathers-keycloak-listener/': getSideBar('feathers-keycloak-listener')
+        '/packages/feathers-keycloak-listener/': [
+          { text: 'Usage', link: '/packages/feathers-keycloak-listener/index' },
+          { text: 'Service', link: '/packages/feathers-keycloak-listener/service' },
+          { text: 'Hooks', items: [
+            { text: 'Sessions', link: '/packages/feathers-keycloak-listener/hooks/hooks.sessions' },
+            { text: 'Users', link: '/packages/feathers-keycloak-listener/hooks/hooks.users' }
+          ]}
+        ]
       },
       footer: {
         copyright: 'MIT Licensed | Copyright © 2026 Kalisio'
@@ -53,5 +60,7 @@ export default withMermaid(
 
 
 function getSideBar (pkg) {
-  // TODO
+  if (pkg === 'feathers-keycloak-listener') {
+    return []
+  }
 }
