@@ -12,7 +12,6 @@ export async function deleteExpiredSubscriptions (hook) {
   const resultFailed = hook.result.failed
   const subscriptionProperty = hook.result.subscriptionProperty
   const subscriptions = await app.service(subscriptionService).find({ paginate: false })
-
   _.forEach(_.filter(resultFailed, error => (error.statusCode === 410 || error.statusCode === 404)), async error => {
     _.forEach(subscriptions, async subscription => {
       if (_.has(subscription, subscriptionProperty) && _.find(_.get(subscription, subscriptionProperty), subscription => subscription.endpoint === error.endpoint)) {

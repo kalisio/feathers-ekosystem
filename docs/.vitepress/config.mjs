@@ -22,7 +22,8 @@ export default withMermaid(
         {
           text: 'Packages',
           items: [
-            { text: 'feathers-keycloak-listener', link: '/packages/feathers-keycloak-listener/' }
+            { text: 'feathers-keycloak-listener', link: '/packages/feathers-keycloak-listener/' },
+            { text: 'feathers-webpush', link: '/packages/feathers-webpush/' }
           ]
         }
       ],
@@ -43,6 +44,16 @@ export default withMermaid(
               { text: 'users', link: '/packages/feathers-keycloak-listener/api/hooks/hooks.users' }
             ]}
           ]}
+        ],
+        '/packages/feathers-webpush/': [
+          { text: 'Usage', link: '/packages/feathers-webpush/index' },
+          { text: 'API', items: [
+            { text: 'server', items: [
+              { text: 'service', link: '/packages/feathers-keycloak-listener/api/server/service' },
+              { text: 'hooks', link: '/packages/feathers-keycloak-listener/api/server/hooks' }
+            ]},
+            { text: 'client', link: '/packages/feathers-webpush/api/client' }
+          ]}
         ]
       },
       footer: {
@@ -59,10 +70,3 @@ export default withMermaid(
     }
   })
 )
-
-
-function getSideBar (pkg) {
-  if (pkg === 'feathers-keycloak-listener') {
-    return []
-  }
-}
