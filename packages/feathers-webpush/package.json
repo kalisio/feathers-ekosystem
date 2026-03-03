@@ -1,12 +1,16 @@
 {
-  "name": "@kalisio/feathers-keycloak-listener",
-  "description": "Bridge Keycloak authentication events into your FeathersJS application",
+  "name": "@kalisio/feathers-webpush",
+  "description": "Manage Web Push notifications with FeathersJS",
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+    "./server": {
+      "import": "./dist/server.es.mjs",
+      "require": "./dist/server.cjs.js"
+    },
+    "./client": {
+      "import": "./dist/client.es.mjs",
+      "require": "./dist/client.cjs.js"
     }
   },
   "files": [
@@ -18,7 +22,7 @@
   "keywords": [
     "feathersjs",
     "feathers",
-    "keycloak",
+    "web-push",
     "kalisio"
   ],
   "author": {
@@ -30,7 +34,7 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/kalisio/feathers-ekosystem.git",
-    "directory": "packages/feathers-keycloak-listener"
+    "directory": "packages/feathers-webpush"
   },
   "bugs": {
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
@@ -39,11 +43,12 @@
   "dependencies": {
     "@feathersjs/errors": "catalog:",
     "debug": "catalog:",
-    "lodash": "catalog:"
+    "lodash": "catalog:",
+    "web-push": "catalog:"
   },
   "devDependencies": {
-    "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
+    "@feathersjs/express": "catalog:",
     "@feathersjs/memory": "catalog:"
   }
 }

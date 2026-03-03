@@ -25,10 +25,13 @@
     "prepare": "husky",
     "lint": "standard 'packages/**/*.js' --fix",
     "lint:feathers-keycloak-listener": "pnpm run lint -- 'packages/feathers-keycloak-listener/**/*.js'",
+    "lint:feathers-webpush": "pnpm run lint -- 'packages/feathers-webpush/**/*.js'",
     "test": "vitest run --coverage",
     "test:feathers-keycloak-listener": "pnpm run test --project feathers-keycloak-listener",
-    "build": "pnpm run build:feathers-keycloak-listener",
+    "test:feathers-webpush": "pnpm run test --project feathers-webpush",
+    "build": "pnpm run build:feathers-keycloak-listener && pnpm run build:feathers-webpush",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
+    "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
     "changeset": "changeset",
     "changeset:status": "changeset status",
     "changeset:version": "changeset version",
@@ -39,6 +42,7 @@
   },
   "keywords": [
     "keycloak",
+    "web-push",
     "feathers",
     "ekosystem",
     "kalisio"

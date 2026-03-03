@@ -22,6 +22,13 @@ export default defineConfig({
           root: 'packages/feathers-keycloak-listener',
           include: ['test/**/*.test.js']
         }
+      },
+      {
+        test: {
+          name: 'feathers-webpush',
+          root: 'packages/feathers-webpush',
+          include: ['test/**/*.test.js']
+        }
       }
     ]
   }

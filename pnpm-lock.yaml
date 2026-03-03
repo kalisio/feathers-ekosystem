@@ -152,6 +152,31 @@ importers:
         specifier: 'catalog:'
         version: 5.0.40
 
+  packages/feathers-webpush:
+    dependencies:
+      '@feathersjs/errors':
+        specifier: 'catalog:'
+        version: 5.0.40
+      debug:
+        specifier: 'catalog:'
+        version: 4.4.3
+      lodash:
+        specifier: 'catalog:'
+        version: 4.17.23
+      web-push:
+        specifier: ^3.6.5
+        version: 3.6.7
+    devDependencies:
+      '@feathersjs/express':
+        specifier: 'catalog:'
+        version: 5.0.40(typescript@5.9.3)
+      '@feathersjs/feathers':
+        specifier: 'catalog:'
+        version: 5.0.40
+      '@feathersjs/memory':
+        specifier: 'catalog:'
+        version: 5.0.40
+
 packages:
 
   '@algolia/abtesting@1.14.2':
@@ -1165,6 +1190,10 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
+  agent-base@7.1.4:
+    resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
+    engines: {node: '>= 14'}
+
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
     peerDependencies:
@@ -1252,6 +1281,9 @@ packages:
     resolution: {integrity: sha512-BNoCY6SXXPQ7gF2opIP4GBE+Xw7U+pHMYKuzjgCN3GwiaIR09UUeKfheyIry77QtrCBlC0KK0q5/TER/tYh3PQ==}
     engines: {node: '>= 0.4'}
 
+  asn1.js@5.4.1:
+    resolution: {integrity: sha512-+I//4cYPccV8LdmBLiX8CYvf9Sp3vQsrqu2QNXRcrbiWvcx/UdlFiqUJJzxRQxgsZmvhXhn4cSKeSmoFjVdupA==}
+
   assertion-error@2.0.1:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
@@ -1279,6 +1311,9 @@ packages:
 
   birpc@2.9.0:
     resolution: {integrity: sha512-KrayHS5pBi69Xi9JmvoqrIgYGDkD6mcSe/i6YKi3w5kekCLzrX4+nawcXqrj2tIp50Kw/mT/s3p+GVK0A0sKxw==}
+
+  bn.js@4.12.3:
+    resolution: {integrity: sha512-fGTi3gxV/23FTYdAoUtLYp6qySe2KE3teyZitipKNRuVYcBkoP/bB3guXN/XVKUe9mxCHXnc9C4ocyz8OmgN0g==}
 
   body-parser@1.20.4:
     resolution: {integrity: sha512-ZTgYYLMOXY9qKU/57FAo8F+HA2dGX7bqGc71txDRC1rS4frdFI5R7NhluHxH6M0YItAP0sHB4uqAOcYKxO6uGA==}
@@ -2135,6 +2170,14 @@ packages:
     resolution: {integrity: sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ==}
     engines: {node: '>= 0.8'}
 
+  http_ece@1.2.0:
+    resolution: {integrity: sha512-JrF8SSLVmcvc5NducxgyOrKXe3EsyHMgBFgSaIUGmArKe+rwr0uphRkRXvwiom3I+fpIfoItveHrfudL8/rxuA==}
+    engines: {node: '>=16'}
+
+  https-proxy-agent@7.0.6:
+    resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
+    engines: {node: '>= 14'}
+
   human-id@4.1.3:
     resolution: {integrity: sha512-tsYlhAYpjCKa//8rXZ9DqKEawhPoSytweBC2eNvcaDK+57RZLHGqNs3PZTQO6yekLFSuvA6AlnAfrw1uBvtb+Q==}
     hasBin: true
@@ -2638,6 +2681,9 @@ packages:
   mimic-function@5.0.1:
     resolution: {integrity: sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==}
     engines: {node: '>=18'}
+
+  minimalistic-assert@1.0.1:
+    resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -3487,6 +3533,11 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  web-push@3.6.7:
+    resolution: {integrity: sha512-OpiIUe8cuGjrj3mMBFWY+e4MMIkW3SVT+7vEIjvD9kejGUypv8GPDf84JdPWskK8zMRIJ6xYGm+Kxr8YkPyA0A==}
+    engines: {node: '>= 16'}
+    hasBin: true
 
   web-worker@1.5.0:
     resolution: {integrity: sha512-RiMReJrTAiA+mBjGONMnjVDP2u3p9R1vkcGz6gDIrOMT3oGuYwX2WRMYI9ipkphSuE5XKEhydbhNEJh4NY9mlw==}
@@ -4583,6 +4634,8 @@ snapshots:
 
   acorn@8.15.0: {}
 
+  agent-base@7.1.4: {}
+
   ajv-formats@3.0.1(ajv@8.18.0):
     optionalDependencies:
       ajv: 8.18.0
@@ -4711,6 +4764,13 @@ snapshots:
       get-intrinsic: 1.3.0
       is-array-buffer: 3.0.5
 
+  asn1.js@5.4.1:
+    dependencies:
+      bn.js: 4.12.3
+      inherits: 2.0.4
+      minimalistic-assert: 1.0.1
+      safer-buffer: 2.1.2
+
   assertion-error@2.0.1: {}
 
   ast-v8-to-istanbul@0.3.11:
@@ -4734,6 +4794,8 @@ snapshots:
       is-windows: 1.0.2
 
   birpc@2.9.0: {}
+
+  bn.js@4.12.3: {}
 
   body-parser@1.20.4:
     dependencies:
@@ -5826,6 +5888,15 @@ snapshots:
       statuses: 2.0.2
       toidentifier: 1.0.1
 
+  http_ece@1.2.0: {}
+
+  https-proxy-agent@7.0.6:
+    dependencies:
+      agent-base: 7.1.4
+      debug: 4.4.3
+    transitivePeerDependencies:
+      - supports-color
+
   human-id@4.1.3: {}
 
   husky@9.1.7: {}
@@ -6445,6 +6516,8 @@ snapshots:
   mime@1.6.0: {}
 
   mimic-function@5.0.1: {}
+
+  minimalistic-assert@1.0.1: {}
 
   minimatch@3.1.2:
     dependencies:
@@ -7361,6 +7434,16 @@ snapshots:
       '@vue/shared': 3.5.28
     optionalDependencies:
       typescript: 5.9.3
+
+  web-push@3.6.7:
+    dependencies:
+      asn1.js: 5.4.1
+      http_ece: 1.2.0
+      https-proxy-agent: 7.0.6
+      jws: 4.0.1
+      minimist: 1.2.8
+    transitivePeerDependencies:
+      - supports-color
 
   web-worker@1.5.0: {}
 
