@@ -36,7 +36,7 @@ export default withMermaid(
         ]
         ,
         '/packages/feathers-keycloak-listener/': [
-          { text: 'Usage', link: '/packages/feathers-keycloak-listener/index' },
+          { text: 'feathers-keycloak-listener', link: '/packages/feathers-keycloak-listener/index' },
           { text: 'API', items: [
             { text: 'service', link: '/packages/feathers-keycloak-listener/api/service' },
             { text: 'hooks', items: [
@@ -46,7 +46,7 @@ export default withMermaid(
           ]}
         ],
         '/packages/feathers-webpush/': [
-          { text: 'Usage', link: '/packages/feathers-webpush/index' },
+          { text: 'feathers-webpush', link: '/packages/feathers-webpush/index' },
           { text: 'API', items: [
             { text: 'server', items: [
               { text: 'service', link: '/packages/feathers-webpush/api/server/service' },

@@ -5,3 +5,4 @@
 This repository contains the following packages:
 
 - **[@kalisio/feathers-keycloak-listener](./packages/feathers-keycloak-listener)**
+- **[@kalisio/feathers-webpush](./packages/feathers-webpush)**

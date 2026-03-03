@@ -23,8 +23,3 @@
 ```shell
 pnpm dev
 ```
-
-> [!TIP]
-> By default:
-> - The server listens on port `8081`. You can override it by setting the `SERVER_PORT` environment variable.
-> - The client listens on port `8080`. You can override it by setting the `CLIENT_PORT` environment variable.

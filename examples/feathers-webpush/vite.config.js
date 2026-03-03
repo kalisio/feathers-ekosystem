@@ -10,7 +10,6 @@ export default defineConfig({
     port: 8080
   },
   define: {
-    'process.env.VAPID_PUBLIC_KEY': JSON.stringify(process.env.VAPID_PUBLIC_KEY),
-    'process.env.CLIENT_PORT': JSON.stringify(process.env.CLIENT_PORT)
+    'process.env.VAPID_PUBLIC_KEY': JSON.stringify(process.env.VAPID_PUBLIC_KEY)
   }
 })

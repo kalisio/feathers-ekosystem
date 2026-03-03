@@ -15,7 +15,7 @@ const publicVapidKey = process.env.VAPID_PUBLIC_KEY
 // Create the client Feathers app
 const api = feathers()
 // Configure the transport using socket.io
-const domain = process.env.CLIENT_PORT ? 'http://localhost:' + process.env.CLIENT_PORT : 'http://localhost:8081'
+const domain = 'http://localhost:8081'
 const socket = io(domain)
 const transport = socketio(socket)
 api.configure(transport)
