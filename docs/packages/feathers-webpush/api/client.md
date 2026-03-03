@@ -1,4 +1,8 @@
-# Client API
+---
+title: Client
+---
+
+# Client
 
 ## checkPrerequisites()
 
@@ -10,8 +14,11 @@ It verifies:
 
 ### Throws
 
-- `NotificationsNotSupported` (status code `498`)
-  If the browser does not support push notifications or the Notifications API.
+| Type | Description |
+|------|-------------|
+| `NotificationsNotSupported` (498) | If the browser does not support push notifications or the Notifications API. |
+
+---
 
 ## requestNotificationPermission()
 
@@ -21,15 +28,17 @@ If the current permission state is `default`, the browser prompts the user to gr
 
 ### Returns
 
-A `Promise` resolving to the updated permission state:
-- `"granted"`
-- `"denied"`
-- `"default"`
+| Type | Description |
+|------|-------------|
+| `Promise<string>` | Resolves to the updated permission state: `"granted"`, `"denied"`, or `"default"`. |
 
 ### Throws
 
-- `PermissionDeniedNotifications` (status code `499`)
-  If permission is denied (either previously or during the request).
+| Type | Description |
+|------|-------------|
+| `PermissionDeniedNotifications` (499) | If permission is denied (either previously or during the request). |
+
+---
 
 ## getPushSubscription()
 
@@ -37,14 +46,17 @@ Retrieves the current push subscription from the registered service worker.
 
 ### Returns
 
-A `Promise` resolving to:
-- The current `PushSubscription` object
-- `null` if no subscription exists
+| Type | Description |
+|------|-------------|
+| `Promise<PushSubscription|null>` | Resolves to the current `PushSubscription` object, or `null` if no subscription exists. |
 
 ### Throws
 
-- `ServiceWorkerNotRegistered` (status code `497`)
-  If no service worker is registered.
+| Type | Description |
+|------|-------------|
+| `ServiceWorkerNotRegistered` (497) | If no service worker is registered. |
+
+---
 
 ## subscribePushNotifications(publicVapidKey)
 
@@ -52,12 +64,17 @@ Subscribes the user to push notifications using the provided VAPID public key.
 
 ### Parameters
 
-- `publicVapidKey` (`Uint8Array` | `string`)
-  The application’s public VAPID key.
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `publicVapidKey` | `Uint8Array` \| `string` | yes | The application’s public VAPID key. |
 
 ### Returns
 
-A `Promise` resolving to a serializable push subscription object.
+| Type | Description |
+|------|-------------|
+| `Promise<Object>` | Resolves to a serializable push subscription object. |
+
+---
 
 ## unsubscribePushNotifications()
 
@@ -65,7 +82,11 @@ Unsubscribes the current push subscription.
 
 ### Returns
 
-A `Promise` resolving to the unsubscribed `PushSubscription` object.
+| Type | Description |
+|------|-------------|
+| `Promise<PushSubscription>` | Resolves to the unsubscribed `PushSubscription` object. |
+
+---
 
 ## addSubscription(subscription, currentSubscription, subscriptionProperty)
 
@@ -75,13 +96,19 @@ If the subscription already exists (same `endpoint`), it is not duplicated.
 
 ### Parameters
 
-- `subscription` (`Object`) — The object containing subscriptions.
-- `currentSubscription` (`Object`) — The subscription to add.
-- `subscriptionProperty` (`string`) — The property name that stores subscriptions.
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `subscription` | `Object` | yes | The object containing subscriptions. |
+| `currentSubscription` | `Object` | yes | The subscription to add. |
+| `subscriptionProperty` | `string` | yes | The property name that stores subscriptions. |
 
 ### Returns
 
-The updated subscription collection (see implementation notes).
+| Type | Description |
+|------|-------------|
+| `Array` | The updated array of subscriptions. |
+
+---
 
 ## removeSubscription(subscription, currentSubscription, subscriptionProperty)
 
@@ -89,10 +116,14 @@ Removes a push subscription from a subscription container object.
 
 ### Parameters
 
-- `subscription` (`Object`) — The object containing subscriptions.
-- `currentSubscription` (`Object`) — The subscription to remove.
-- `subscriptionProperty` (`string`) — The property name that stores subscriptions.
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `subscription` | `Object` | yes | The object containing subscriptions. |
+| `currentSubscription` | `Object` | yes | The subscription to remove. |
+| `subscriptionProperty` | `string` | yes | The property name that stores subscriptions. |
 
 ### Returns
 
-The updated subscription object.
+| Type | Description |
+|------|-------------|
+| `Object` | The updated subscription object. |

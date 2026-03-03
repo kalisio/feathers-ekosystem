@@ -49,8 +49,8 @@ export default withMermaid(
           { text: 'Usage', link: '/packages/feathers-webpush/index' },
           { text: 'API', items: [
             { text: 'server', items: [
-              { text: 'service', link: '/packages/feathers-keycloak-listener/api/server/service' },
-              { text: 'hooks', link: '/packages/feathers-keycloak-listener/api/server/hooks' }
+              { text: 'service', link: '/packages/feathers-webpush/api/server/service' },
+              { text: 'hooks', link: '/packages/feathers-webpush/api/server/hooks' }
             ]},
             { text: 'client', link: '/packages/feathers-webpush/api/client' }
           ]}

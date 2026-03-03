@@ -4,7 +4,7 @@ title: Service
 
 # Service
 
-## Service
+## constructor
 
 ### Signature
 
@@ -33,8 +33,6 @@ It handles successful and failed deliveries and logs relevant debug information.
 | Type | Description |
 |------|-------------|
 | `Error` | If `options`, `options.app`, or `options.vapidDetails` are missing. |
-
----
 
 ## create
 

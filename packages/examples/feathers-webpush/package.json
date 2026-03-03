@@ -1,0 +1,30 @@
+{
+  "name": "feathers-webpush-example",
+  "description": "Example of web push notification management",
+  "packageManager": "pnpm@10.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm dev:server & pnpm dev:client",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "vite"
+  },
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/memory": "catalog:",
+    "@feathersjs/socketio": "catalog:",
+    "@feathersjs/socketio-client": "catalog:",
+    "@kalisio/feathers-webpush": "workspace:*",
+    "lodash": "catalog:",
+    "socket.io-client": "^4.7.1",
+    "vite": "catalog:",
+    "web-push": "catalog:"
+  }
+}

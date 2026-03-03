@@ -5,12 +5,12 @@
   "type": "module",
   "exports": {
     "./server": {
-      "import": "./dist/server.es.mjs",
-      "require": "./dist/server.cjs.js"
+      "import": "./dist/server.mjs",
+      "require": "./dist/server.cjs"
     },
     "./client": {
-      "import": "./dist/client.es.mjs",
-      "require": "./dist/client.cjs.js"
+      "import": "./dist/client.mjs",
+      "require": "./dist/client.cjs"
     }
   },
   "files": [
