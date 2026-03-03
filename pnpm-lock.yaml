@@ -139,7 +139,7 @@ importers:
         specifier: 'catalog:'
         version: 4.0.18(@types/node@25.3.3)(yaml@2.8.2)
 
-  packages/examples/feathers-webpush:
+  examples/feathers-webpush:
     devDependencies:
       '@feathersjs/errors':
         specifier: 'catalog:'
@@ -161,7 +161,7 @@ importers:
         version: 5.0.41
       '@kalisio/feathers-webpush':
         specifier: workspace:*
-        version: link:../../feathers-webpush
+        version: link:../../packages/feathers-webpush
       lodash:
         specifier: 'catalog:'
         version: 4.17.23

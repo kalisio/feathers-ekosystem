@@ -1,5 +1,6 @@
 ---
 title: Service
+description: A Feathers service for sending web push notifications
 ---
 
 # Service

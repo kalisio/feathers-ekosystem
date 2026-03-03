@@ -1,5 +1,6 @@
 ---
 title: hooks
+description: Feathers hooks for managing and cleaning up web push subscriptions automatically
 ---
 
 # Hooks

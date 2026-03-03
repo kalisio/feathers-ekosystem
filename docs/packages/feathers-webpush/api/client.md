@@ -1,5 +1,6 @@
 ---
-title: Client
+title: Client API
+description: Client-side utilities for web push notifications
 ---
 
 # Client
@@ -17,8 +18,6 @@ It verifies:
 | Type | Description |
 |------|-------------|
 | `NotificationsNotSupported` (498) | If the browser does not support push notifications or the Notifications API. |
-
----
 
 ## requestNotificationPermission()
 
@@ -38,8 +37,6 @@ If the current permission state is `default`, the browser prompts the user to gr
 |------|-------------|
 | `PermissionDeniedNotifications` (499) | If permission is denied (either previously or during the request). |
 
----
-
 ## getPushSubscription()
 
 Retrieves the current push subscription from the registered service worker.
@@ -55,8 +52,6 @@ Retrieves the current push subscription from the registered service worker.
 | Type | Description |
 |------|-------------|
 | `ServiceWorkerNotRegistered` (497) | If no service worker is registered. |
-
----
 
 ## subscribePushNotifications(publicVapidKey)
 
@@ -74,8 +69,6 @@ Subscribes the user to push notifications using the provided VAPID public key.
 |------|-------------|
 | `Promise<Object>` | Resolves to a serializable push subscription object. |
 
----
-
 ## unsubscribePushNotifications()
 
 Unsubscribes the current push subscription.
@@ -85,8 +78,6 @@ Unsubscribes the current push subscription.
 | Type | Description |
 |------|-------------|
 | `Promise<PushSubscription>` | Resolves to the unsubscribed `PushSubscription` object. |
-
----
 
 ## addSubscription(subscription, currentSubscription, subscriptionProperty)
 
@@ -107,8 +98,6 @@ If the subscription already exists (same `endpoint`), it is not duplicated.
 | Type | Description |
 |------|-------------|
 | `Array` | The updated array of subscriptions. |
-
----
 
 ## removeSubscription(subscription, currentSubscription, subscriptionProperty)
 
