@@ -34,7 +34,6 @@ const options = {
 }
 
 // Register webpush service on the Feathers application
-// /!\ do not forget to declare the custom methods
 app.use('push', new Service(options), {
   methods: ['create']
 })
