@@ -36,3 +36,4 @@ catalog:
   vitepress-plugin-mermaid: ^2.0.16
   vitepress-theme-kalisio: https://github.com/kalisio/vitepress-theme-kalisio
   vitest: ^4.0.17
+  web-push: ^3.6.5
