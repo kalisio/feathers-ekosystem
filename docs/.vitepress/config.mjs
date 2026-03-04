@@ -35,26 +35,8 @@ export default withMermaid(
           { text: 'Contact', link: '/overview/contact' }
         ]
         ,
-        '/packages/feathers-keycloak-listener/': [
-          { text: 'feathers-keycloak-listener', link: '/packages/feathers-keycloak-listener/index' },
-          { text: 'API', items: [
-            { text: 'service', link: '/packages/feathers-keycloak-listener/api/service' },
-            { text: 'hooks', items: [
-              { text: 'sessions', link: '/packages/feathers-keycloak-listener/api/hooks/hooks.sessions' },
-              { text: 'users', link: '/packages/feathers-keycloak-listener/api/hooks/hooks.users' }
-            ]}
-          ]}
-        ],
-        '/packages/feathers-webpush/': [
-          { text: 'feathers-webpush', link: '/packages/feathers-webpush/index' },
-          { text: 'API', items: [
-            { text: 'server', items: [
-              { text: 'service', link: '/packages/feathers-webpush/api/server/service' },
-              { text: 'hooks', link: '/packages/feathers-webpush/api/server/hooks' }
-            ]},
-            { text: 'client', link: '/packages/feathers-webpush/api/client' }
-          ]}
-        ]
+        '/packages/feathers-keycloak-listener/': generateSideBar('feathers-keycloak-listener'),
+        '/packages/feathers-webpush/': generateSideBar('feathers-webpush')
       },
       footer: {
         copyright: 'MIT Licensed | Copyright © 2026 Kalisio'
@@ -70,3 +52,53 @@ export default withMermaid(
     }
   })
 )
+
+
+function generateSideBar (pkg) {
+  // Ensure the pkg folder exists
+  const pkgDir = path.resolve(process.cwd(), `docs/packages/${pkg}`)
+    if (!fs.existsSync(pkgDir)) {
+    return []
+  }
+  // Helper function to build the tree
+  function buildTree(dir, basePath = '') {
+    const entries = fs
+      .readdirSync(dir, { withFileTypes: true })
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+      )
+    const items = []
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name)
+      const relativePath = path.join(basePath, entry.name)
+      // Folder case
+      if (entry.isDirectory()) {
+        const children = buildTree(fullPath, relativePath)
+        if (children.length > 0) {
+          items.push({
+            text: entry.name,
+            items: children
+          })
+        }
+      }
+      // File case
+      if (
+        entry.isFile() &&
+        entry.name.endsWith('.md') &&
+        entry.name !== 'index.md'
+      ) {
+        const name = relativePath.replace(/\.md$/, '').replace(/\\/g, '/')
+        items.push({
+          text: entry.name.replace('.md', ''),
+          link: `/packages/${pkg}/${name}`
+        })
+      }
+    }
+    return items
+  }
+  // Build the sidebar tree
+  return [
+    { text: pkg, link: `/packages/${pkg}/index` },
+    ...buildTree(pkgDir)
+  ]
+}
