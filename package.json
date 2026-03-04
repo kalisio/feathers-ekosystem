@@ -61,7 +61,7 @@
   "bugs": {
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
-  "homepage": "git://github.com/kalisio/feathers-ekosystem#readme",
+  "homepage": "https://kalisio.github.io/feathers-ekosystem/",
   "dependencies": {
     "keycloak-js": "catalog:",
     "lodash": "catalog:",

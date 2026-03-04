@@ -55,7 +55,7 @@ catalogs:
       specifier: ^2.30.1
       version: 2.30.1
     quasar:
-      specifier: ^2.14.3
+      specifier: ^2.18.6
       version: 2.18.6
     standard:
       specifier: ^17.1.2
