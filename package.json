@@ -30,7 +30,7 @@
     "test": "vitest run --coverage",
     "test:feathers-keycloak-listener": "pnpm run test --project feathers-keycloak-listener",
     "test:feathers-webpush": "pnpm run test --project feathers-webpush",
-    "build": "pnpm run build:feathers-keycloak-listener && pnpm run build:feathers-webpush",
+    "build": "pnpm -r --filter @kalisio/feathers-* build",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
     "changeset": "changeset",
