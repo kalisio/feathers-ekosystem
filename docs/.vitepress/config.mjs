@@ -7,7 +7,7 @@ export default withMermaid(
   defineConfig({
     base: '/feathers-ekosystem/',
     title: 'feathers-ekosystem',
-    description: 'A collection of Kalisio maintained modules for FeathersJS',
+    description: 'A collection of modules for FeathersJS',
     ignoreDeadLinks: true,
     head: [
       ['link', { href: 'https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css', rel: 'stylesheet' }],
