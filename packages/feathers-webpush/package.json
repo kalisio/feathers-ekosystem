@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
-  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/check#readme",
+  "homepage": "https://kalisio.github.io/feathers-ekosystem/packages/feathers-webpush",
   "dependencies": {
     "@feathersjs/errors": "catalog:",
     "debug": "catalog:",
