@@ -1,6 +1,6 @@
 {
-  "name": "feathers-webpush-example",
-  "description": "Example of web push notification management",
+  "name": "feathers-webpush",
+  "description": "feathers-webpush example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
   "scripts": {
