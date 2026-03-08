@@ -15,12 +15,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+logs/
 
 # Optional lockfiles
-# Uncomment if you prefer to ignore them
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
+package-lock.json
+yarn.lock
 
 # IDE/editor configs
 .vscode/
@@ -59,5 +58,5 @@ jest-*.json
 # Husky hooks
 .husky/_
 
-# Vitepress cache 
+# Vitepress cache
 docs/.vitepress/cache/
