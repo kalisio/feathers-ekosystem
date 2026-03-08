@@ -16,8 +16,21 @@
   "files": [
     "dist"
   ],
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach"
+    ],
+    "ignore": [
+      "dist/**"
+    ]
+  },
   "scripts": {
     "build": "vite build",
+    "lint": "standard --fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
