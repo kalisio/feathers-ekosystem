@@ -17,12 +17,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "keywords": [
+    "web-push",
     "feathersjs",
     "feathers",
-    "web-push",
     "kalisio"
   ],
   "author": {

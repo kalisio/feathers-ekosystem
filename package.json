@@ -23,13 +23,6 @@
     ]
   },
   "scripts": {
-    "prepare": "husky",
-    "lint": "standard 'packages/**/*.js' --fix",
-    "lint:feathers-keycloak-listener": "pnpm run lint -- 'packages/feathers-keycloak-listener/**/*.js'",
-    "lint:feathers-webpush": "pnpm run lint -- 'packages/feathers-webpush/**/*.js'",
-    "test": "vitest run --coverage",
-    "test:feathers-keycloak-listener": "pnpm run test --project feathers-keycloak-listener",
-    "test:feathers-webpush": "pnpm run test --project feathers-webpush",
     "build": "pnpm -r --filter @kalisio/feathers-* build",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
@@ -38,7 +31,14 @@
     "changeset:version": "changeset version",
     "changeset:release": "pnpm build && changeset publish",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs"
+    "docs:build": "vitepress build docs",
+    "lint": "standard 'packages/**/*.js' --fix",
+    "lint:feathers-keycloak-listener": "pnpm run lint -- 'packages/feathers-keycloak-listener/**/*.js'",
+    "lint:feathers-webpush": "pnpm run lint -- 'packages/feathers-webpush/**/*.js'",
+    "prepare": "husky",
+    "test": "vitest run --coverage",
+    "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test",
+    "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test"
   },
   "keywords": [
     "keycloak",
