@@ -3,20 +3,6 @@
   "description": "A collection of modules for FeathersJS",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
-  "standard": {
-    "globals": [
-      "describe",
-      "it",
-      "expect",
-      "beforeEach",
-      "afterEach",
-      "Image",
-      "self"
-    ],
-    "ignore": [
-      "dist/**"
-    ]
-  },
   "lint-staged": {
     "*.{js,cjs,mjs}": [
       "pnpm lint"
