@@ -2,10 +2,15 @@ packages:
   - packages/**
   - examples/**
 catalog:
+  "@automerge/automerge-repo": ^2.4.0
+  "@automerge/automerge-repo-network-websocket": ^2.4.0
+  "@automerge/automerge-repo-storage-indexeddb": ^2.4.0
+  "@casl/ability": ^6.3.0
+  "@casl/mongoose": ^7.1.0
   "@changesets/cli": ^2.29.8
   "@feathersjs/adapter-commons": ^5.0.8
   "@feathersjs/adapter-tests": ^5.0.8
-  "@feathersjs/authentication": ^5.0..8
+  "@feathersjs/authentication": ^5.0.8
   "@feathersjs/authentication-client": ^5.0.8
   "@feathersjs/authentication-local": ^5.0.8
   "@feathersjs/client": ^5.0.8
@@ -19,25 +24,53 @@ catalog:
   "@feathersjs/rest-client": ^5.0.8
   "@feathersjs/socketio": ^5.0.8
   "@feathersjs/socketio-client": ^5.0.8
+  "@kalisio/feathers-automerge": ^0.3.8
+  "@kalisio/feathers-distributed": ^2.4.0
+  "@kalisio/feathers-import-export": ^1.4.1
+  "@kalisio/feathers-localforage": ^1.2.1
+  "@kalisio/feathers-s3": ^1.6.0
+  "@kalisio/feathers-webpush": ^1.0.1
+  "@kalisio/kdk": ^2.6.4
   "@logtape/logtape": ^0.7.0
+  "@quasar/app-vite": ^2.4.1
+  "@quasar/extras": ^1.16.15
+  "@thumbmarkjs/thumbmarkjs": ^3.9.2
+  "@vitejs/plugin-vue": ^6.0.4
   "@vitest/coverage-v8": ^4.0.17
+  "@vue/test-utils": ^2.4.6
   ajv: ^8.18.0
-  ajv-formats: ^2.1.1
+  ajv-formats: ^3.0.1
+  ajv-i18n: ^4.2.0
   ajv-keywords: ^5.1.0
+  chroma-js: ^3.2.0
   cross-env: ^10.1.0
   debug: ^4.1.0
+  feathers-hooks-common: ^8.2.1
+  happy-dom: ^20.3.1
   husky: ^9.1.7
+  is-docker: ^2.2.1
   keycloak-js: ^23.0.4
   lint-staged: ^16.2.7
   lodash: ^4.17.21
   mermaid: ^10.8.0
   moment: ^2.30.1
+  moment-timezone: ^0.6.0
+  papaparse: ^5.5.3
+  pinch-zoom-element: ^1.1.1
   quasar: ^2.18.6
+  sanitize-html: ^2.17.1
+  showdown: ^2.1.0
+  sift: ^17.1.3
   socket.io-client: ^4.8.2
   standard: ^17.1.2
+  superagent: ^10.3.0
   vite: ^7.1.9
   vitepress: ^1.6.3
   vitepress-plugin-mermaid: ^2.0.16
   vitepress-theme-kalisio: https://github.com/kalisio/vitepress-theme-kalisio
   vitest: ^4.0.17
+  vue: ^3.5.0
+  vue-i18n: ^20.3.1
+  vue-router: ^5.0.3
   web-push: ^3.6.5
+  winston: ^3.19.0

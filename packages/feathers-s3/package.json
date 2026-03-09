@@ -1,0 +1,75 @@
+{
+  "name": "@kalisio/feathers-s3",
+  "description": "Manage S3 objects using presigned url",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./server": {
+      "import": "./dist/server.mjs",
+      "require": "./dist/server.cjs"
+    },
+    "./client": {
+      "import": "./dist/client.mjs",
+      "require": "./dist/client.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach"
+    ],
+    "ignore": [
+      "dist/**"
+    ]
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "standard ",
+    "lint:fix": "standard --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "kalisio"
+  ],
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kalisio/feathers-ekosystem.git",
+    "directory": "packages/feathers-s3"
+  },
+  "bugs": {
+    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+  },
+  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-s3",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.943.0",
+    "@aws-sdk/s3-request-presigner": "^3.943.0",
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "debug": "catalog:",
+    "lodash": "catalog:",
+    "moment": "catalog:"
+  },
+  "devDependencies": {
+    "@feathersjs/client": "catalog:",
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/socketio": "catalog:",
+    "@kalisio/feathers-distributed": "catalog:",
+    "sharp": "^0.34.5",
+    "socket.io-client": "catalog:",
+    "superagent": "catalog:"
+  }
+}

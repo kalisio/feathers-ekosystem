@@ -1,7 +1,7 @@
+import _ from 'lodash'
 import webpush from 'web-push'
 import createDebug from 'debug'
 import { BadRequest } from '@feathersjs/errors'
-import _ from 'lodash'
 
 const debug = createDebug('feathers-webpush:service')
 
