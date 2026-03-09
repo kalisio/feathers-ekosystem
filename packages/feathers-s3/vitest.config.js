@@ -25,7 +25,7 @@ export default defineConfig({
         '*.config.js'
       ],
       reporter: ['text', 'html', 'lcov'],
-      reportsDirectory: '../../coverage/feathers-s3'
+      reportsDirectory: './coverage'
     }
   }
 })

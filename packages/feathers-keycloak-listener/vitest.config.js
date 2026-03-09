@@ -24,7 +24,7 @@ export default defineConfig({
         '*.config.js'
       ],
       reporter: ['text', 'html', 'lcov'],
-      reportsDirectory: '../../coverage/feathers-keycloak-listener'
+      reportsDirectory: './coverage'
     }
   }
 })
