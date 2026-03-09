@@ -6,6 +6,12 @@ settings:
 
 catalogs:
   default:
+    '@aws-sdk/client-s3':
+      specifier: ^3.943.0
+      version: 3.1004.0
+    '@aws-sdk/s3-request-presigner':
+      specifier: ^3.943.0
+      version: 3.1004.0
     '@changesets/cli':
       specifier: ^2.29.8
       version: 2.30.0
@@ -116,7 +122,7 @@ importers:
         version: 2.30.0(@types/node@25.3.3)
       '@kalisio/meta-ekosystem':
         specifier: ^0.4.0
-        version: 0.4.0(@types/node@25.3.3)
+        version: 0.4.1(@types/node@25.3.3)
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 4.0.18(vitest@4.0.18(@types/node@25.3.3)(yaml@2.8.2))
@@ -212,10 +218,10 @@ importers:
   packages/feathers-s3:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.943.0
+        specifier: 'catalog:'
         version: 3.1004.0
       '@aws-sdk/s3-request-presigner':
-        specifier: ^3.943.0
+        specifier: 'catalog:'
         version: 3.1004.0
       '@feathersjs/commons':
         specifier: 'catalog:'
@@ -1242,8 +1248,8 @@ packages:
     resolution: {integrity: sha512-rWGiF9gl7YD8rvJWd7HfEou9125YnT6jnIKSrae7WtY+QXSOyA2BH2m8XtGnFC1yUxxT1jtQx4sxWR2Ri+s16A==}
     engines: {node: '>= 16.0.0'}
 
-  '@kalisio/meta-ekosystem@0.4.0':
-    resolution: {integrity: sha512-VyHz0mV4UvQqISwk3kZJ94D9EK1cLYyoXH41QFWIp1Th6ZqvmC3NPg13U+pitRlxKvuzJhpzkSgSKyXk05s9lg==}
+  '@kalisio/meta-ekosystem@0.4.1':
+    resolution: {integrity: sha512-Wk5osctvL1fy22lbSCNWtVlJ1jxxFXSd8X3UvNWF4+7PmAe40CMMtaZSUj+OwH0vvCpOXKU45UPicuQS8qHx4Q==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -5943,7 +5949,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@kalisio/meta-ekosystem@0.4.0(@types/node@25.3.3)':
+  '@kalisio/meta-ekosystem@0.4.1(@types/node@25.3.3)':
     dependencies:
       node-plop: 0.32.3(@types/node@25.3.3)
     transitivePeerDependencies:

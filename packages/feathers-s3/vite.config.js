@@ -23,6 +23,7 @@ export default defineConfig({
       external: [
         /^node:/,
         /@feathersjs\//,
+        /^@aws-sdk\/.*/,
         'lodash',
         'moment'
       ]
