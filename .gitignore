@@ -38,14 +38,12 @@ Thumbs.db
 *.swp
 *.swo
 *.bak
+*.bkp
 
 # Environment variables
 .env
 .env.local
 .env.*.local
-
-# Misc archives
-*.bkp
 
 # Test coverage and temporary test outputs
 coverage/
