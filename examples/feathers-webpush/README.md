@@ -21,5 +21,6 @@
 2. Start both server and client
 
 ```shell
+cd examples/feathers-webpush
 pnpm dev
 ```

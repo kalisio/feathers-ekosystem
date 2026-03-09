@@ -1,0 +1,27 @@
+{
+  "name": "feathers-s3",
+  "description": "feathers-s3 example",
+  "packageManager": "pnpm@10.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm dev:server & pnpm dev:client",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "vite",
+    "lint": "standard ",
+    "lint:fix": "standard --fix"
+  },
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@feathersjs/client": "catalog:",
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/socketio": "catalog:",
+    "@kalisio/feathers-s3": "workspace:*",
+    "vite": "catalog:"
+  }
+}
