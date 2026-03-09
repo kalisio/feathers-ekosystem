@@ -45,9 +45,6 @@ Thumbs.db
 .env.*.local
 
 # Misc archives
-*.zip
-*.tar.gz
-*.tgz
 *.bkp
 
 # Test coverage and temporary test outputs
