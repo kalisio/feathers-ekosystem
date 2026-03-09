@@ -22,7 +22,7 @@
     "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint",
     "prepare": "husky",
-    "test": "pnpm -r test",
+    "test": "pnpm -r test --coverage",
     "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test",
     "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test"
   },
