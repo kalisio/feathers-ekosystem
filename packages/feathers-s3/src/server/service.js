@@ -267,19 +267,22 @@ export class Service {
       const uploadId = response.UploadId
       const parts = []
       let partNumber = 1
-      // read the file stream aand upload part by read chunk
+      // read the file stream and upload part by read chunk
       const UploadStream = new Writable({
-        write: async (chunk, encoding, callback) => {
-          response = await this.uploadPart({
+        write: (chunk, encoding, callback) => {
+          this.uploadPart({
             id,
             buffer: chunk,
             type: data.contentType,
             PartNumber: partNumber,
             UploadId: uploadId
           })
-          parts.push({ PartNumber: partNumber, ETag: response.ETag })
-          partNumber++
-          callback(null, chunk)
+            .then((response) => {
+              parts.push({ PartNumber: partNumber, ETag: response.ETag })
+              partNumber++
+              callback()
+            })
+            .catch(callback)
         }
       })
       await pipelineAsync(fs.createReadStream(data.filePath, { highWaterMark: chunkSize }), UploadStream)
