@@ -18,13 +18,13 @@
     "changeset:release": "pnpm build && changeset publish",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "lint": "pnpm -r lint",
-    "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint",
-    "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint",
+    "lint": "pnpm -r lint --fix",
+    "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint --fix",
+    "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint --fix",
     "prepare": "husky",
     "test": "pnpm -r test --coverage",
-    "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test",
-    "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test"
+    "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test --coverage",
+    "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test --coverage"
   },
   "keywords": [
     "keycloak",
