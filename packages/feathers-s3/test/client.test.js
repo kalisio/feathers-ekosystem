@@ -45,9 +45,8 @@ const imageFileContent = fs.readFileSync('test/data/image.png')
 const archiveFileContent = fs.readFileSync('test/data/archive.zip')
 const featuresFileContent = fs.readFileSync('test/data/features.geojson')
 
-let useProxy = false
-
-function runTests (message, checkEvents) {
+function runTests (message, options) {
+  const { checkEvents, useProxy } = options
   it('create s3 service' + message, () => {
     s3ClientService = getClientService(clientApp, {
       servicePath: 's3',
@@ -163,9 +162,6 @@ function runTests (message, checkEvents) {
     const response = await s3ClientService.remove(archiveFileId)
     expect(response.$metadata.httpStatusCode).toBe(204)
   })
-  it('change proxy mode', () => {
-    useProxy = !useProxy
-  })
 }
 
 describe('feathers-s3-client', () => {
@@ -196,20 +192,24 @@ describe('feathers-s3-client', () => {
 
   it('create REST client', () => {
     clientApp = feathersClient()
+    expect(clientApp).toBeTruthy()
     transport = feathersClient.rest('http://localhost:3336').superagent(superagent)
+    expect(transport).toBeTruthy()
     clientApp.configure(transport)
   })
-  runTests(' with REST client and without proxy', false)
-  runTests(' with REST client and with proxy', false)
+  runTests(' with REST client and without proxy', { checkEvents: false, useProxy: false })
+  runTests(' with REST client and with proxy', { checkEvents: false, useProxy: true })
 
   it('create websocket client', () => {
     clientApp = feathersClient()
+    expect(clientApp).toBeTruthy()
     socket = io('http://localhost:3336')
     transport = feathersClient.socketio(socket)
+    expect(transport).toBeTruthy()
     clientApp.configure(transport)
   })
-  runTests(' with websocket client and without proxy', true)
-  runTests(' with websocket client and with proxy', true)
+  runTests(' with websocket client and without proxy', { checkEvents: true, useProxy: false })
+  runTests(' with websocket client and with proxy', { checkEvents: true, useProxy: true })
 
   afterAll(async () => {
     await expressServer.close()
