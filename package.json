@@ -69,8 +69,6 @@
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {
-      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
-    }
+    "overrides": {}
   }
 }
