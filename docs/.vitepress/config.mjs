@@ -23,6 +23,7 @@ export default withMermaid(
           text: 'Packages',
           items: [
             { text: 'feathers-keycloak-listener', link: '/packages/feathers-keycloak-listener/' },
+            { text: 'feathers-s3', link: '/packages/feathers-s3/' },
             { text: 'feathers-webpush', link: '/packages/feathers-webpush/' }
           ]
         }
@@ -38,10 +39,11 @@ export default withMermaid(
         ]
         ,
         '/packages/feathers-keycloak-listener/': generateSideBar('feathers-keycloak-listener'),
+        '/packages/feathers-s3/': generateSideBar('feathers-s3'),
         '/packages/feathers-webpush/': generateSideBar('feathers-webpush')
       },
       footer: {
-        copyright: 'MIT Licensed | Copyright © 2026 Kalisio'
+        copyright: 'MIT Licensed | Copyright © 2026-present Kalisio'
       }
     },
     vite: {
