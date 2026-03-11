@@ -5,14 +5,28 @@ description: Overview of feathers-webpush
 
 # feathers-webpush
 
-**feathers-webpush** module provides a simplified way to send web push notifications in a **FeathersJS** application. It leverages the [web-push package](https://github.com/web-push-libs/web-push) to interact with the [Web Push protocol](https://web.dev/articles/push-notifications-web-push-protocol).
+**feathers-webpush** module provides a simplified way to send web push notifications in a **FeathersJS** application.
 
-![webpush-principle](./webpush-principle.png)
+## Principle
+
+It leverages the [web-push package](https://github.com/web-push-libs/web-push) to interact with the [Web Push protocol](https://web.dev/articles/push-notifications-web-push-protocol).
+
+![webpush-principle](./assets/feathers-webpush-principle.png)
 
 ## Installation
 
+Install with your preferred package manager:
+
 ```shell
 pnpm add @kalisio/feathers-webpush
+```
+
+```shell
+npm install @kalisio/feathers-webpush
+```
+
+```shell
+yarn add @kalisio/feathers-webpush
 ```
 
 ## Configuration

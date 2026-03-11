@@ -4,8 +4,18 @@
 
 ## Installation
 
+Install with your preferred package manager:
+
 ```shell
 pnpm add @kalisio/feathers-keycloak-listener
+```
+
+```shell
+npm install @kalisio/feathers-keycloak-listener
+```
+
+```shell
+yarn add @kalisio/feathers-keycloak-listener
 ```
 
 ## Configuration

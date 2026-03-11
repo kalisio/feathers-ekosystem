@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "pnpm -r build",
+    "build:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export build",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
     "build:feathers-s3": "pnpm --filter @kalisio/feathers-s3 build",
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
@@ -20,11 +21,13 @@
     "docs:build": "vitepress build docs",
     "docs:dev": "vitepress dev docs",
     "lint": "pnpm -r lint --fix",
+    "lint:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export lint --fix",
     "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint --fix",
     "lint:feathers-s3": "pnpm --filter @kalisio/feathers-s3 lint --fix",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint --fix",
     "prepare": "husky",
     "test": "pnpm -r test --coverage",
+    "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test --coverage",
     "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test --coverage",
     "test:feathers-s3": "pnpm --filter @kalisio/feathers-s3 test --coverage",
     "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test --coverage"
@@ -51,6 +54,7 @@
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/",
   "dependencies": {
+    "@kalisio/meta-ekosystem": "link:../meta-ekosystem",
     "keycloak-js": "catalog:",
     "lodash": "catalog:",
     "moment": "catalog:",
@@ -58,7 +62,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
-    "@kalisio/meta-ekosystem": "^0.5.0",
     "@vitest/coverage-v8": "catalog:",
     "cross-env": "catalog:",
     "husky": "catalog:",
@@ -66,12 +69,15 @@
     "mermaid": "catalog:",
     "standard": "catalog:",
     "vite": "catalog:",
+    "vite-bundle-visualizer": "^1.2.1",
     "vitepress": "catalog:",
     "vitepress-plugin-mermaid": "catalog:",
     "vitepress-theme-kalisio": "catalog:",
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {}
+    "overrides": {
+      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
+    }
   }
 }

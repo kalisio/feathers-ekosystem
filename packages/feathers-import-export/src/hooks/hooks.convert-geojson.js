@@ -1,0 +1,50 @@
+import path from 'node:path'
+import fs from 'node:fs'
+import { execSync } from 'node:child_process'
+import { getFullExtension } from '../utils.js'
+import createDebug from 'debug'
+
+const debug = createDebug('feathers-import-export:export:hooks:convert-geojson')
+
+// this hook requires GDAL 3.1
+export async function convertGeoJson (hook) {
+  if (hook.type !== 'before') {
+    throw new Error('The \'convertGeoJson\' hook should only be used as a \'before\' hook.')
+  }
+  if (!hook.data.context.convertGeoJson) return
+  if (hook.data.context.format !== 'geojson') {
+    throw new Error('The \'convertGeoJson\' requires the \'format\' property to be set to \'geojson\'')
+  }
+  if (hook.data.context.archive) {
+    throw new Error('The \'convertGeoJson\' cannot be applied to an archive')
+  }
+  if (!hook.data.context.filename) {
+    throw new Error('The \'convertGeoJson\' requires the \'filename\' property to be set')
+  }
+  if (!hook.data.context.convertGeoJson.ogrDriver) {
+    throw new Error('The \'convertGeoJson\' requires the \'convertGeoJson/ogrDriver\' property to be set')
+  }
+  if (!hook.data.context.convertGeoJson.contentType) {
+    throw new Error('The \'convertGeoJson\' requires the \'convertGeoJson/contentType\' property to be set')
+  }
+  debug('Running convert hook')
+  // create a working dir
+  const workingDir = `${hook.data.filePath}-convert`
+  fs.mkdirSync(workingDir)
+  // create ogr input file
+  const extFilename = getFullExtension(hook.data.context.filename)
+  const baseFilename = path.basename(hook.data.context.filename, extFilename)
+  const inputFile = path.join(workingDir, `${baseFilename}.geojson`)
+  fs.copyFileSync(hook.data.filePath, inputFile)
+  // compute ogr output file
+  const outputFile = path.join(workingDir, hook.data.context.filename)
+  // convert the file
+  const ogr2ogr = `ogr2ogr -f '${hook.data.context.convertGeoJson.ogrDriver}' ${outputFile} ${inputFile}`
+  debug(ogr2ogr)
+  await execSync(ogr2ogr)
+  // restore the output with the correct uuid
+  fs.copyFileSync(outputFile, hook.data.filePath)
+  fs.rmSync(workingDir, { recursive: true, force: true })
+  // update the content type
+  hook.data.contentType = hook.data.context.convertGeoJson.contentType
+}

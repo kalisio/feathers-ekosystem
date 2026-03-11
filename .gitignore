@@ -33,6 +33,8 @@ yarn.lock
 Thumbs.db
 
 # Temporary files
+tmp/
+temp/
 *.tmp
 *.temp
 *.swp

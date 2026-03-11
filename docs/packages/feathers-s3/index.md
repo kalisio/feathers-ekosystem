@@ -34,24 +34,33 @@ The `upload` process can be a **singlepart** upload or a **multipart** upload de
 
 #### Singlepart upload
 
-![Upload principle](./feathers-s3-upload.png)
+![Upload principle](./assets/feathers-s3-upload.png)
 
 #### Multipart upload
 
-![Mulitpart upload principle](./feathers-s3-multipart-upload.png)
+![Mulitpart upload principle](./assets/feathers-s3-multipart-upload.png)
 
 ### Download
 
-![Donwload principle](./feathers-s3-download.png)
+![Donwload principle](./assets/feathers-s3-download.png)
 
-## Usage
+## Installation
 
-### Installation
+Install with your preferred package manager:
 
 ```shell
 pnpm add @kalisio/feathers-s3
 ```
-### Configuration
+
+```shell
+npm install @kalisio/feathers-s3
+```
+
+```shell
+yarn add @kalisio/feathers-s3
+```
+
+## Configuration
 
 Here’s how to configure the `feathers-s3` service in your **FeathersJS** application:
 
@@ -77,7 +86,7 @@ app.use('s3', new Service(options), {
 })
 ```
 
-### Data processing
+## Data processing
 
 Some use cases might require you directly process the data on your server before sending it to the object storage, e.g. if you'd like to resize an image. You can do that by:
 1. registering a [before hook](https://feathersjs.com/api/hooks.html) on the `putObject` custom method to process the data before sending it to the object storage,
@@ -104,6 +113,6 @@ service.putObject({ id, buffer, type })
 clientService.upload(id, blob, options)
 ```
 
-### Example
+## Example
 
 For a complete example, see the [feathers-webpush s3](https://github.com/kalisio/feathers-ekosystem/tree/master/examples/feathers-s3) in this repository.
