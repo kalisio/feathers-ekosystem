@@ -27,15 +27,15 @@ The following sections illustrate the different processes implemented by `feathe
 Install with your preferred package manager:
 
 ```shell
-pnpm add @kalisio/feathers-s3
+pnpm add @kalisio/feathers-import-export
 ```
 
 ```shell
-npm install @kalisio/feathers-keycloak-s3
+npm install @kalisio/feathers-import-export
 ```
 
 ```shell
-yarn add @kalisio/feathers-keycloak-s3
+yarn add @kalisio/feathers-import-export
 ```
 
 ## Configuration
