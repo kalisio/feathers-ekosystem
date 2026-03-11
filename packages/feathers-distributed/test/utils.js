@@ -3,7 +3,7 @@ import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication'
 import { LocalStrategy } from '@feathersjs/authentication-local'
 import express from '@feathersjs/express'
 import socketio from '@feathersjs/socketio'
-import { expect } from 'chai'
+import { assert } from 'vitest'
 
 export function createApp (index, options = { authentication: ['jwt', 'local'] }) {
   const app = express(feathers())
@@ -52,10 +52,10 @@ export function waitForService (app, path) {
           reject(new Error(`Service on ${path} does not exist`))
           return
         }
-        expect(service).toExist()
+        assert.exists(service)
         if (path === 'users') {
-          expect(service.remoteOptions).toExist()
-          expect(service.remoteOptions.startId).toExist()
+          assert.exists(service.remoteOptions)
+          assert.exists(service.remoteOptions.startId)
         }
         resolve(service)
       }

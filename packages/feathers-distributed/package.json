@@ -50,6 +50,28 @@
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
   "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-distributed",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "cote": "^1.0.3",
+    "debug": "catalog:",
+    "portfinder": "^1.0.25",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@feathersjs/authentication": "catalog:",
+    "@feathersjs/authentication-client": "catalog:",
+    "@feathersjs/authentication-local": "catalog:",
+    "@feathersjs/rest-client": "catalog:",
+    "@feathersjs/socketio-client": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/memory": "catalog:",
+    "@feathersjs/socketio": "catalog:",
+    "feathers-hooks-common": "catalog:",
+    "mongodb": "catalog:",
+    "socket.io-client": "catalog:",
+    "superagent": "catalog:"
+  }
 }

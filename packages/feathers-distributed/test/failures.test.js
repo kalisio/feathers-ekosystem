@@ -3,7 +3,7 @@ import utils from 'util'
 import { MemoryService } from '@feathersjs/memory'
 import { beforeAll, afterAll, describe, it, expect, assert } from 'vitest'
 import { createApp, waitForService, clone } from './utils.js'
-import plugin, { finalize } from '../lib/index.js'
+import plugin, { finalize } from '../src/index.js'
 
 const startId = 2
 const store = {
@@ -43,7 +43,7 @@ describe('feathers-distributed:network', () => {
       if (i !== 0) {
         apps[i].use('messages', new MemoryService({ store: clone(store), startId }))
         const messagesService = apps[i].service('messages')
-        expect(messagesService).toExist()
+        assert.exists(messagesService)
         promises.push(Promise.resolve(messagesService))
       } else {
         // Wait for remote service to be registered
@@ -64,7 +64,7 @@ describe('feathers-distributed:network', () => {
 
   it('check remote service is accessible', async () => {
     const messages = await apps[0].service('messages').find({})
-    expect(messages.length > 0).beTrue()
+    expect(messages.length > 0).toBe(true)
   })
 
   it('check remote service is accessible on partial failure', async () => {
@@ -74,10 +74,8 @@ describe('feathers-distributed:network', () => {
     // Wait before cote component has been flagged as unreachable
     await utils.promisify(setTimeout)(6000)
     const messages = await apps[0].service('messages').find({})
-    expect(messages.length > 0).beTrue()
-  })
-    // Let enough time to process
-    .timeout(10000)
+    expect(messages.length > 0).toBe(true)
+  }, 10000)
 
   it('check remote service is not accessible anymore on complete failure', async () => {
     // Simulate network failure by closing the service subscriber socket

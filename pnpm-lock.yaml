@@ -15,6 +15,15 @@ catalogs:
     '@changesets/cli':
       specifier: ^2.29.8
       version: 2.30.0
+    '@feathersjs/authentication':
+      specifier: ^5.0.8
+      version: 5.0.42
+    '@feathersjs/authentication-client':
+      specifier: ^5.0.8
+      version: 5.0.42
+    '@feathersjs/authentication-local':
+      specifier: ^5.0.8
+      version: 5.0.42
     '@feathersjs/client':
       specifier: ^5.0.8
       version: 5.0.42
@@ -34,6 +43,9 @@ catalogs:
       specifier: ^5.0.8
       version: 5.0.41
     '@feathersjs/mongodb':
+      specifier: ^5.0.8
+      version: 5.0.42
+    '@feathersjs/rest-client':
       specifier: ^5.0.8
       version: 5.0.42
     '@feathersjs/socketio':
@@ -57,6 +69,9 @@ catalogs:
     debug:
       specifier: ^4.1.0
       version: 4.4.3
+    feathers-hooks-common:
+      specifier: ^8.2.1
+      version: 8.2.1
     husky:
       specifier: ^9.1.7
       version: 9.1.7
@@ -240,6 +255,67 @@ importers:
       web-push:
         specifier: 'catalog:'
         version: 3.6.7
+
+  packages/feathers-distributed:
+    dependencies:
+      '@feathersjs/commons':
+        specifier: 'catalog:'
+        version: 5.0.42
+      '@feathersjs/errors':
+        specifier: 'catalog:'
+        version: 5.0.42
+      '@feathersjs/feathers':
+        specifier: 'catalog:'
+        version: 5.0.42
+      cote:
+        specifier: ^1.0.3
+        version: 1.2.0
+      debug:
+        specifier: 'catalog:'
+        version: 4.4.3
+      portfinder:
+        specifier: ^1.0.25
+        version: 1.0.25
+      uuid:
+        specifier: ^8.3.2
+        version: 8.3.2
+    devDependencies:
+      '@feathersjs/authentication':
+        specifier: 'catalog:'
+        version: 5.0.42(typescript@5.9.3)
+      '@feathersjs/authentication-client':
+        specifier: 'catalog:'
+        version: 5.0.42(typescript@5.9.3)
+      '@feathersjs/authentication-local':
+        specifier: 'catalog:'
+        version: 5.0.42(typescript@5.9.3)
+      '@feathersjs/express':
+        specifier: 'catalog:'
+        version: 5.0.41(typescript@5.9.3)
+      '@feathersjs/memory':
+        specifier: 'catalog:'
+        version: 5.0.41
+      '@feathersjs/rest-client':
+        specifier: 'catalog:'
+        version: 5.0.42
+      '@feathersjs/socketio':
+        specifier: 'catalog:'
+        version: 5.0.41
+      '@feathersjs/socketio-client':
+        specifier: 'catalog:'
+        version: 5.0.42
+      feathers-hooks-common:
+        specifier: 'catalog:'
+        version: 8.2.1(@feathersjs/feathers@5.0.42)
+      mongodb:
+        specifier: 'catalog:'
+        version: 6.21.0
+      socket.io-client:
+        specifier: 'catalog:'
+        version: 4.8.3
+      superagent:
+        specifier: 'catalog:'
+        version: 10.3.0
 
   packages/feathers-import-export:
     dependencies:
@@ -1072,6 +1148,10 @@ packages:
 
   '@feathersjs/authentication-client@5.0.42':
     resolution: {integrity: sha512-tcHvC+AkWf9VWSQ2j5r2O2zuM16xFw4ASvrRhY3xB869gTnTkdxjxij6CEJynNyrCbkeLpRE1VhZo/6KIJy+fw==}
+    engines: {node: '>= 12'}
+
+  '@feathersjs/authentication-local@5.0.42':
+    resolution: {integrity: sha512-2zPpqD5XdpOUs9yR7RK3QVR5LJUsUrHM6DOTDql4rixOzDroPeW5bp3IGh9si66C7+QYjaPSgJlgvGkRmaWOMA==}
     engines: {node: '>= 12'}
 
   '@feathersjs/authentication@5.0.42':
@@ -2227,6 +2307,10 @@ packages:
     resolution: {integrity: sha512-lGe34o6EHj9y3Kts9R4ZYs/Gr+6N7MCaMlIFA3F1R2O5/m7K06AxfSeO5530PEERE6/WyEg3lsuyw4GHlPZHog==}
     engines: {node: ^4.5.0 || >= 5.9}
 
+  bcryptjs@3.0.3:
+    resolution: {integrity: sha512-GlF5wPWnSa/X5LKM1o0wz0suXIINz1iHRLvTS+sLyi7XPbe5ycmYI3DlZqVGZZtDgl4DmasFg7gOB3JYbphV5g==}
+    hasBin: true
+
   better-path-resolve@1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
     engines: {node: '>=4'}
@@ -3097,6 +3181,12 @@ packages:
       picomatch:
         optional: true
 
+  feathers-hooks-common@8.2.1:
+    resolution: {integrity: sha512-t3gLAaTY5ufnAoKczLCNXJddq/L9ORrvxAlfuU2Azgoi0b6X3t0Y91l1JCJAvixzxxwLJmgdnKpFX32+CvEn0A==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@feathersjs/feathers': ^5.0.0
+
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -3254,6 +3344,10 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  graphql@16.13.1:
+    resolution: {integrity: sha512-gGgrVCoDKlIZ8fIqXBBb0pPKqDgki0Z/FSKNiQzSGj2uEYHr1tq5wmBegGwJx6QB5S5cM0khSBpi/JFHMCvsmQ==}
+    engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
 
   handlebars@4.7.8:
     resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
@@ -4015,6 +4109,10 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  neotraverse@0.6.18:
+    resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
+    engines: {node: '>= 10'}
 
   node-exports-info@1.6.0:
     resolution: {integrity: sha512-pyFS63ptit/P5WqUkt+UUfe+4oevH+bFeIiPPdfb0pFeYEu/1ELnJu5l+5EcTKYL5M7zaAa7S8ddywgXypqKCw==}
@@ -6150,6 +6248,17 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  '@feathersjs/authentication-local@5.0.42(typescript@5.9.3)':
+    dependencies:
+      '@feathersjs/authentication': 5.0.42(typescript@5.9.3)
+      '@feathersjs/commons': 5.0.42
+      '@feathersjs/errors': 5.0.42
+      '@feathersjs/feathers': 5.0.42
+      bcryptjs: 3.0.3
+      lodash: 4.17.23
+    transitivePeerDependencies:
+      - typescript
+
   '@feathersjs/authentication@5.0.42(typescript@5.9.3)':
     dependencies:
       '@feathersjs/commons': 5.0.42
@@ -7510,6 +7619,8 @@ snapshots:
 
   base64id@2.0.0: {}
 
+  bcryptjs@3.0.3: {}
+
   better-path-resolve@1.0.0:
     dependencies:
       is-windows: 1.0.2
@@ -8586,6 +8697,18 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.3
 
+  feathers-hooks-common@8.2.1(@feathersjs/feathers@5.0.42):
+    dependencies:
+      '@feathersjs/errors': 5.0.42
+      '@feathersjs/feathers': 5.0.42
+      ajv: 6.14.0
+      debug: 4.4.3
+      graphql: 16.13.1
+      lodash: 4.17.23
+      neotraverse: 0.6.18
+    transitivePeerDependencies:
+      - supports-color
+
   file-entry-cache@6.0.1:
     dependencies:
       flat-cache: 3.2.0
@@ -8778,6 +8901,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphemer@1.4.0: {}
+
+  graphql@16.13.1: {}
 
   handlebars@4.7.8:
     dependencies:
@@ -9639,6 +9764,8 @@ snapshots:
   negotiator@0.6.4: {}
 
   neo-async@2.6.2: {}
+
+  neotraverse@0.6.18: {}
 
   node-exports-info@1.6.0:
     dependencies:
