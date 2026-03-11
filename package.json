@@ -54,7 +54,6 @@
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/",
   "dependencies": {
-    "@kalisio/meta-ekosystem": "link:../meta-ekosystem",
     "keycloak-js": "catalog:",
     "lodash": "catalog:",
     "moment": "catalog:",
@@ -62,6 +61,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
+    "@kalisio/meta-ekosystem": "^0.5.0",
     "@vitest/coverage-v8": "catalog:",
     "cross-env": "catalog:",
     "husky": "catalog:",
@@ -76,8 +76,6 @@
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {
-      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
-    }
+    "overrides": {}
   }
 }
