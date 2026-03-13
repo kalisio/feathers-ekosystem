@@ -1,0 +1,6 @@
+[
+  "feathers-import-export",
+  "feathers-keycloak-listener",
+  "feathers-s3",
+  "feathers-webpush"
+]

@@ -1,7 +1,15 @@
-import fs from 'fs'
-import path from 'path'
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { generateSideBar } from './sidebar.mjs'
+import packages from './packages.json'
+
+const sortePackagesNavBar = packages.sort().map(pkg => {
+  return { text: pkg, link: `/packages/${pkg}/` }
+})
+
+const sortedPackageSidebar = Object.fromEntries(
+  packages.sort().map(pkg => [`/packages/${pkg}/`, generateSideBar(pkg)])
+)
 
 export default withMermaid(
   defineConfig({
@@ -21,15 +29,11 @@ export default withMermaid(
         ,
         {
           text: 'Packages',
-          items: [
-            { text: 'feathers-import-export', link: '/packages/feathers-import-export/' },
-            { text: 'feathers-keycloak-listener', link: '/packages/feathers-keycloak-listener/' },
-            { text: 'feathers-s3', link: '/packages/feathers-s3/' },
-            { text: 'feathers-webpush', link: '/packages/feathers-webpush/' }
-          ]
+          items: sortePackagesNavBar
         }
       ],
       sidebar: {
+      '/packages/feathers-localforage/': generateSideBar('feathers-localforage'),
         '/overview/': [
           { text: 'About', link: '/overview/about' },
           { text: 'Contributing', link: '/overview/contributing' },
@@ -37,12 +41,8 @@ export default withMermaid(
           { text: 'Changelog', link: '/overview/changelog' },
           { text: 'License', link: '/overview/license' },
           { text: 'Contact', link: '/overview/contact' }
-        ]
-        ,
-        '/packages/feathers-import-export/': generateSideBar('feathers-import-export'),
-        '/packages/feathers-keycloak-listener/': generateSideBar('feathers-keycloak-listener'),
-        '/packages/feathers-s3/': generateSideBar('feathers-s3'),
-        '/packages/feathers-webpush/': generateSideBar('feathers-webpush')
+        ],
+        ...sortedPackageSidebar
       },
       footer: {
         copyright: 'MIT Licensed | Copyright © 2026-present Kalisio'
@@ -60,51 +60,3 @@ export default withMermaid(
 )
 
 
-function generateSideBar (pkg) {
-  // Ensure the pkg folder exists
-  const pkgDir = path.resolve(process.cwd(), `docs/packages/${pkg}`)
-    if (!fs.existsSync(pkgDir)) {
-    return []
-  }
-  // Helper function to build the tree
-  function buildTree(dir, basePath = '') {
-    const entries = fs
-      .readdirSync(dir, { withFileTypes: true })
-      .sort((a, b) =>
-        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
-      )
-    const items = []
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name)
-      const relativePath = path.join(basePath, entry.name)
-      // Folder case
-      if (entry.isDirectory()) {
-        const children = buildTree(fullPath, relativePath)
-        if (children.length > 0) {
-          items.push({
-            text: entry.name,
-            items: children
-          })
-        }
-      }
-      // File case
-      if (
-        entry.isFile() &&
-        entry.name.endsWith('.md') &&
-        entry.name !== 'index.md'
-      ) {
-        const name = relativePath.replace(/\.md$/, '').replace(/\\/g, '/')
-        items.push({
-          text: entry.name.replace('.md', ''),
-          link: `/packages/${pkg}/${name}`
-        })
-      }
-    }
-    return items
-  }
-  // Build the sidebar tree
-  return [
-    { text: pkg, link: `/packages/${pkg}/index` },
-    ...buildTree(pkgDir)
-  ]
-}
