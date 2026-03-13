@@ -9,6 +9,9 @@ import { getTmpPath, gunzipDataset, clearDataset } from './utils.dataset.js'
 
 feathers.setDebug(makeDebug)
 
+const port = 3000 + Math.floor(Math.random() * 100)
+const namespace = 'empty-export'
+
 let app
 let s3Service
 let service
@@ -29,13 +32,13 @@ const options = {
     bucket: process.env.S3_BUCKET,
     prefix: Date.now().toString()
   },
-  allowedServicePaths: '^o[a-z]{5}s$',
+  allowedServicePaths: '^empty-export-o[a-z]{5}s$',
   workingDir: './test/tmp'
 }
 
 const scenarios = [
   {
-    name: 'objects',
+    name: `${namespace}-objects`,
     dataset: 'objects.json',
     upload: {
       contentType: 'application/json'
@@ -43,14 +46,14 @@ const scenarios = [
     import: {
       method: 'import',
       id: 'objects.json',
-      servicePath: 'objects',
+      servicePath: `${namespace}-objects`,
       transform: {
         omit: ['thumbnail', 'thumbnail_width', 'thumbnail_height', 'href']
       }
     },
     export: {
       method: 'export',
-      servicePath: 'objects',
+      servicePath: `${namespace}-objects`,
       query: { $and: [{ year: { $lte: 1000 } }] },
       transform: {
         omit: ['_id']
@@ -66,12 +69,12 @@ const scenarios = [
 
 function runTests (scenario) {
   it(`[${scenario.name}] unzip input dataset`, async () => {
-    await gunzipDataset(scenario.dataset)
+    await gunzipDataset(namespace, scenario.dataset)
   })
 
   it(`[${scenario.name}] upload input dataset`, async () => {
     const response = await s3Service.uploadFile({
-      filePath: getTmpPath(scenario.dataset),
+      filePath: getTmpPath(namespace, scenario.dataset),
       contentType: scenario.upload.contentType,
       chunkSize: 1024 * 1024 * 10
     })
@@ -93,7 +96,7 @@ function runTests (scenario) {
   it(`[${scenario.name}] clean input dataset`, async () => {
     const response = await s3Service.remove(inputId)
     expect(response.$metadata.httpStatusCode).toBe(204)
-    clearDataset(scenario.dataset)
+    clearDataset(namespace, scenario.dataset)
   })
 
   it(`[${scenario.name}] export collection`, async () => {
@@ -145,7 +148,7 @@ describe('feathers-import-export:empty-export', () => {
     service = app.service('import-export')
     expect(service).toBeTruthy()
     // run the server
-    expressServer = await app.listen(3333)
+    expressServer = await app.listen(port)
   })
 
   it('is ES module compatible', () => {

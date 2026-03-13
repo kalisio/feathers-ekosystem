@@ -1,12 +1,13 @@
-import fs from 'fs'
-import path from 'path'
-import zlib from 'zlib'
-import { promisify } from 'util'
-import { pipeline } from 'stream'
+import fs from 'node:fs'
+import path from 'node:path'
+import zlib from 'node:zlib'
+import { promisify } from 'node:util'
+import { pipeline } from 'node:stream'
 import unzipper from 'unzipper'
 const tar = await import('tar')
 
 export async function gunzipFile (inputFilePath, outputFilePath) {
+  fs.mkdirSync(path.dirname(outputFilePath), { recursive: true })
   await promisify(pipeline)(
     fs.createReadStream(inputFilePath),
     zlib.createUnzip(),

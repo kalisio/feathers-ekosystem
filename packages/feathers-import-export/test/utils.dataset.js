@@ -1,23 +1,19 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import { gunzipFile } from './utils.archive.js'
 
 const dataPath = './test/data'
 const tmpPath = './test/tmp'
 
-export function getDataPath (dataset) {
-  return `${dataPath}/${dataset}.gz`
+export function getTmpPath (namespace, dataset) {
+  return `${tmpPath}/${namespace}/${dataset}`
 }
 
-export function getTmpPath (dataset) {
-  return `${tmpPath}/${dataset}`
-}
-
-export async function gunzipDataset (dataset) {
-  const inputFilePath = getDataPath(dataset)
-  const outputFilePath = getTmpPath(dataset)
+export async function gunzipDataset (namespace, dataset) {
+  const inputFilePath = `${dataPath}/${dataset}.gz`
+  const outputFilePath = getTmpPath(namespace, dataset)
   return gunzipFile(inputFilePath, outputFilePath)
 }
 
-export function clearDataset (dataset) {
-  fs.unlinkSync(getTmpPath(dataset))
+export function clearDataset (namespace, dataset) {
+  fs.unlinkSync(getTmpPath(namespace, dataset))
 }
