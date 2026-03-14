@@ -26,7 +26,9 @@
     "lint:feathers-s3": "pnpm --filter @kalisio/feathers-s3 lint --fix",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint --fix",
     "prepare": "husky",
+    "pretest": "mkdir -p coverage",
     "test": "pnpm -r test --coverage",
+    "postest": "pnpm dlx lcov-result-merger 'packages/*/coverage/lcov.info' coverage/lcov.info",
     "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test --coverage",
     "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test --coverage",
     "test:feathers-s3": "pnpm --filter @kalisio/feathers-s3 test --coverage",
@@ -65,17 +67,20 @@
     "@vitest/coverage-v8": "catalog:",
     "cross-env": "catalog:",
     "husky": "catalog:",
+    "lcov-result-merger": "catalog:",
     "lint-staged": "catalog:",
     "mermaid": "catalog:",
     "standard": "catalog:",
     "vite": "catalog:",
-    "vite-bundle-visualizer": "^1.2.1",
+    "vite-bundle-visualizer": "catalog:",
     "vitepress": "catalog:",
     "vitepress-plugin-mermaid": "catalog:",
     "vitepress-theme-kalisio": "catalog:",
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {}
+    "overrides": {
+      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
+    }
   }
 }

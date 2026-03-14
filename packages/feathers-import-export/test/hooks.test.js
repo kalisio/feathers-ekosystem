@@ -11,7 +11,7 @@ import { getTmpPath, gunzipDataset, clearDataset } from './utils.dataset.js'
 
 feathers.setDebug(makeDebug)
 
-const port = 3000 + Math.floor(Math.random() * 100)
+const port = 3100 + Math.floor(Math.random() * 100)
 const namespace = 'hooks'
 
 let app
