@@ -36,7 +36,7 @@ export async function reprojectGeoJson (hook) {
   // reproject the file
   const ogr2ogr = `ogr2ogr -f GeoJSON -s_srs EPSG:4326 -t_srs ${hook.data.context.reprojectGeoJson.srs} -nln ${layerName} ${outputFile} ${inputFile}`
   debug(ogr2ogr)
-  await execSync(ogr2ogr)
+  execSync(ogr2ogr)
   // remove input file
   fs.copyFileSync(outputFile, hook.data.filePath)
   fs.rmSync(workingDir, { recursive: true, force: true })
