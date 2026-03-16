@@ -26,7 +26,9 @@
     "lint:feathers-s3": "pnpm --filter @kalisio/feathers-s3 lint --fix",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint --fix",
     "prepare": "husky",
+    "pretest": "mkdir -p coverage",
     "test": "pnpm -r test --coverage",
+    "posttest": "pnpm dlx lcov-result-merger --prepend-source-files 'packages/*/coverage/lcov.info' coverage/lcov.info",
     "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test --coverage",
     "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test --coverage",
     "test:feathers-s3": "pnpm --filter @kalisio/feathers-s3 test --coverage",
@@ -76,8 +78,6 @@
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {
-      "@kalisio/meta-ekosystem": "link:../meta-ekosystem"
-    }
+    "overrides": {}
   }
 }
