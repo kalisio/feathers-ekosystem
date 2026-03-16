@@ -32,7 +32,9 @@ export class Service {
     debug('method \'create\' called with notification payload:', data.notification)
     // Set data
     let { notification, subscriptionService, subscriptionProperty, subscriptionFilter = {} } = data
-    _.isEmpty(subscriptionFilter) ? subscriptionFilter = { paginate: false } : subscriptionFilter = { paginate: false, query: subscriptionFilter }
+    subscriptionFilter = _.isEmpty(subscriptionFilter)
+      ? { paginate: false }
+      : { paginate: false, query: subscriptionFilter }
     // Retrieve and filter subscriptions service from specified service
     const subscriptionsService = await this.app.service(subscriptionService).find(subscriptionFilter)
     // Get all subscription information in array
