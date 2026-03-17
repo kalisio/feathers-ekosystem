@@ -8,7 +8,7 @@ import { createMongoService, removeMongoService } from './utils.mongodb.js'
 
 feathers.setDebug(makeDebug)
 
-const port = 3100 + Math.floor(Math.random() * 100)
+const port = 3102
 const namespace = 'exception'
 
 let app

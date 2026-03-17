@@ -12,7 +12,7 @@ import { unzipFile, untarFile } from './utils.archive.js'
 
 feathers.setDebug(makeDebug)
 
-const port = 3100 + Math.floor(Math.random() * 100)
+const port = 3104
 const namespace = 'nominal'
 
 let app
