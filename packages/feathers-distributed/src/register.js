@@ -64,7 +64,7 @@ export async function registerApplication (app, applicationDescriptor) {
       const servicePath = getServicePath(app, object)
       const service = getService(app, servicePath)
       // Ensure we don't have any local service with the same name to avoid infinite looping
-      if (service && service.remote) service.emit(event, object, context)
+      if (service?.remote) service.emit(event, object, context)
     })
   })
   debug('Service events subscriber ready for remote app with key ' + key +
@@ -145,7 +145,7 @@ export function registerService (app, serviceDescriptor) {
       if (!DEFAULT_EVENTS.includes(event)) events.push(event)
     })
   }
-  const options = Object.assign({}, serviceDescriptor, { events })
+  const options = { ...serviceDescriptor, ...events }
   args.push(new RemoteService(app, serviceDescriptor), options)
   if (app.distributionOptions.middlewares.after) args = args.concat(app.distributionOptions.middlewares.after)
   app.use(...args)
@@ -166,7 +166,7 @@ export function registerService (app, serviceDescriptor) {
         app.shortUuid + ' and key ' + app.distributionKey)
 
   // Dispatch an event internally through node so that async processes can run
-  app.emit('service', Object.assign({}, serviceDescriptor, { path: servicePath }))
+  app.emit('service', { ...serviceDescriptor, path: servicePath })
 }
 
 export function unregisterService (app, serviceDescriptor) {
@@ -195,5 +195,5 @@ export function unregisterService (app, serviceDescriptor) {
         app.shortUuid + ' and key ' + app.distributionKey, serviceDescriptor)
 
   // Dispatch an event internally through node so that async processes can run
-  app.emit('service-removed', Object.assign({}, serviceDescriptor, { path: servicePath }))
+  app.emit('service-removed', { ...serviceDescriptor, path: servicePath })
 }

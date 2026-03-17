@@ -64,7 +64,7 @@ export async function healthcheck (app, key) {
   // Filter non-remote ones and not matching key
   services = services.filter(path => {
     const service = getService(app, path)
-    if (!service || !service.remote) return false
+    if (!service?.remote) return false
     // In this case we'd like all services
     return (key === app.distributionKey ? true : (service.key === key))
   })

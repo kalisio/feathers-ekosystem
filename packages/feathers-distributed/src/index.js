@@ -90,7 +90,7 @@ export async function initialize (app) {
     app.serviceResponder.on('find', async (req) => {
       const service = app.service(req.path)
       debug('Responding find() local service on path ' + req.path + ' with key ' + req.key, req)
-      const result = await service.find(Object.assign({ fromRemote: true }, req.params))
+      const result = await service.find({ fromRemote: true, ...req.params })
       debug('Successfully find() local service on path ' + req.path + ' with key ' + req.key)
       return result
     })
@@ -99,7 +99,7 @@ export async function initialize (app) {
     app.serviceResponder.on('get', async (req) => {
       const service = app.service(req.path)
       debug('Responding get() local service on path ' + req.path + ' with key ' + req.key, req)
-      const result = await service.get(req.id, Object.assign({ fromRemote: true }, req.params))
+      const result = await service.get(req.id, { fromRemote: true, ...req.params })
       debug('Successfully get() local service on path ' + req.path + ' with key ' + req.key)
       return result
     })
@@ -108,7 +108,7 @@ export async function initialize (app) {
     app.serviceResponder.on('create', async (req) => {
       const service = app.service(req.path)
       debug('Responding create() local service on path ' + req.path + ' with key ' + req.key, req)
-      const result = await service.create(req.data, Object.assign({ fromRemote: true }, req.params))
+      const result = await service.create(req.data, { fromRemote: true, ...req.params })
       debug('Successfully create() local service on path ' + req.path + ' with key ' + req.key)
       return result
     })
@@ -117,7 +117,7 @@ export async function initialize (app) {
     app.serviceResponder.on('update', async (req) => {
       const service = app.service(req.path)
       debug('Responding update() local service on path ' + req.path + ' with key ' + req.key, req)
-      const result = await service.update(req.id, req.data, Object.assign({ fromRemote: true }, req.params))
+      const result = await service.update(req.id, req.data, { fromRemote: true, ...req.params })
       debug('Successfully update() local service on path ' + req.path + ' with key ' + req.key)
       return result
     })
@@ -126,7 +126,7 @@ export async function initialize (app) {
     app.serviceResponder.on('patch', async (req) => {
       const service = app.service(req.path)
       debug('Responding patch() local service on path ' + req.path + ' with key ' + req.key, req)
-      const result = await service.patch(req.id, req.data, Object.assign({ fromRemote: true }, req.params))
+      const result = await service.patch(req.id, req.data, { fromRemote: true, ...req.params })
       debug('Successfully patch() local service on path ' + req.path + ' with key ' + req.key)
       return result
     })
@@ -135,7 +135,7 @@ export async function initialize (app) {
     app.serviceResponder.on('remove', async (req) => {
       const service = app.service(req.path)
       debug('Responding remove() local service on path ' + req.path + ' with key ' + req.key, req)
-      const result = await service.remove(req.id, Object.assign({ fromRemote: true }, req.params))
+      const result = await service.remove(req.id, { fromRemote: true, ...req.params })
       debug('Successfully remove() local service on path ' + req.path + ' with key ' + req.key)
       return result
     })
@@ -154,7 +154,7 @@ export async function initialize (app) {
       app.serviceResponder.on(method, async (req) => {
         const service = app.service(req.path)
         debug(`Responding ${method}() local service on path ` + req.path + ' with key ' + req.key, req)
-        const result = await service[method](req.data, Object.assign({ fromRemote: true }, req.params))
+        const result = await service[method](req.data, { fromRemote: true, ...req.params })
         debug(`Successfully ${method}() local service on path ` + req.path + ' with key ' + req.key)
         return result
       })
@@ -256,16 +256,17 @@ export default function init (options = {}) {
     app.uuid = uuid()
     // For display purpose
     app.shortUuid = app.uuid.split('-')[0]
-    app.coteOptions = Object.assign({
+    app.coteOptions = {
       helloInterval: 10000,
       checkInterval: 20000,
       nodeTimeout: 30000,
       masterTimeout: 60000,
       log: (!!process.env.COTE_LOG),
       basePort: (process.env.BASE_PORT ? Number(process.env.BASE_PORT) : 10000),
-      highestPort: (process.env.HIGHEST_PORT ? Number(process.env.HIGHEST_PORT) : 20000)
-    }, options.cote)
-    app.distributionOptions = Object.assign({
+      highestPort: (process.env.HIGHEST_PORT ? Number(process.env.HIGHEST_PORT) : 20000),
+      ...options.cote
+    }
+    app.distributionOptions = {
       publicationDelay: (process.env.PUBLICATION_DELAY ? Number(process.env.PUBLICATION_DELAY) : 10000),
       componentDelay: (process.env.COMPONENT_DELAY ? Number(process.env.COMPONENT_DELAY) : 1000),
       coteDelay: (process.env.COTE_DELAY ? Number(process.env.COTE_DELAY) : undefined),
@@ -273,8 +274,9 @@ export default function init (options = {}) {
       middlewares: {},
       publishEvents: true,
       distributedEvents: DEFAULT_EVENTS,
-      distributedMethods: DEFAULT_METHODS
-    }, options)
+      distributedMethods: DEFAULT_METHODS,
+      ...options
+    }
 
     debug('Initializing feathers-distributed with options', app.distributionOptions)
     // Change default base/highest port for automated port finding
@@ -306,10 +308,10 @@ export default function init (options = {}) {
       // Register the service normally first
       const superReturn = superUse.apply(app, arguments)
       // Check if cote has already been initialized
-      if (!app.cote) return superReturn
       // With express apps we can directly register middlewares: not supported
-      if (typeof path !== 'string') return superReturn
-      publishService(app, path)
+      if (app.cote && typeof path === 'string') {
+        publishService(app, path)
+      }
       return superReturn
     }
     const superUnuse = app.unuse

@@ -55,9 +55,7 @@ export function publishService (app, path) {
           debug(`Publishing ${event} local service event on path ` + serviceDescriptor.path +
                 ' for app with uuid ' + app.shortUuid + ' and key ' + app.distributionKey, object, serializedContext)
           // Add hook context in event payload as cotejs does not allow it as a second argument in event emit
-          app.serviceEventsPublisher.publish(event, Object.assign({
-            path: serviceDescriptor.path, key: app.distributionKey, context: serializedContext
-          }, object))
+          app.serviceEventsPublisher.publish(event, { path: serviceDescriptor.path, key: app.distributionKey, context: serializedContext, ...object })
         }
       }
       // Publish events whenever required
