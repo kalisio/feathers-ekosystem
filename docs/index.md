@@ -9,6 +9,6 @@ hero:
   actions:
     - theme: brand
       text:  Learn more about feathers-ekosystem ?
-      link: /about/introduction
+      link: /overview/about
 ---
 
