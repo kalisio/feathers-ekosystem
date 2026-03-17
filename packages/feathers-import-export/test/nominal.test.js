@@ -12,6 +12,9 @@ import { unzipFile, untarFile } from './utils.archive.js'
 
 feathers.setDebug(makeDebug)
 
+const port = 3100 + Math.floor(Math.random() * 100)
+const namespace = 'nominal'
+
 let app
 let s3Service
 let service
@@ -51,24 +54,24 @@ const options = {
     bucket: process.env.S3_BUCKET,
     prefix: Date.now().toString()
   },
-  allowedServicePaths: ['objects', 'features', 'records'],
+  allowedServicePaths: [`${namespace}-objects`, `${namespace}-features`, `${namespace}-records`],
   workingDir: './test/tmp'
 }
 
 const scenarios = [
   {
-    name: 'objects',
+    name: `${namespace}-objects`,
     dataset: 'objects.json',
     upload: { contentType: 'application/json' },
     import: {
       method: 'import',
       id: 'objects.json',
-      servicePath: 'objects',
+      servicePath: `${namespace}-objects`,
       transform: { omit: ['thumbnail', 'thumbnail_width', 'thumbnail_height', 'href'] }
     },
     export: {
       method: 'export',
-      servicePath: 'objects',
+      servicePath: `${namespace}-objects`,
       query: { $and: [{ year: { $gte: 1970 } }, { year: { $lt: 2000 } }] },
       transform: { omit: ['_id'] },
       format: 'json'
@@ -79,13 +82,17 @@ const scenarios = [
     }
   },
   {
-    name: 'features',
+    name: `${namespace}-features`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
-    import: { method: 'import', id: 'features.geojson', servicePath: 'features' },
+    import: {
+      method: 'import',
+      id: 'features.geojson',
+      servicePath: `${namespace}-features`
+    },
     export: {
       method: 'export',
-      servicePath: 'features',
+      servicePath: `${namespace}-features`,
       chunkSize: 100,
       transform: { omit: ['_id'] },
       format: 'geojson'
@@ -96,13 +103,13 @@ const scenarios = [
     }
   },
   {
-    name: 'records',
+    name: `${namespace}-records`,
     dataset: 'records.csv',
     upload: { contentType: 'text/csv' },
     import: {
       method: 'import',
       id: 'records.csv',
-      servicePath: 'records',
+      servicePath: `${namespace}-records`,
       transform: {
         omit: ['Index', 'Organization Id'],
         unitMapping: {
@@ -113,7 +120,7 @@ const scenarios = [
     },
     export: {
       method: 'export',
-      servicePath: 'records',
+      servicePath: `${namespace}-records`,
       query: { $select: ['Name', 'Industry', 'Founded'] },
       transform: 'csv-export-transform'
     },
@@ -126,12 +133,12 @@ const scenarios = [
 
 function runTests (scenario) {
   it(`[${scenario.name}] gunzip input dataset`, async () => {
-    await gunzipDataset(scenario.dataset)
+    await gunzipDataset(namespace, scenario.dataset)
   })
 
   it(`[${scenario.name}] upload input dataset`, async () => {
     const response = await s3Service.uploadFile({
-      filePath: getTmpPath(scenario.dataset),
+      filePath: getTmpPath(namespace, scenario.dataset),
       contentType: scenario.upload.contentType,
       chunkSize: 1024 * 1024 * 10
     })
@@ -153,7 +160,7 @@ function runTests (scenario) {
   it(`[${scenario.name}] clean input dataset`, async () => {
     const response = await s3Service.remove(inputId)
     expect(response.$metadata.httpStatusCode).toBe(204)
-    clearDataset(scenario.dataset)
+    clearDataset(namespace, scenario.dataset)
   })
 
   it(`[${scenario.name}] export collection`, async () => {
@@ -190,32 +197,32 @@ function runTests (scenario) {
 
   it(`[${scenario.name}] download output files`, async () => {
     for (const outputId of outputIds) {
-      const tmpFilePath = getTmpPath(outputId)
+      const tmpFilePath = getTmpPath(namespace, outputId)
       const response = await s3Service.downloadFile({ id: outputId, filePath: tmpFilePath })
       expect(response.id).toBeTruthy()
     }
     // check the size of the uncompressed file
-    let size = fs.statSync(getTmpPath(outputIds[0])).size
+    let size = fs.statSync(getTmpPath(namespace, outputIds[0])).size
     expect(size).toBe(scenario.expect.export.size)
     // zip file
     const unzipFilename = _.replace(outputFilenames[1], '.zip', '')
-    await unzipFile(getTmpPath(outputIds[1]))
-    size = fs.statSync(getTmpPath(unzipFilename)).size
+    await unzipFile(getTmpPath(namespace, outputIds[1]))
+    size = fs.statSync(getTmpPath(namespace, unzipFilename)).size
     expect(size).toBe(scenario.expect.export.size)
-    fs.unlinkSync(getTmpPath(unzipFilename))
+    fs.unlinkSync(getTmpPath(namespace, unzipFilename))
     // tgz file
     const untarFilename = _.replace(outputFilenames[2], '.tgz', '')
-    await untarFile(getTmpPath(outputIds[2]))
-    size = fs.statSync(getTmpPath(untarFilename)).size
+    await untarFile(getTmpPath(namespace, outputIds[2]))
+    size = fs.statSync(getTmpPath(namespace, untarFilename)).size
     expect(size).toBe(scenario.expect.export.size)
-    fs.unlinkSync(getTmpPath(untarFilename))
+    fs.unlinkSync(getTmpPath(namespace, untarFilename))
   })
 
   it(`[${scenario.name}] clean output files`, async () => {
     for (const outputId of outputIds) {
       const response = await s3Service.remove(outputId)
       expect(response.$metadata.httpStatusCode).toBe(204)
-      clearDataset(outputId)
+      clearDataset(namespace, outputId)
     }
     outputIds = []
     outputFilenames = []
@@ -246,7 +253,7 @@ describe('feathers-import-export:nominal', () => {
     service.registerTransform('csv-import-transform', csvImportTransform)
     service.registerTransform('csv-export-transform', csvExportTransform)
 
-    expressServer = await app.listen(3333)
+    expressServer = await app.listen(port)
   })
 
   it('is ES module compatible', () => {

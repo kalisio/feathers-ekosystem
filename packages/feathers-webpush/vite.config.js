@@ -1,15 +1,14 @@
 import { fileURLToPath } from 'node:url'
+import { builtinModules } from 'node:module'
 import path from 'node:path'
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig } from 'vite'
+import { baseConfig } from '../../vite.base-config'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig({
+export default mergeConfig(baseConfig, defineConfig({
+  root: __dirname,
   build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    sourcemap: true,
-    minify: true,
     lib: {
       entry: {
         server: path.resolve(__dirname, 'src/server/index.js'),
@@ -21,11 +20,12 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        /^node:/,
+        ...builtinModules,
+        ...builtinModules.map(m => `node:${m}`),
         /@feathersjs\//,
         'lodash',
         'web-push'
       ]
     }
   }
-})
+}))

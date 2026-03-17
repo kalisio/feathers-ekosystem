@@ -11,6 +11,9 @@ import { getTmpPath, gunzipDataset, clearDataset } from './utils.dataset.js'
 
 feathers.setDebug(makeDebug)
 
+const port = 3100 + Math.floor(Math.random() * 100)
+const namespace = 'hooks'
+
 let app
 let s3Service
 let service
@@ -32,15 +35,15 @@ const options = {
     bucket: process.env.S3_BUCKET,
     prefix: crypto.randomUUID()
   },
-  allowedServicePaths: 'features',
+  allowedServicePaths: `${namespace}-features`,
   workingDir: './test/tmp'
 }
 
-const servicePath = 'features'
+const servicePath = `${namespace}-features`
 
 const scenarios = [
   {
-    name: 'features-geojson',
+    name: `${namespace}-features-geojson`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
     import: { method: 'import', servicePath, id: 'features.geojson' },
@@ -59,7 +62,7 @@ const scenarios = [
     }
   },
   {
-    name: 'features-shp',
+    name: `${namespace}-features-shp`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
     import: { method: 'import', servicePath, id: 'features.geojson' },
@@ -79,7 +82,7 @@ const scenarios = [
     }
   },
   {
-    name: 'features-kml',
+    name: `${namespace}-features-kml`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
     import: { method: 'import', servicePath, id: 'features.geojson' },
@@ -101,16 +104,16 @@ const scenarios = [
 
 function runTests (scenario) {
   it(`[${scenario.name}] remove mongo service`, async () => {
-    await removeMongoService('features')
+    await removeMongoService(servicePath)
   })
 
   it(`[${scenario.name}] unzip input dataset`, async () => {
-    await gunzipDataset(scenario.dataset)
+    await gunzipDataset(namespace, scenario.dataset)
   })
 
   it(`[${scenario.name}] upload input dataset`, async () => {
     const response = await s3Service.uploadFile({
-      filePath: getTmpPath(scenario.dataset),
+      filePath: getTmpPath(namespace, scenario.dataset),
       contentType: scenario.upload.contentType,
       chunkSize: 1024 * 1024 * 10
     })
@@ -132,7 +135,7 @@ function runTests (scenario) {
   it(`[${scenario.name}] clean input dataset`, async () => {
     const response = await s3Service.remove(inputId)
     expect(response.$metadata.httpStatusCode).toBe(204)
-    clearDataset(scenario.dataset)
+    clearDataset(namespace, scenario.dataset)
   })
 
   it(`[${scenario.name}] export collection`, async () => {
@@ -149,17 +152,17 @@ function runTests (scenario) {
   })
 
   it(`[${scenario.name}] download output file`, async () => {
-    const tmpFilePath = getTmpPath(outputId)
+    const tmpFilePath = getTmpPath(namespace, outputId)
     const response = await s3Service.downloadFile({ id: outputId, filePath: tmpFilePath })
     expect(response.id).toBeTruthy()
-    const size = fs.statSync(getTmpPath(outputId)).size
+    const size = fs.statSync(getTmpPath(namespace, outputId)).size
     expect(size).toBeCloseTo(scenario.expect.export.size, -2) // ±50 octets
   })
 
   it(`[${scenario.name}] clean output files`, async () => {
     const response = await s3Service.remove(outputId)
     expect(response.$metadata.httpStatusCode).toBe(204)
-    clearDataset(outputId)
+    clearDataset(namespace, outputId)
     outputId = undefined
   })
 
@@ -176,7 +179,7 @@ describe('feathers-import-export:hooks', () => {
     app.use(express.json())
     app.configure(express.rest())
 
-    app.use(servicePath, await createMongoService('features'))
+    app.use(servicePath, await createMongoService(servicePath))
     expect(app.service(servicePath)).toBeTruthy()
 
     app.use('path-to-s3', new S3Service(options.s3Options), {
@@ -195,7 +198,7 @@ describe('feathers-import-export:hooks', () => {
       }
     })
 
-    expressServer = await app.listen(3333)
+    expressServer = await app.listen(port)
   })
 
   it('is ES module compatible', () => {

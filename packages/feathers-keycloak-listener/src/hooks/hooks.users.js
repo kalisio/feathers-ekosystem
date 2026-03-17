@@ -20,7 +20,7 @@ export async function createUser (hook) {
   const name = _.get(event, 'value.username')
   debug(`createUser' called for ${name} with keycloak Id '${keycloakId}`)
   const usersService = hook.app.service(hook.service.usersServicePath)
-  await usersService.create(Object.assign({ keycloakId, name }, event.value))
+  await usersService.create({ keycloakId, name, ...event.value })
   return hook
 }
 

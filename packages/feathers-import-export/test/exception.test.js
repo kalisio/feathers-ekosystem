@@ -8,6 +8,9 @@ import { createMongoService, removeMongoService } from './utils.mongodb.js'
 
 feathers.setDebug(makeDebug)
 
+const port = 3100 + Math.floor(Math.random() * 100)
+const namespace = 'exception'
+
 let app
 let s3Service
 let service
@@ -37,7 +40,7 @@ describe('feathers-import-export:exception', () => {
     app.use(express.json())
     app.configure(express.rest())
 
-    app.use('objects', await createMongoService('objects'))
+    app.use('objects', await createMongoService(`${namespace}-objects`))
     expect(app.service('objects')).toBeTruthy()
 
     app.use('path-to-s3', new S3Service(options.s3Options), {
@@ -50,7 +53,7 @@ describe('feathers-import-export:exception', () => {
     service = app.service('import-export')
     expect(service).toBeTruthy()
 
-    expressServer = await app.listen(3333)
+    expressServer = await app.listen(port)
   })
 
   it('is ES module compatible', () => {
@@ -74,7 +77,7 @@ describe('feathers-import-export:exception', () => {
   })
 
   afterAll(async () => {
-    await removeMongoService('objects')
+    await removeMongoService('exceptions-objects')
     await expressServer.close()
   })
 })

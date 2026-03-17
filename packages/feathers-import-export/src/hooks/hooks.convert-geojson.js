@@ -41,7 +41,7 @@ export async function convertGeoJson (hook) {
   // convert the file
   const ogr2ogr = `ogr2ogr -f '${hook.data.context.convertGeoJson.ogrDriver}' ${outputFile} ${inputFile}`
   debug(ogr2ogr)
-  await execSync(ogr2ogr)
+  execSync(ogr2ogr)
   // restore the output with the correct uuid
   fs.copyFileSync(outputFile, hook.data.filePath)
   fs.rmSync(workingDir, { recursive: true, force: true })
