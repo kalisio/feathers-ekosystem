@@ -18,6 +18,7 @@ class CustomMemoryService extends MemoryService {
   custom (data, params) { return data.name }
 }
 
+const baseListenPort = 3050
 let startId = 6
 const authUser = {
   name: 'Jane Doe',
@@ -142,14 +143,14 @@ describe('feathers-distributed:main', () => {
       // Now all services are registered setup handlers
       apps[i].use(express.notFound())
       apps[i].use(express.errorHandler())
-      servers.push(await apps[i].listen(3030 + i))
+      servers.push(await apps[i].listen(baseListenPort + i))
     }
 
     for (let i = 0; i < nbApps; i++) {
       appServices.push(apps[i].service('users'))
       assert.exists(appServices[i])
 
-      const url = 'http://localhost:' + (3030 + i)
+      const url = 'http://localhost:' + (baseListenPort + i)
       const restTransporter = restClient(url).superagent(request)
       const rClient = feathers()
         .configure(restTransporter)
@@ -208,27 +209,27 @@ describe('feathers-distributed:main', () => {
 
   it('ensure healthcheck can been called on apps', async () => {
     // Service 1 & 2 should see the gateway 0
-    let url = 'http://localhost:' + (3030 + service1) + '/distribution/healthcheck/0'
+    let url = 'http://localhost:' + (baseListenPort + service1) + '/distribution/healthcheck/0'
     let response = await request.get(url)
     expect(response.body).to.deep.equal({ users: true })
-    url = 'http://localhost:' + (3030 + service2) + '/distribution/healthcheck/0'
+    url = 'http://localhost:' + (baseListenPort + service2) + '/distribution/healthcheck/0'
     response = await request.get(url)
     expect(response.body).to.deep.equal({ users: true })
     // Gateway should see the no-events app 3
-    url = 'http://localhost:' + (3030 + gateway) + '/distribution/healthcheck/3'
+    url = 'http://localhost:' + (baseListenPort + gateway) + '/distribution/healthcheck/3'
     response = await request.get(url)
     expect(response.body).to.deep.equal({ 'no-events': true })
     // Listing all gateway services should be the same
-    url = 'http://localhost:' + (3030 + gateway) + '/distribution/healthcheck/0'
+    url = 'http://localhost:' + (baseListenPort + gateway) + '/distribution/healthcheck/0'
     response = await request.get(url)
     expect(response.body).to.deep.equal({ 'no-events': true })
-    url = 'http://localhost:' + (3030 + gateway) + '/distribution/healthcheck'
+    url = 'http://localhost:' + (baseListenPort + gateway) + '/distribution/healthcheck'
     response = await request.get(url)
     expect(response.body).to.deep.equal({ 'no-events': true })
   })
 
   it('ensure middleware can been called on app', async () => {
-    const url = 'http://localhost:' + (3030 + gateway) + '/middleware'
+    const url = 'http://localhost:' + (baseListenPort + gateway) + '/middleware'
     await request.get(url)
     expect(appMiddleware).toHaveBeenCalled()
   })
@@ -273,7 +274,7 @@ describe('feathers-distributed:main', () => {
   }, 5000)
 
   it('ensure middleware can been called on local service', async () => {
-    const url = 'http://localhost:' + (3030 + gateway) + '/users'
+    const url = 'http://localhost:' + (baseListenPort + gateway) + '/users'
     await request.get(url)
     expect(serviceMiddleware).toHaveBeenCalled()
   }, 5000)
@@ -543,7 +544,7 @@ describe('feathers-distributed:main', () => {
     .timeout(40000) */
 
   it('not found request should return 404 on local service', async () => {
-    const url = 'http://localhost:' + (3030 + gateway) + '/xxx'
+    const url = 'http://localhost:' + (baseListenPort + gateway) + '/xxx'
     try {
       await request.get(url)
     } catch (err) {
@@ -554,7 +555,7 @@ describe('feathers-distributed:main', () => {
   }, 5000)
 
   it('not found request should return 404 on remote service', async () => {
-    const url = 'http://localhost:' + (3030 + service1) + '/xxx'
+    const url = 'http://localhost:' + (baseListenPort + service1) + '/xxx'
     try {
       await request.get(url)
     } catch (err) {
@@ -575,7 +576,7 @@ describe('feathers-distributed:main', () => {
   }, 5000)
 
   it('unauthenticated request should return 401 on local service with auth', async () => {
-    const url = 'http://localhost:' + (3030 + gateway) + '/users'
+    const url = 'http://localhost:' + (baseListenPort + gateway) + '/users'
     try {
       await request.get(url)
     } catch (err) {
@@ -595,7 +596,7 @@ describe('feathers-distributed:main', () => {
   }, 5000)
 
   it('unauthenticated request should return 401 on remote service with auth', async () => {
-    const url = 'http://localhost:' + (3030 + service1) + '/users'
+    const url = 'http://localhost:' + (baseListenPort + service1) + '/users'
     try {
       await request.get(url)
     } catch (err) {

@@ -13,7 +13,9 @@ export default mergeConfig(baseConfig, defineConfig({
     // beforeAll hook needs a lot of time to setup cote and stuff
     hookTimeout: 30000,
     // testTimeout: 30000,
-    // Disable parallelism because different test files startup listening servers on same ports
+    // Disable parallelism because tests fail otherwise, not sure exactly why.
+    // Different files don't share same server ports, but touching the basePort in cote config seems
+    // to break tests in index.test.js ... So currently files share the same cote basePort value.
     fileParallelism: false
   }
 }))

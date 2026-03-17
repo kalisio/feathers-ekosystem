@@ -5,6 +5,7 @@ import { beforeAll, afterAll, describe, it, expect, assert } from 'vitest'
 import { createApp, waitForService, clone } from './utils.js'
 import plugin, { finalize } from '../src/index.js'
 
+const baseListenPort = 3060
 const startId = 2
 const store = {
   0: { content: 'message 0', id: 0 },
@@ -58,7 +59,7 @@ describe('feathers-distributed:network', () => {
       // Now all services are registered setup handlers
       apps[i].use(express.notFound())
       apps[i].use(express.errorHandler())
-      servers.push(await apps[i].listen(3030 + i))
+      servers.push(await apps[i].listen(baseListenPort + i))
     }
   })
 
