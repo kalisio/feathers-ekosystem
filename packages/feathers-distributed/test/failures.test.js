@@ -5,7 +5,7 @@ import { beforeAll, afterAll, describe, it, expect, assert } from 'vitest'
 import { createApp, waitForService, clone } from './utils.js'
 import plugin, { finalize } from '../src/index.js'
 
-const baseListenPort = 3060
+const baseListenPort = 4060
 const startId = 2
 const store = {
   0: { content: 'message 0', id: 0 },
@@ -36,7 +36,8 @@ describe('feathers-distributed:network', () => {
           masterTimeout: 6000,
           // We need 3 open ports by app
           basePort: 10000,
-          highestPort: 10008
+          highestPort: 10008,
+          port: 12346
         }
       }))
 

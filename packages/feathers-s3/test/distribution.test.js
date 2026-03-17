@@ -52,7 +52,10 @@ const distributionConfig = {
       helloInterval: 2000,
       checkInterval: 4000,
       nodeTimeout: 5000,
-      masterTimeout: 6000
+      masterTimeout: 6000,
+      basePort: 5000,
+      highestPort: 5999,
+      port: 12344
     },
     publicationDelay: 5000
   },
@@ -65,7 +68,10 @@ const distributionConfig = {
       helloInterval: 2000,
       checkInterval: 4000,
       nodeTimeout: 5000,
-      masterTimeout: 6000
+      masterTimeout: 6000,
+      basePort: 5000,
+      highestPort: 5999,
+      port: 12344
     },
     publicationDelay: 5000
   }

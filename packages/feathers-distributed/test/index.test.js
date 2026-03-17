@@ -18,7 +18,7 @@ class CustomMemoryService extends MemoryService {
   custom (data, params) { return data.name }
 }
 
-const baseListenPort = 3050
+const baseListenPort = 4050
 let startId = 6
 const authUser = {
   name: 'Jane Doe',
@@ -100,7 +100,9 @@ describe('feathers-distributed:main', () => {
           checkInterval: 4000,
           nodeTimeout: 5000,
           masterTimeout: 6000,
-          basePort: 10000
+          basePort: 6000,
+          highestPort: 6999,
+          port: 12345
         }
       }))
       // assert.exists(apps[i].servicePublisher)
