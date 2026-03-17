@@ -67,7 +67,7 @@
     "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
     "@feathersjs/socketio": "catalog:",
-    "@kalisio/feathers-distributed": "catalog:",
+    "@kalisio/feathers-distributed": "workspace:",
     "sharp": "^0.34.5",
     "socket.io-client": "catalog:",
     "superagent": "catalog:"
