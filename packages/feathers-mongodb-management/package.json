@@ -1,0 +1,68 @@
+{
+  "name": "@kalisio/feathers-mongodb-management",
+  "description": "Manage MongoDB Databases, Users &amp; Collections with this Feathers service adapter",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "development": "./src/index.js",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "beforeAll",
+      "afterAll",
+      "beforeEach",
+      "afterEach"
+    ],
+    "ignore": [
+      "dist/**"
+    ]
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "standard ",
+    "lint:fix": "standard --fix",
+    "mongodb": "run-rs -v 7.0.0 --keep",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "kalisio"
+  ],
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kalisio/feathers-ekosystem.git",
+    "directory": "packages/feathers-mongodb-management"
+  },
+  "bugs": {
+    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+  },
+  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-mongodb-management",
+  "dependencies": {
+    "@feathersjs/adapter-commons": "catalog:",
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "debug": "catalog:",
+    "sift": "catalog:"
+  },
+  "devDependencies": {
+    "mongodb": "catalog:",
+    "run-rs": "^0.7.5"
+  }
+}

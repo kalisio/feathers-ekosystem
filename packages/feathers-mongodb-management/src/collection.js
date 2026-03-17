@@ -1,0 +1,51 @@
+import Service from './service.js'
+
+// Create the service.
+class CollectionService extends Service {
+  constructor (options) {
+    super(options)
+
+    if (!options || !options.db) {
+      throw new Error('MongoDB DB options have to be provided')
+    }
+    this.db = options.db
+  }
+
+  // Helper function to process stats object
+  processObjectInfos (infos) {
+    // In Mongo the collection name key is ns and prefixed by the db name, change to the more intuitive name just as in create
+    const namespace = infos.ns.split('.')
+    if (namespace.length > 1) {
+      infos.name = namespace[1]
+    }
+    delete infos.ns
+    return infos
+  }
+
+  createImplementation (id, options) {
+    return this.db.createCollection(id, options)
+      .then(() => this.db.command({ collStats: id }))
+      .then(infos => this.processObjectInfos(infos))
+  }
+
+  getImplementation (id) {
+    return Promise.resolve(this.db.collection(id))
+  }
+
+  async listImplementation () {
+    const collections = await this.db.collections()
+    return Promise.all(
+      collections.map(collection => this.db.command({ collStats: collection.collectionName }))
+    )
+  }
+
+  removeImplementation (item) {
+    return item.drop()
+  }
+}
+
+export default function init (options) {
+  return new CollectionService(options)
+}
+
+init.Service = CollectionService

@@ -13,6 +13,7 @@
     "build:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed build",
     "build:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export build",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
+    "build:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management build",
     "build:feathers-s3": "pnpm --filter @kalisio/feathers-s3 build",
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
     "changeset": "changeset",
@@ -25,6 +26,7 @@
     "lint:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed lint --fix",
     "lint:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export lint --fix",
     "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint --fix",
+    "lint:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management lint --fix",
     "lint:feathers-s3": "pnpm --filter @kalisio/feathers-s3 lint --fix",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint --fix",
     "prepare": "husky",
@@ -34,6 +36,7 @@
     "test:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed test --coverage",
     "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test --coverage",
     "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test --coverage",
+    "test:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management test --coverage",
     "test:feathers-s3": "pnpm --filter @kalisio/feathers-s3 test --coverage",
     "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test --coverage"
   },
