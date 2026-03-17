@@ -2,7 +2,7 @@ import { describe, it, beforeAll, afterAll, expect } from 'vitest'
 import feathers from '@feathersjs/feathers'
 import { MemoryService } from '@feathersjs/memory'
 import express from '@feathersjs/express'
-import { Service } from '../src/server/index.js'
+import { Service } from '../../src/server'
 
 let app, service, expressServer
 

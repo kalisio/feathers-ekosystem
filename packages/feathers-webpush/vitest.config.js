@@ -9,6 +9,21 @@ export default mergeConfig(baseConfig, defineConfig({
   root: __dirname,
   test: {
     name: 'feathers-webpush',
-    environment: 'node'
+    projects: [
+      {
+        test: {
+          name: 'server',
+          environment: 'node',
+          include: ['test/server/**/*.test.js']
+        }
+      },
+      {
+        test: {
+          name: 'client',
+          environment: 'happy-dom',
+          include: ['test/client/**/*.test.js']
+        }
+      }
+    ]
   }
 }))
