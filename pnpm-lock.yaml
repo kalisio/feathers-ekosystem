@@ -151,8 +151,8 @@ importers:
         specifier: 'catalog:'
         version: 2.30.0(@types/node@25.3.3)
       '@kalisio/meta-ekosystem':
-        specifier: ^0.5.0
-        version: 0.5.0(@types/node@25.3.3)
+        specifier: ^0.6.0
+        version: 0.6.0(@types/node@25.3.3)
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 4.0.18(vitest@4.0.18(@types/node@25.3.3)(yaml@2.8.2))
@@ -1337,8 +1337,8 @@ packages:
     resolution: {integrity: sha512-rWGiF9gl7YD8rvJWd7HfEou9125YnT6jnIKSrae7WtY+QXSOyA2BH2m8XtGnFC1yUxxT1jtQx4sxWR2Ri+s16A==}
     engines: {node: '>= 16.0.0'}
 
-  '@kalisio/meta-ekosystem@0.5.0':
-    resolution: {integrity: sha512-0KiuIY7VyOo6sy/kAAvzOVMybPwPlxT1wX5wvUBO8N+X3rk8gOhatpOeJzt6b0S0csby+hl64rDEwIA2XCmZVw==}
+  '@kalisio/meta-ekosystem@0.6.0':
+    resolution: {integrity: sha512-gpdiyIV+iSV+t2G18L8Rs965Qulvg9433zxNCa9NWt3wvOP/28wZNyfwttsEsCBr8mqySZg/MVHb6YyY65MfOA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -6450,7 +6450,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@kalisio/meta-ekosystem@0.5.0(@types/node@25.3.3)':
+  '@kalisio/meta-ekosystem@0.6.0(@types/node@25.3.3)':
     dependencies:
       node-plop: 0.32.3(@types/node@25.3.3)
     transitivePeerDependencies:
