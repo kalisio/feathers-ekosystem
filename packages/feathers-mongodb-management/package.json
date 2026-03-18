@@ -31,7 +31,6 @@
     "build": "vite build",
     "lint": "standard ",
     "lint:fix": "standard --fix",
-    "mongodb": "run-rs -v 7.0.0 --keep",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
@@ -62,7 +61,6 @@
     "sift": "catalog:"
   },
   "devDependencies": {
-    "mongodb": "catalog:",
-    "run-rs": "^0.7.5"
+    "mongodb": "catalog:"
   }
 }
