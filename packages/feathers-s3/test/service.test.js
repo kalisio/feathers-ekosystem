@@ -186,6 +186,22 @@ describe('feathers-s3-service', () => {
     fs.unlinkSync(tmpFilePath)
   })
 
+  it('put objects under a common prefix', async () => {
+    const buffer = await blob.arrayBuffer()
+    await service.putObject({ id: 'test-folder/file1.txt', buffer, type: 'text/plain' })
+    await service.putObject({ id: 'test-folder/file2.txt', buffer, type: 'text/plain' })
+    await service.putObject({ id: 'test-folder/file3.txt', buffer, type: 'text/plain' })
+    const response = await service.find({ query: { Prefix: 'test-folder' } })
+    expect(response.length).toBe(3)
+  })
+
+  it('remove objects recursively', async () => {
+    const response = await service.remove('test-folder', { query: { recursive: true } })
+    expect(response.id).toBe('test-folder')
+    expect(response.deleted).toHaveLength(3)
+    expect(response.deleted.every(d => d.Key.includes('test-folder'))).toBe(true)
+  })
+
   it('check remote is empty', async () => {
     const response = await service.find()
     expect(response.length).toBe(0)
