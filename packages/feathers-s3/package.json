@@ -32,7 +32,7 @@
     "build": "vite build",
     "lint": "standard ",
     "lint:fix": "standard --fix",
-    "pretest": "pnpm --filter @kalisio/feathers-distributed build",
+    "pretest": "pnpm --filter @kalisio/feathers-s3 build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
