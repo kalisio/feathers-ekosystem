@@ -191,6 +191,13 @@ git push --follow-tags
 > [!NOTE]
 > When publishing a tag will be created corresponding to the **version** defined in the `package.json`
 
+### Extending
+
+Want to add a new package or create a new example? The [meta-ekosystem](https://github.com/kalisio/meta-ekosystem) project
+offers convenient commands like [k-init-package](https://github.com/kalisio/meta-ekosystem?tab=readme-ov-file#k-init-package)
+and [k-init-example](https://github.com/kalisio/meta-ekosystem?tab=readme-ov-file#k-init-example) to quickly
+scaffold your project.
+
 ## Submission
 
 ### Report a bug
