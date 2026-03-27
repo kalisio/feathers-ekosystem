@@ -106,8 +106,8 @@ catalogs:
       specifier: ^5.5.3
       version: 5.5.3
     quasar:
-      specifier: ^2.18.6
-      version: 2.18.6
+      specifier: ^2.18.7
+      version: 2.19.2
     sift:
       specifier: ^17.1.3
       version: 17.1.3
@@ -163,7 +163,7 @@ importers:
         version: 2.30.1
       quasar:
         specifier: 'catalog:'
-        version: 2.18.6
+        version: 2.19.2
     devDependencies:
       '@changesets/cli':
         specifier: 'catalog:'
@@ -4426,8 +4426,8 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  quasar@2.18.6:
-    resolution: {integrity: sha512-ZlK+vJXOBPSFDCNQDBDNwSI+AHoqaFPxK8ve6mhsYLhMKWI5b8zsGY9VU1xYjngO2aBvU4fvGWXy4tTbzrBk8Q==}
+  quasar@2.19.2:
+    resolution: {integrity: sha512-I0f/4nTiumAs8dKs+d+eaqmyJOZJqxAfkNKhvgAH/h2dYlw792Gd6n/xCAHohhU4ro0QfvWE5ble+eyPxKJBMw==}
     engines: {node: '>= 10.18.1', npm: '>= 6.13.4', yarn: '>= 1.21.1'}
 
   queue-microtask@1.2.3:
@@ -10114,7 +10114,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  quasar@2.18.6: {}
+  quasar@2.19.2: {}
 
   queue-microtask@1.2.3: {}
 
