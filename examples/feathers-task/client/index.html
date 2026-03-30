@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>feathers-task example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box }
+      body { font-family: sans-serif; padding: 2rem; max-width: 800px; margin: 0 auto }
+      h1 { margin-bottom: 1.5rem }
+      h2 { margin: 1.5rem 0 0.75rem }
+      .controls { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem }
+      button {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 0.4rem 0.8rem;
+        cursor: pointer;
+        background: #2563eb;
+        color: white;
+        font-size: 0.9rem
+      }
+      button.danger { background: #dc2626 }
+      button:hover { opacity: 0.85 }
+      #tasks { border-collapse: collapse; width: 100% }
+      #tasks th, #tasks td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; font-size: 0.85rem }
+      #tasks th { background: #f9fafb }
+      .status-waiting  { color: #92400e }
+      .status-active   { color: #1d4ed8 }
+      .status-completed { color: #15803d }
+      .status-failed   { color: #dc2626 }
+      #log { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; height: 160px; overflow-y: auto; margin-top: 0.5rem }
+    </style>
+  </head>
+  <body>
+    <h1>feathers-task example</h1>
+
+    <h2>Submit a task</h2>
+    <div class="controls">
+      <button onclick="submitTask('process-data', { steps: 4 })">Submit process-data (4 steps)</button>
+      <button onclick="submitTask('risky-job', { shouldFail: false })">Submit risky-job (success)</button>
+      <button class="danger" onclick="submitTask('risky-job', { shouldFail: true })">Submit risky-job (fail)</button>
+    </div>
+
+    <h2>Tasks</h2>
+    <table id="tasks">
+      <thead>
+        <tr><th>ID</th><th>Type</th><th>Status</th><th>Progress</th><th>Created</th><th></th></tr>
+      </thead>
+      <tbody id="tasks-body">
+        <tr><td colspan="6" style="color:#999">No tasks yet</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Log</h2>
+    <div id="log"></div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "feathers-task-example",
+  "description": "feathers-task example",
+  "packageManager": "pnpm@10.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm dev:server & pnpm dev:client",
+    "dev:server": "node --watch --conditions development server/index.js",
+    "dev:client": "vite"
+  },
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/memory": "catalog:",
+    "@feathersjs/socketio": "catalog:",
+    "@feathersjs/socketio-client": "catalog:",
+    "@kalisio/feathers-task": "workspace:*",
+    "socket.io-client": "catalog:",
+    "vite": "catalog:"
+  }
+}

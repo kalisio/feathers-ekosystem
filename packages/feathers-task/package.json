@@ -1,0 +1,73 @@
+{
+  "name": "@kalisio/feathers-task",
+  "description": "Task execution service for FeathersJS based on BullMQ",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "development": "./src/index.js",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll"
+    ],
+    "ignore": [
+      "dist/**"
+    ]
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "standard ",
+    "lint:fix": "standard --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "bullmq",
+    "queue",
+    "tasks",
+    "feathersjs",
+    "feathers",
+    "kalisio"
+  ],
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kalisio/feathers-ekosystem.git",
+    "directory": "packages/feathers-task"
+  },
+  "bugs": {
+    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+  },
+  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-task",
+  "dependencies": {
+    "@bull-board/api": "catalog:",
+    "@bull-board/express": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "bullmq": "catalog:",
+    "debug": "catalog:"
+  },
+  "devDependencies": {
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/memory": "catalog:",
+    "ioredis": "catalog:"
+  }
+}

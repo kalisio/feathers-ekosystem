@@ -4,5 +4,6 @@
   "feathers-keycloak-listener",
   "feathers-s3",
   "feathers-webpush",
-  "feathers-mongodb-management"
+  "feathers-mongodb-management",
+  "feathers-task"
 ]
