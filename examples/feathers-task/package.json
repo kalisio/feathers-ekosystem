@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "pnpm dev:server & pnpm dev:client",
     "dev:server": "node --watch --conditions development server/index.js",
-    "dev:client": "vite"
+    "dev:client": "vite",
+    "lint": "standard --fix"
   },
   "author": {
     "name": "KALISIO <contact@kalisio.com>",

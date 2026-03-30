@@ -29,8 +29,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "standard ",
-    "lint:fix": "standard --fix",
+    "lint": "standard --fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },

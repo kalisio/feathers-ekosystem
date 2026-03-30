@@ -30,8 +30,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "standard ",
-    "lint:fix": "standard --fix",
+    "lint": "standard --fix",
     "pretest": "pnpm --filter @kalisio/feathers-s3 build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"

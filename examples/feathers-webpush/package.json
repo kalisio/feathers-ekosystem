@@ -3,10 +3,16 @@
   "description": "feathers-webpush example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
+  "standard": {
+    "globals": [
+      "self"
+    ]
+  },
   "scripts": {
     "dev": "pnpm dev:server & pnpm dev:client",
     "dev:server": "node --watch server/index.js",
-    "dev:client": "vite"
+    "dev:client": "vite",
+    "lint": "standard --fix"
   },
   "author": {
     "name": "KALISIO <contact@kalisio.com>",

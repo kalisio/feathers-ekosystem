@@ -3,11 +3,6 @@
   "description": "A collection of modules for FeathersJS",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
-  "lint-staged": {
-    "*.{js,cjs,mjs}": [
-      "pnpm lint"
-    ]
-  },
   "scripts": {
     "build": "pnpm -r build",
     "build:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed build",
@@ -23,14 +18,14 @@
     "changeset:version": "changeset version",
     "docs:build": "vitepress build docs",
     "docs:dev": "vitepress dev docs",
-    "lint": "pnpm -r lint --fix",
-    "lint:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed lint --fix",
-    "lint:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export lint --fix",
-    "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint --fix",
-    "lint:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management lint --fix",
-    "lint:feathers-s3": "pnpm --filter @kalisio/feathers-s3 lint --fix",
-    "lint:feathers-task": "pnpm --filter @kalisio/feathers-task lint --fix",
-    "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint --fix",
+    "lint": "pnpm -r lint",
+    "lint:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed lint",
+    "lint:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export lint",
+    "lint:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener lint",
+    "lint:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management lint",
+    "lint:feathers-s3": "pnpm --filter @kalisio/feathers-s3 lint",
+    "lint:feathers-task": "pnpm --filter @kalisio/feathers-task lint",
+    "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint",
     "posttest": "pnpm lcov-result-merger --prepend-source-files 'packages/*/coverage/lcov.info' coverage/lcov.info",
     "prepare": "husky",
     "pretest": "mkdir -p coverage",
