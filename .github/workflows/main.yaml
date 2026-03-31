@@ -27,6 +27,16 @@ jobs:
       github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip tests')
       }}
     runs-on: ubuntu-22.04
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -54,6 +64,16 @@ jobs:
       github.event_name == 'push' && contains(github.event.head_commit.message, 'additional tests')
       }}
     runs-on: ubuntu-22.04
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
