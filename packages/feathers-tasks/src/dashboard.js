@@ -1,13 +1,12 @@
+import { createBullBoard } from '@bull-board/api'
+import { BullMQAdapter } from '@bull-board/api/bullMQAdapter'
+import { ExpressAdapter } from '@bull-board/express'
 import debugLib from 'debug'
 
-const debug = debugLib('@kalisio/feathers-task:dashboard')
+const debug = debugLib('feathers-tasks:dashboard')
 
-export async function setupDashboard (app, queue, basePath) {
+export function setupDashboard (app, queue, basePath) {
   debug('Setting up Bull Board at %s', basePath)
-
-  const { createBullBoard } = await import('@bull-board/api')
-  const { BullMQAdapter } = await import('@bull-board/api/bullMQAdapter')
-  const { ExpressAdapter } = await import('@bull-board/express')
 
   const serverAdapter = new ExpressAdapter()
   serverAdapter.setBasePath(basePath)

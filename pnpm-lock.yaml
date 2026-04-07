@@ -244,7 +244,7 @@ importers:
         specifier: 'catalog:'
         version: 7.3.1(@types/node@25.3.3)(yaml@2.8.2)
 
-  examples/feathers-task:
+  examples/feathers-tasks:
     devDependencies:
       '@feathersjs/express':
         specifier: 'catalog:'
@@ -261,9 +261,9 @@ importers:
       '@feathersjs/socketio-client':
         specifier: 'catalog:'
         version: 5.0.42
-      '@kalisio/feathers-task':
+      '@kalisio/feathers-tasks':
         specifier: workspace:*
-        version: link:../../packages/feathers-task
+        version: link:../../packages/feathers-tasks
       socket.io-client:
         specifier: 'catalog:'
         version: 4.8.3
@@ -516,7 +516,7 @@ importers:
         specifier: 'catalog:'
         version: 10.3.0
 
-  packages/feathers-task:
+  packages/feathers-tasks:
     dependencies:
       '@bull-board/api':
         specifier: 'catalog:'
@@ -6337,7 +6337,7 @@ snapshots:
 
   '@dashersw/node-discover@1.0.6':
     dependencies:
-      ioredis: 5.10.0
+      ioredis: 5.10.1
       uuid: 3.4.0
     transitivePeerDependencies:
       - supports-color

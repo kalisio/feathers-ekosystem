@@ -3,7 +3,7 @@ import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
 
 const api = feathers()
-const socket = io('http://localhost:8081')
+const socket = io('http://localhost:3030')
 api.configure(socketio(socket))
 
 // --- logging ---

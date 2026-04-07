@@ -1,7 +1,7 @@
 import { QueueEvents } from 'bullmq'
 import debugLib from 'debug'
 
-const debug = debugLib('@kalisio/feathers-task:events')
+const debug = debugLib('feathers-tasks:events')
 
 // Maps BullMQ job events to status updates in the persistence service
 export function setupQueueEvents (queueName, redisOptions, app, persistenceService) {
@@ -28,7 +28,8 @@ export function setupQueueEvents (queueName, redisOptions, app, persistenceServi
 
   queueEvents.on('completed', ({ jobId, returnvalue }) => {
     debug('Job %s completed', jobId)
-    patchStatus(jobId, { status: 'completed', result: returnvalue, completedAt: new Date().toISOString() })
+    const result = returnvalue ? JSON.parse(returnvalue) : null
+    patchStatus(jobId, { status: 'completed', result, completedAt: new Date().toISOString() })
   })
 
   queueEvents.on('failed', ({ jobId, failedReason }) => {

@@ -1,7 +1,7 @@
 import { Worker } from 'bullmq'
 import debugLib from 'debug'
 
-const debug = debugLib('@kalisio/feathers-task:worker')
+const debug = debugLib('feathers-tasks:worker')
 
 export function createWorker (queueName, redisOptions, handlers = {}, concurrency = 1) {
   debug('Creating worker for queue "%s" (concurrency: %d)', queueName, concurrency)

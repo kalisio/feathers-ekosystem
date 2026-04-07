@@ -1,5 +1,5 @@
 {
-  "name": "@kalisio/feathers-task",
+  "name": "@kalisio/feathers-tasks",
   "description": "Task execution service for FeathersJS based on BullMQ",
   "version": "0.0.0",
   "type": "module",
@@ -50,12 +50,12 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/kalisio/feathers-ekosystem.git",
-    "directory": "packages/feathers-task"
+    "directory": "packages/feathers-tasks"
   },
   "bugs": {
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
-  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-task",
+  "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-tasks",
   "dependencies": {
     "@bull-board/api": "catalog:",
     "@bull-board/express": "catalog:",

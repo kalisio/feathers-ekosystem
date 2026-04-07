@@ -1,6 +1,6 @@
 {
-  "name": "feathers-task-example",
-  "description": "feathers-task example",
+  "name": "feathers-tasks-example",
+  "description": "feathers-tasks example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
   "scripts": {
@@ -21,7 +21,7 @@
     "@feathersjs/memory": "catalog:",
     "@feathersjs/socketio": "catalog:",
     "@feathersjs/socketio-client": "catalog:",
-    "@kalisio/feathers-task": "workspace:*",
+    "@kalisio/feathers-tasks": "workspace:*",
     "socket.io-client": "catalog:",
     "vite": "catalog:"
   }

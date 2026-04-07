@@ -1,7 +1,7 @@
 import { NotFound } from '@feathersjs/errors'
 import debugLib from 'debug'
 
-const debug = debugLib('@kalisio/feathers-task:service')
+const debug = debugLib('feathers-tasks:service')
 
 export class TaskService {
   constructor ({ queue, persistenceService }) {
@@ -24,7 +24,7 @@ export class TaskService {
       createdAt: new Date().toISOString()
     }
 
-    const service = this._persistService(params)
+    const service = this._persistService()
     await service.create(record)
 
     return record
@@ -32,12 +32,12 @@ export class TaskService {
 
   // List tasks (delegated to persistence service)
   async find (params) {
-    return this._persistService(params).find(params)
+    return this._persistService().find(params)
   }
 
   // Get a single task by id
   async get (id, params) {
-    const service = this._persistService(params)
+    const service = this._persistService()
     const record = await service.find({ query: { id } })
     const items = record.data || record
     if (!items.length) throw new NotFound(`Task ${id} not found`)
@@ -46,7 +46,7 @@ export class TaskService {
 
   // Update task fields (e.g. status patch from worker events)
   async patch (id, data, params) {
-    const service = this._persistService(params)
+    const service = this._persistService()
     const items = await service.find({ query: { id } })
     const records = items.data || items
     if (!records.length) throw new NotFound(`Task ${id} not found`)
@@ -66,7 +66,7 @@ export class TaskService {
       }
     }
 
-    const service = this._persistService(params)
+    const service = this._persistService()
     const items = await service.find({ query: { id } })
     const records = items.data || items
     if (!records.length) throw new NotFound(`Task ${id} not found`)

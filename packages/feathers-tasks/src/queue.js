@@ -1,7 +1,7 @@
 import { Queue } from 'bullmq'
 import debugLib from 'debug'
 
-const debug = debugLib('@kalisio/feathers-task:queue')
+const debug = debugLib('feathers-tasks:queue')
 
 export function createQueue (name, redisOptions) {
   debug('Creating queue "%s"', name)
