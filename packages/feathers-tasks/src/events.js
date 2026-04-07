@@ -28,8 +28,7 @@ export function setupQueueEvents (queueName, redisOptions, app, persistenceServi
 
   queueEvents.on('completed', ({ jobId, returnvalue }) => {
     debug('Job %s completed', jobId)
-    const result = returnvalue ? JSON.parse(returnvalue) : null
-    patchStatus(jobId, { status: 'completed', result, completedAt: new Date().toISOString() })
+    patchStatus(jobId, { status: 'completed', result: returnvalue ?? null, completedAt: new Date().toISOString() })
   })
 
   queueEvents.on('failed', ({ jobId, failedReason }) => {
