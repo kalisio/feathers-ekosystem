@@ -25,5 +25,8 @@ export async function createApp (redisOptions, handlers = {}) {
     queueEvents.waitUntilReady()
   ])
 
+  // Drain the queue so no stale jobs from previous test runs interfere
+  await queue.obliterate({ force: true })
+
   return app
 }

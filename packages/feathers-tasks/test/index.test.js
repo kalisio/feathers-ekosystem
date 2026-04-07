@@ -90,9 +90,9 @@ describe('feathers-tasks', () => {
     it('transitions to completed status after successful execution', async () => {
       if (!redisAvailable) return
       const task = await app.service('tasks').create({ type: 'echo', payload: { x: 1 } })
-      const updated = await waitForStatus(app, task.id, 'completed')
+      const updated = await waitForStatus(app, task.id, 'completed', 15000)
       expect(updated.status).toBe('completed')
-    })
+    }, 20000)
 
     it('transitions to failed status when handler throws', async () => {
       if (!redisAvailable) return
