@@ -9,4 +9,5 @@ This repository contains the following packages:
 - **[@kalisio/feathers-keycloak-listener](../packages/feathers-keycloak-listener)**
 - **[@kalisio/feathers-mongodb-management](../packages/feathers-mongodb-management)**
 - **[@kalisio/feathers-s3](../packages/feathers-s3)**
+- **[@kalisio/feathers-tasks](../packages/feathers-tasks)**
 - **[@kalisio/feathers-webpush](../packages/feathers-webpush)**
