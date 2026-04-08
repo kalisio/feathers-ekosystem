@@ -1,11 +1,11 @@
 ---
-title: feathers-task
+title: feathers-tasks
 description: Task execution service for FeathersJS based on BullMQ
 ---
 
-# feathers-task
+# feathers-tasks
 
-**feathers-task** provides background task execution in a **FeathersJS** application, backed by [BullMQ](https://docs.bullmq.io/) and Redis.
+**feathers-tasks** provides background task execution in a **FeathersJS** application, backed by [BullMQ](https://docs.bullmq.io/) and Redis.
 
 It exposes a standard Feathers service to submit, query and remove tasks, while delegating persistence to any Feathers-compatible adapter of your choice (memory, MongoDB, etc.).
 
@@ -31,29 +31,29 @@ app.service('tasks').create()
 Install with your preferred package manager:
 
 ```shell
-pnpm add @kalisio/feathers-task
+pnpm add @kalisio/feathers-taskss
 ```
 
 ```shell
-npm install @kalisio/feathers-task
+npm install @kalisio/feathers-taskss
 ```
 
 ```shell
-yarn add @kalisio/feathers-task
+yarn add @kalisio/feathers-taskss
 ```
 
-`feathers-task` requires **Redis** as infrastructure dependency. BullMQ manages the Redis connection internally — no separate Redis client is needed in your app.
+`feathers-tasks` requires **Redis** as infrastructure dependency. BullMQ manages the Redis connection internally — no separate Redis client is needed in your app.
 
 ## Configuration
 
 ```js
-import { feathersTasks } from '@kalisio/feathers-task'
+import { feathersTasks } from '@kalisio/feathers-taskss'
 import { MemoryService } from '@feathersjs/memory'
 
 // 1. Register the persistence backend (any Feathers adapter)
 app.use('task-store', new MemoryService())
 
-// 2. Configure feathers-task
+// 2. Configure feathers-tasks
 app.configure(feathersTasks({
   // Feathers service used to persist task history (required)
   persistenceService: 'task-store',

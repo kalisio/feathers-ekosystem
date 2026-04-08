@@ -5,5 +5,5 @@
   "feathers-s3",
   "feathers-webpush",
   "feathers-mongodb-management",
-  "feathers-task"
+  "feathers-tasks"
 ]
