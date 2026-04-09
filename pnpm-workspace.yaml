@@ -37,7 +37,6 @@ catalog:
   "@kalisio/feathers-s3": ~1.6.0
   "@kalisio/feathers-webpush": ~1.0.1
   "@kalisio/kdk": ~2.7.0
-  "@kalisio/meta-ekosystem": https://github.com/kalisio/meta-ekosystem
   "@logtape/logtape": ~0.7.0
   "@quasar/app-vite": ~2.5.1
   "@quasar/extras": ~1.17.0
@@ -66,7 +65,7 @@ catalog:
   debug: ~4.1.0
   eslint: ~9.14.0
   eslint-plugin-vue: ~10.4.0
-  fast-xml-parser: ~5.4.1
+  fast-xml-parser: ~5.5.10
   feathers-hooks-common: ~8.2.1
   feathers-reactive: ~0.11.0
   globals: ~16.4.0
