@@ -67,7 +67,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
-    "@kalisio/meta-ekosystem": "^0.6.0",
     "@vitest/coverage-v8": "catalog:",
     "cross-env": "catalog:",
     "husky": "catalog:",
