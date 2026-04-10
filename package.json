@@ -91,5 +91,8 @@
       "sharp"
     ]
   },
-  "metaCatalog": "0.7.0"
+  "metaCatalog": {
+    "version": "0.7.0",
+    "date": "2026-04-10T17:39:30.346Z"
+  }
 }
