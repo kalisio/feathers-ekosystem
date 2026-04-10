@@ -82,7 +82,14 @@
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {}
+    "overrides": {},
+    "ignoredBuiltDependencies": [
+      "msgpackr-extract"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "metaCatalog": "0.7.0"
 }
