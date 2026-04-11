@@ -16,7 +16,7 @@ class ServiceWriteStream extends Writable {
     this.objectCount = 0
   }
 
-  async _write (chunk, encoding, next) {
+  _write (chunk, encoding, next) {
     this.chunkCount++
     this.objectCount += Array.isArray(chunk) ? chunk.length : 1
     const process = async () => {
