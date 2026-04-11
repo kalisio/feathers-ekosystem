@@ -14,13 +14,6 @@
     "dist"
   ],
   "standard": {
-    "globals": [
-      "describe",
-      "it",
-      "expect",
-      "beforeEach",
-      "afterEach"
-    ],
     "ignore": [
       "dist/**"
     ]
