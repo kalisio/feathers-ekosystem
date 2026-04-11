@@ -203,7 +203,7 @@ describe('feathers-s3-service', () => {
   })
 
   it('check remote is empty', async () => {
-    const response = await service.find()
+    const response = await service.find({ query: { Prefix: 'test-folder' } })
     expect(response.length).toBe(0)
   })
 

@@ -80,7 +80,7 @@ const distributionConfig = {
 const fileId = 'image.png'
 const fileContent = fs.readFileSync('test/data/image.png')
 
-describe('feathers-s3-distributed-service', () => {
+describe('feathers-s3-distribution', () => {
   beforeAll(() => {
     consumerApp = express(feathers())
     consumerApp.use(express.json({ limit: 100 * 1024 * 1024 }))
