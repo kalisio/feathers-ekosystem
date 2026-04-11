@@ -19,12 +19,13 @@ class ServiceWriteStream extends Writable {
   async _write (chunk, encoding, next) {
     this.chunkCount++
     this.objectCount += Array.isArray(chunk) ? chunk.length : 1
-    if (this.data.transform) {
-      if (typeof this.data.transform === 'function') chunk = await this.transform(chunk, this.data)
-      else chunk = transform(chunk, this.data.transform)
+    const process = async () => {
+      if (this.data.transform) {
+        if (typeof this.data.transform === 'function') { chunk = await this.transform(chunk, this.data) } else { chunk = transform(chunk, this.data.transform) }
+      }
+      await this.data.service.create(chunk)
     }
-    await this.data.service.create(chunk)
-    next()
+    process().then(() => next()).catch(next)
   }
 }
 

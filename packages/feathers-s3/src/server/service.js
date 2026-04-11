@@ -7,8 +7,15 @@ import _ from 'lodash'
 import createDebug from 'debug'
 import { BadRequest } from '@feathersjs/errors'
 import {
-  S3Client, ListObjectsCommand, GetObjectCommand, PutObjectCommand, DeleteObjectCommand, DeleteObjectsCommand,
-  CreateMultipartUploadCommand, UploadPartCommand, CompleteMultipartUploadCommand
+  S3Client,
+  ListObjectsCommand,
+  GetObjectCommand,
+  PutObjectCommand,
+  DeleteObjectCommand,
+  DeleteObjectsCommand,
+  CreateMultipartUploadCommand,
+  UploadPartCommand,
+  CompleteMultipartUploadCommand
 } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
@@ -179,7 +186,7 @@ export class Service {
   }
 
   async completeMultipartUpload (data, params) {
-    // check paylod
+    // check payload
     if (!data.id) throw new BadRequest('completeMultipartUpload: mising \'data.id\'')
     if (!data.uploadId && !data.UploadId) throw new BadRequest('completeMultipartUpload: missing \'data.[U|u]ploadId\'')
     if (!data.parts) throw new BadRequest('completeMultipartUpload: missing \'data.parts\'')
