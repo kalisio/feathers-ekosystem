@@ -98,7 +98,7 @@ catalog:
   socket.io-client: ~4.8.2
   standard: ~17.1.2
   superagent: ~10.3.0
-  tar: ~7.4.3
+  tar: ~7.5.13
   unzipper: ~0.12.3
   vite: ~7.3.1
   vite-bundle-visualizer: ~1.2.1

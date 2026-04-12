@@ -133,8 +133,8 @@ catalogs:
       specifier: ~10.3.0
       version: 10.3.0
     tar:
-      specifier: ~7.4.3
-      version: 7.4.4
+      specifier: ~7.5.13
+      version: 7.5.13
     unzipper:
       specifier: ~0.12.3
       version: 0.12.3
@@ -412,7 +412,7 @@ importers:
         version: 6.20.0
       tar:
         specifier: 'catalog:'
-        version: 7.4.4
+        version: 7.5.13
       unzipper:
         specifier: 'catalog:'
         version: 0.12.3
@@ -4945,10 +4945,9 @@ packages:
   tar-stream@3.1.8:
     resolution: {integrity: sha512-U6QpVRyCGHva435KoNWy9PRoi2IFYCgtEhq9nmrPPpbRacPs9IH4aJ3gbrFC8dPcXvdSZ4XXfXT5Fshbp2MtlQ==}
 
-  tar@7.4.4:
-    resolution: {integrity: sha512-O1z7ajPkjTgEgmTGz0v9X4eqeEXTDREPTO77pVC1Nbs86feBU1Zhdg+edzavPmYW1olxkwsqA2v4uOw6E8LeDg==}
+  tar@7.5.13:
+    resolution: {integrity: sha512-tOG/7GyXpFevhXVh8jOPJrmtRpOTsYqUIkVdVooZYJS/z8WhfQUX8RJILmeuJNinGAMSu1veBr4asSHFt5/hng==}
     engines: {node: '>=18'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   teex@1.0.1:
     resolution: {integrity: sha512-eYE6iEI62Ni1H8oIa7KlDU6uQBtqr4Eajni3wX7rpfXD8ysFx8z0+dri+KWEPWpBsxXfxu58x/0jvTVT1ekOSg==}
@@ -10919,7 +10918,7 @@ snapshots:
       - bare-buffer
       - react-native-b4a
 
-  tar@7.4.4:
+  tar@7.5.13:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0

@@ -55,8 +55,8 @@
     "sift": "catalog:"
   },
   "devDependencies": {
-    "@feathersjs/express": "catalog:",
     "@feathersjs/errors": "catalog:",
+    "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
     "@feathersjs/mongodb": "catalog:",
     "mongodb": "catalog:",

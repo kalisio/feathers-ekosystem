@@ -82,7 +82,6 @@
     "vitest": "catalog:"
   },
   "pnpm": {
-    "overrides": {},
     "ignoredBuiltDependencies": [
       "msgpackr-extract"
     ],
@@ -93,6 +92,6 @@
   },
   "metaCatalog": {
     "version": "0.7.0",
-    "date": "2026-04-10T17:39:30.346Z"
+    "syncedAt": "2026-04-12T17:39:32.910Z"
   }
 }
