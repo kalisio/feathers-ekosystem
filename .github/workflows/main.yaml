@@ -57,7 +57,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [ 22, 24 ]
+        node: [ 24 ]
     name: Additional tests
     if: ${{
       github.event_name == 'workflow_dispatch' && inputs.additional_tests ||
