@@ -29,14 +29,14 @@
     "posttest": "pnpm lcov-result-merger --prepend-source-files 'packages/*/coverage/lcov.info' coverage/lcov.info",
     "prepare": "husky",
     "pretest": "mkdir -p coverage",
-    "test": "pnpm -r test --coverage",
-    "test:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed test --coverage",
-    "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test --coverage",
-    "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test --coverage",
-    "test:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management test --coverage",
-    "test:feathers-s3": "pnpm --filter @kalisio/feathers-s3 test --coverage",
-    "test:feathers-tasks": "pnpm --filter @kalisio/feathers-tasks test --coverage",
-    "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test --coverage"
+    "test": "pnpm -r test",
+    "test:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed test",
+    "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test",
+    "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test",
+    "test:feathers-mongodb-management": "pnpm --filter @kalisio/feathers-mongodb-management test",
+    "test:feathers-s3": "pnpm --filter @kalisio/feathers-s3 test",
+    "test:feathers-tasks": "pnpm --filter @kalisio/feathers-tasks test",
+    "test:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush test"
   },
   "keywords": [
     "keycloak",
@@ -91,7 +91,8 @@
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"
-    ]
+    ],
+    "overrides": {}
   },
   "metaCatalog": {
     "version": "0.7.0",
