@@ -31,15 +31,15 @@ app.service('tasks').create()
 Install with your preferred package manager:
 
 ```shell
-pnpm add @kalisio/feathers-taskss
+pnpm add @kalisio/feathers-tasks
 ```
 
 ```shell
-npm install @kalisio/feathers-taskss
+npm install @kalisio/feathers-tasks
 ```
 
 ```shell
-yarn add @kalisio/feathers-taskss
+yarn add @kalisio/feathers-tasks
 ```
 
 `feathers-tasks` requires **Redis** as infrastructure dependency. BullMQ manages the Redis connection internally — no separate Redis client is needed in your app.
@@ -47,7 +47,7 @@ yarn add @kalisio/feathers-taskss
 ## Configuration
 
 ```js
-import { feathersTasks } from '@kalisio/feathers-taskss'
+import { feathersTasks } from '@kalisio/feathers-tasks'
 import { MemoryService } from '@feathersjs/memory'
 
 // 1. Register the persistence backend (any Feathers adapter)
