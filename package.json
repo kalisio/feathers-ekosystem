@@ -40,6 +40,9 @@
   },
   "keywords": [
     "keycloak",
+    "s3",
+    "mongodb",
+    "bullmq",
     "web-push",
     "feathers",
     "ekosystem",
