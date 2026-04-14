@@ -6,18 +6,90 @@ settings:
 
 catalogs:
   default:
+    '@aws-sdk/client-s3':
+      specifier: ~3.943.0
+      version: 3.943.0
+    '@aws-sdk/s3-request-presigner':
+      specifier: ~3.943.0
+      version: 3.943.0
+    '@bull-board/api':
+      specifier: ~6.20.6
+      version: 6.20.7
+    '@bull-board/express':
+      specifier: ~6.20.6
+      version: 6.20.7
     '@changesets/cli':
       specifier: ~2.30.0
       version: 2.30.0
+    '@feathersjs/adapter-commons':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/authentication':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/authentication-client':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/authentication-local':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/client':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/commons':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/errors':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/express':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/feathers':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/memory':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/mongodb':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/rest-client':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/socketio':
+      specifier: ~5.0.8
+      version: 5.0.44
+    '@feathersjs/socketio-client':
+      specifier: ~5.0.8
+      version: 5.0.44
     '@vitest/coverage-v8':
       specifier: ~4.1.4
       version: 4.1.4
+    archiver:
+      specifier: ~7.0.1
+      version: 7.0.1
+    bullmq:
+      specifier: ~5.71.1
+      version: 5.71.1
     cross-env:
       specifier: ~10.1.0
       version: 10.1.0
+    debug:
+      specifier: ~4.4.3
+      version: 4.4.3
+    feathers-hooks-common:
+      specifier: ~8.2.1
+      version: 8.2.1
+    happy-dom:
+      specifier: ~20.3.1
+      version: 20.3.9
     husky:
       specifier: ~9.1.7
       version: 9.1.7
+    ioredis:
+      specifier: ~5.10.1
+      version: 5.10.1
     keycloak-js:
       specifier: ~23.0.4
       version: 23.0.7
@@ -30,18 +102,42 @@ catalogs:
     lodash:
       specifier: ~4.18.1
       version: 4.18.1
+    mathjs:
+      specifier: ~15.1.1
+      version: 15.1.1
     mermaid:
       specifier: ~10.8.0
       version: 10.8.0
     moment:
       specifier: ~2.30.1
       version: 2.30.1
+    mongodb:
+      specifier: ~6.20.0
+      version: 6.20.0
+    papaparse:
+      specifier: ~5.5.3
+      version: 5.5.3
     quasar:
       specifier: ~2.18.7
       version: 2.18.7
+    sift:
+      specifier: ~17.1.3
+      version: 17.1.3
+    socket.io-client:
+      specifier: ~4.8.2
+      version: 4.8.3
     standard:
       specifier: ~17.1.2
       version: 17.1.2
+    superagent:
+      specifier: ~10.3.0
+      version: 10.3.0
+    tar:
+      specifier: ~7.5.13
+      version: 7.5.13
+    unzipper:
+      specifier: ~0.12.3
+      version: 0.12.3
     vite:
       specifier: ~7.3.1
       version: 7.3.2
@@ -60,6 +156,9 @@ catalogs:
     vitest:
       specifier: ~4.1.4
       version: 4.1.4
+    web-push:
+      specifier: ~3.6.5
+      version: 3.6.7
 
 importers:
 
@@ -168,6 +267,33 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 7.3.2(@types/node@25.6.0)(yaml@2.8.3)
+
+  examples/feathers-tasks-orchestration:
+    dependencies:
+      '@feathersjs/errors':
+        specifier: 'catalog:'
+        version: 5.0.44
+      '@feathersjs/express':
+        specifier: 'catalog:'
+        version: 5.0.44(typescript@6.0.2)
+      '@feathersjs/feathers':
+        specifier: 'catalog:'
+        version: 5.0.44
+      '@feathersjs/memory':
+        specifier: 'catalog:'
+        version: 5.0.44
+      '@feathersjs/socketio':
+        specifier: 'catalog:'
+        version: 5.0.44
+      '@kalisio/feathers-tasks':
+        specifier: workspace:*
+        version: link:../../packages/feathers-tasks
+      bullmq:
+        specifier: 'catalog:'
+        version: 5.71.1
+      debug:
+        specifier: 'catalog:'
+        version: 4.4.3
 
   examples/feathers-webpush:
     devDependencies:
