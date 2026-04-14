@@ -1,0 +1,49 @@
+# Docker Swarm stack — deploy with:
+#   docker build -t feathers-tasks-worker -f examples/feathers-tasks-orchestration/Dockerfile .
+#   docker stack deploy -c examples/feathers-tasks-orchestration/docker-compose.yml tasks-stack
+#
+# Scale the swarm worker:
+#   docker service scale tasks-stack_swarm-worker=4
+#
+# Watch logs:
+#   docker service logs -f tasks-stack_swarm-worker
+
+version: "3.8"
+
+networks:
+  tasks-net:
+    driver: overlay
+    attachable: true
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - tasks-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  swarm-worker:
+    image: feathers-tasks-worker
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      QUEUE_NAME: orchestration-tasks
+      JOB_TYPE: swarm-job
+      ORCHESTRATOR: swarm
+      CONCURRENCY: "2"
+    networks:
+      - tasks-net
+    depends_on:
+      - redis
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      update_config:
+        parallelism: 1
+        delay: 5s

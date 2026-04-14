@@ -1,0 +1,25 @@
+{
+  "name": "feathers-tasks-orchestration-example",
+  "description": "feathers-tasks example with Docker Swarm and Kubernetes workers",
+  "packageManager": "pnpm@10.1.0",
+  "type": "module",
+  "scripts": {
+    "dev:server": "node --watch --conditions development server/index.js",
+    "lint": "standard --fix"
+  },
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/express": "catalog:",
+    "@feathersjs/feathers": "catalog:",
+    "@feathersjs/memory": "catalog:",
+    "@feathersjs/socketio": "catalog:",
+    "@kalisio/feathers-tasks": "workspace:*",
+    "bullmq": "catalog:",
+    "debug": "catalog:"
+  }
+}
