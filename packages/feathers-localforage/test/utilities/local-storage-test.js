@@ -2,7 +2,6 @@ import assert from 'assert'
 import { LocalStorage } from './local-storage.js'
 import { describe, it, afterAll as after } from 'vitest'
 
-// We don't make `localStorage` global here, as we'r simply testing it locally
 const localStorage = new LocalStorage()
 
 export default () => {

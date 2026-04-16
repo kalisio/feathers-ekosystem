@@ -1,15 +1,10 @@
-import { vi, beforeEach, afterEach, beforeAll, afterAll, describe, it, expect } from 'vitest'
+import { vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest'
 
-// polyfills globaux
+// Pour mocha @feathersjs/adapter-tests
 global.before = beforeAll
 global.after = afterAll
-global.beforeEach = beforeEach
-global.afterEach = afterEach
-global.describe = describe
-global.it = it
-global.expect = expect
 
-// Mock store partagé
+// Mock store avec Map
 const mockStore = new Map()
 
 // Factory d’instance LocalForage
@@ -44,8 +39,6 @@ const createLocalForageInstance = () => ({
 vi.mock('localforage', () => {
   const mockLocalForage = {
     createInstance: vi.fn(config => createLocalForageInstance(config)),
-
-    // Valeurs statiques si ton code les utilise
     INDEXEDDB: 1,
     WEBSQL: 2,
     LOCALSTORAGE: 3
@@ -56,7 +49,6 @@ vi.mock('localforage', () => {
   }
 })
 
-// Global LocalForage (si ton code y accède aussi via global)
 global.LocalForage = {
   createInstances: vi.fn(config => createLocalForageInstance(config)),
   INDEXEDDB: 1,
@@ -64,7 +56,7 @@ global.LocalForage = {
   LOCALSTORAGE: 3
 }
 
-// Reset avant/après
+// Resets
 beforeEach(() => {
   mockStore.clear()
   vi.clearAllMocks()
