@@ -19,6 +19,7 @@
     "@feathersjs/memory": "catalog:",
     "@feathersjs/socketio": "catalog:",
     "@kalisio/feathers-tasks": "workspace:*",
+    "bpmn-moddle": "^10.0.0",
     "bullmq": "catalog:",
     "debug": "catalog:"
   }

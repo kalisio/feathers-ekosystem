@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:meta="http://kalisio.com/bpmn/meta"
+             targetNamespace="http://kalisio.com/bpmn"
+             id="feathers-tasks-orchestration">
+
+  <process id="orchestration-process" isExecutable="true">
+
+    <!-- Start -->
+    <startEvent id="start" name="Start" />
+    <sequenceFlow id="flow-start-ingest" sourceRef="start" targetRef="task-ingest" />
+
+    <!--
+      Step 1 — Swarm worker
+      Simulates data ingestion: heavy I/O, handled by a Swarm worker
+    -->
+    <serviceTask id="task-ingest" name="Ingest data">
+      <extensionElements>
+        <meta:jobType>swarm-job</meta:jobType>
+        <meta:steps>3</meta:steps>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow-ingest-split" sourceRef="task-ingest" targetRef="gateway-split" />
+
+    <!-- Parallel split: two K8s tasks run simultaneously -->
+    <parallelGateway id="gateway-split" name="Split" />
+    <sequenceFlow id="flow-split-processA" sourceRef="gateway-split" targetRef="task-processA" />
+    <sequenceFlow id="flow-split-processB" sourceRef="gateway-split" targetRef="task-processB" />
+
+    <!--
+      Step 2a — K8s worker
+      Simulates CPU-intensive processing (e.g. model inference)
+    -->
+    <serviceTask id="task-processA" name="Process A (model inference)">
+      <extensionElements>
+        <meta:jobType>k8s-job</meta:jobType>
+        <meta:steps>4</meta:steps>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow-processA-join" sourceRef="task-processA" targetRef="gateway-join" />
+
+    <!--
+      Step 2b — K8s worker
+      Simulates a parallel processing branch (e.g. data transformation)
+    -->
+    <serviceTask id="task-processB" name="Process B (data transform)">
+      <extensionElements>
+        <meta:jobType>k8s-job</meta:jobType>
+        <meta:steps>2</meta:steps>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow-processB-join" sourceRef="task-processB" targetRef="gateway-join" />
+
+    <!-- Parallel join: wait for both K8s tasks before continuing -->
+    <parallelGateway id="gateway-join" name="Join" />
+    <sequenceFlow id="flow-join-export" sourceRef="gateway-join" targetRef="task-export" />
+
+    <!--
+      Step 3 — Swarm worker
+      Simulates result export after all processing is done
+    -->
+    <serviceTask id="task-export" name="Export result">
+      <extensionElements>
+        <meta:jobType>swarm-job</meta:jobType>
+        <meta:steps>2</meta:steps>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow-export-end" sourceRef="task-export" targetRef="end" />
+
+    <!-- End -->
+    <endEvent id="end" name="End" />
+
+  </process>
+
+</definitions>

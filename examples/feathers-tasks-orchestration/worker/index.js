@@ -20,7 +20,7 @@ const worker = new Worker(
       return
     }
 
-    const { steps = 3, label = 'task' } = job.data
+    const { steps = 3, label = 'task', workflowInstanceId, bpmnTaskId } = job.data
 
     console.log(`[${workerId}] Processing job ${job.id} "${label}" (${steps} steps)`)
 
@@ -38,7 +38,10 @@ const worker = new Worker(
       jobId: job.id,
       label,
       steps,
-      completedAt: new Date().toISOString()
+      completedAt: new Date().toISOString(),
+      // Pass through workflow routing fields so the server can advance the BPMN engine
+      ...(workflowInstanceId && { workflowInstanceId }),
+      ...(bpmnTaskId && { bpmnTaskId })
     }
 
     console.log(`[${workerId}] Job ${job.id} completed`)
