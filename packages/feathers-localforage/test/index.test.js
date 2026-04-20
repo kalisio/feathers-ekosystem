@@ -1,12 +1,9 @@
 import adapterTests from '@feathersjs/adapter-tests'
 import errors from '@feathersjs/errors'
 import { feathers } from '@feathersjs/feathers'
-import { LocalStorage } from './utilities/local-storage.js'
 import assert from 'assert'
 import service from '../src/index.js'
 import { describe, it, beforeEach, afterAll, afterEach } from 'vitest'
-
-global.localStorage = new LocalStorage()
 
 const testSuite = adapterTests([
   '.options',
