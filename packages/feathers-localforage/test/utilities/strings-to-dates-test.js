@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { stringsToDates } from '../../src/strings-to-dates.js'
+import { stringsToDates } from '../../src/utils.js'
 import { describe, it, afterAll as after } from 'vitest'
 
 export default () => {
