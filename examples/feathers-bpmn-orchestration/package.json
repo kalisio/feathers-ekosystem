@@ -1,6 +1,6 @@
 {
-  "name": "feathers-tasks-orchestration-example",
-  "description": "feathers-tasks example with dockerode and Kubernetes API ephemeral workers",
+  "name": "feathers-bpmn-orchestration-example",
+  "description": "BPMN-driven feathers-tasks orchestration with dockerode and Kubernetes API ephemeral workers",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
   "scripts": {
@@ -22,6 +22,7 @@
     "@feathersjs/socketio": "catalog:",
     "@kalisio/feathers-tasks": "workspace:*",
     "@kubernetes/client-node": "^1.0.0",
+    "bpmn-moddle": "^10.0.0",
     "bullmq": "catalog:",
     "debug": "catalog:",
     "dockerode": "^4.0.2"

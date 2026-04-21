@@ -3,7 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:meta="http://kalisio.com/bpmn/meta"
              targetNamespace="http://kalisio.com/bpmn"
-             id="feathers-tasks-orchestration">
+             id="feathers-bpmn-orchestration">
 
   <process id="orchestration-process" isExecutable="true">
 
@@ -12,12 +12,11 @@
     <sequenceFlow id="flow-start-ingest" sourceRef="start" targetRef="task-ingest" />
 
     <!--
-      Step 1 — Swarm worker
-      Simulates data ingestion: heavy I/O, handled by a Swarm worker
+      Step 1 — Docker worker (ephemeral container created by dockerode)
     -->
     <serviceTask id="task-ingest" name="Ingest data">
       <extensionElements>
-        <meta:jobType>swarm-job</meta:jobType>
+        <meta:jobType>docker-job</meta:jobType>
         <meta:steps>3</meta:steps>
       </extensionElements>
     </serviceTask>
@@ -29,8 +28,7 @@
     <sequenceFlow id="flow-split-processB" sourceRef="gateway-split" targetRef="task-processB" />
 
     <!--
-      Step 2a — K8s worker
-      Simulates CPU-intensive processing (e.g. model inference)
+      Step 2a — K8s worker (ephemeral Pod created by the K8s API client)
     -->
     <serviceTask id="task-processA" name="Process A (model inference)">
       <extensionElements>
@@ -42,7 +40,6 @@
 
     <!--
       Step 2b — K8s worker
-      Simulates a parallel processing branch (e.g. data transformation)
     -->
     <serviceTask id="task-processB" name="Process B (data transform)">
       <extensionElements>
@@ -52,17 +49,16 @@
     </serviceTask>
     <sequenceFlow id="flow-processB-join" sourceRef="task-processB" targetRef="gateway-join" />
 
-    <!-- Parallel join: wait for both K8s tasks before continuing -->
+    <!-- Parallel join -->
     <parallelGateway id="gateway-join" name="Join" />
     <sequenceFlow id="flow-join-export" sourceRef="gateway-join" targetRef="task-export" />
 
     <!--
-      Step 3 — Swarm worker
-      Simulates result export after all processing is done
+      Step 3 — Docker worker
     -->
     <serviceTask id="task-export" name="Export result">
       <extensionElements>
-        <meta:jobType>swarm-job</meta:jobType>
+        <meta:jobType>docker-job</meta:jobType>
         <meta:steps>2</meta:steps>
       </extensionElements>
     </serviceTask>
