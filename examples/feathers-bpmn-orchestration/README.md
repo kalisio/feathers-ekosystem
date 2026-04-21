@@ -38,23 +38,31 @@ For a simpler version without BPMN, see [`examples/feathers-tasks-orchestration`
 
 The example [workflows/example.bpmn](workflows/example.bpmn) models a 4-step pipeline with a parallel branch:
 
+```mermaid
+flowchart LR
+    start(( )) --> ingest["<b>Ingest data</b><br/><i>docker-job · 3 steps</i>"]
+    ingest --> split{{"+"}}
+    split --> procA["<b>Process A</b><br/>model inference<br/><i>k8s-job · 4 steps</i>"]
+    split --> procB["<b>Process B</b><br/>data transform<br/><i>k8s-job · 2 steps</i>"]
+    procA --> join{{"+"}}
+    procB --> join
+    join --> export["<b>Export result</b><br/><i>docker-job · 2 steps</i>"]
+    export --> done((( )))
+
+    classDef startNode fill:#52c41a,stroke:#389e0d,stroke-width:2px,color:#fff
+    classDef endNode fill:#f5222d,stroke:#a8071a,stroke-width:3px,color:#fff
+    classDef docker fill:#1890ff,stroke:#0050b3,color:#fff
+    classDef k8s fill:#722ed1,stroke:#391085,color:#fff
+    classDef gateway fill:#fadb14,stroke:#d48806,color:#000
+
+    class start startNode
+    class done endNode
+    class ingest,export docker
+    class procA,procB k8s
+    class split,join gateway
 ```
-Start ──► Ingest (docker-job, 3 steps)
-              │
-              ▼
-          [parallel split]
-         /               \
-Process A                Process B
-(k8s-job, 4 steps)       (k8s-job, 2 steps)
-         \               /
-          [parallel join]   ← waits for both branches
-              │
-              ▼
-          Export (docker-job, 2 steps)
-              │
-              ▼
-             End
-```
+
+Legend: 🟦 Docker container (dockerode)  ·  🟪 Kubernetes pod (K8s API)  ·  🟨 parallel gateway (split / join).
 
 Each `serviceTask` carries two custom extension attributes:
 
