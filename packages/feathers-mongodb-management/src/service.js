@@ -1,7 +1,7 @@
-import errors from '@feathersjs/errors'
-import matcher from 'sift'
 import { filterQuery, sorter, select } from '@feathersjs/adapter-commons'
 import { _ } from '@feathersjs/commons'
+import errors from '@feathersjs/errors'
+import matcher from 'sift'
 
 // Create the base service.
 class Service {
@@ -126,16 +126,6 @@ class Service {
       await this._remove(id, params)
     }
   }
-
-  /* NOT IMPLEMENTED
-  patch (id, data, params) {
-
-  }
-
-  update (id, data, params) {
-
-  }
-  */
 }
 
 export default Service

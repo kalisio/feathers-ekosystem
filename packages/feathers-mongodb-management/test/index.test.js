@@ -1,11 +1,7 @@
 import { beforeAll, afterAll, describe, it, expect } from 'vitest'
 import feathers from '@feathersjs/feathers'
 import { MongoClient } from 'mongodb'
-import makeDebug from 'debug'
-
 import plugin from '../src/index.js'
-
-const debug = makeDebug('feathers-mongodb-management:tests')
 
 describe('feathers-mongodb-management', () => {
   let app, client, adminDb, testDb, databaseService, collectionService, userService
@@ -41,10 +37,9 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('creates a database', async () => {
-    const db = await databaseService.create({
+    await databaseService.create({
       name: 'test-db'
     })
-    debug(db)
     testDb = client.db('test-db')
     expect(testDb).toBeDefined()
   })
@@ -53,7 +48,6 @@ describe('feathers-mongodb-management', () => {
     const serviceDbs = await databaseService.find({
       query: { $select: ['name', 'collections'] }
     })
-    debug(serviceDbs)
     const dbsInfo = await adminDb.listDatabases()
     expect(serviceDbs.length).toBe(dbsInfo.databases.length)
     serviceDbs.forEach(db => expect(db.collections).toBeDefined())
@@ -70,14 +64,11 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('creates a collection', async () => {
-    const collection = await collectionService.create({
+    await collectionService.create({
       name: 'test-collection'
     })
-
-    debug(collection)
     // Need to use strict mode to ensure the delete operation has been taken into account
     const createdCollection = await testDb.collection('test-collection', { strict: true })
-
     expect(createdCollection).toBeDefined()
   })
 
@@ -85,7 +76,6 @@ describe('feathers-mongodb-management', () => {
     const serviceCollections = await collectionService.find({
       query: { $select: ['name', 'count'] }
     })
-    debug(serviceCollections)
     const collections = await testDb.collections()
     expect(serviceCollections.length).toBe(collections.length)
     serviceCollections.forEach(collection => expect(collection.count).toBeDefined())
@@ -94,12 +84,8 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('removes a collection', async () => {
-    const collection = await collectionService.remove('test-collection')
-
-    debug(collection)
-
+    await collectionService.remove('test-collection')
     const collections = await testDb.collections()
-
     expect(!collections.includes('test-collection'))
   })
 
@@ -114,12 +100,11 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('creates a user', async () => {
-    const serviceUser = await userService.create({
+    await userService.create({
       name: 'test-user',
       password: 'test-password',
       roles: ['readWrite']
     })
-    debug(serviceUser)
     const user = await testDb.command({ usersInfo: 'test-user' })
     expect(user).toBeDefined()
   })
@@ -128,7 +113,6 @@ describe('feathers-mongodb-management', () => {
     const serviceUsers = await userService.find({
       query: { $select: ['name', 'roles'] }
     })
-    debug(serviceUsers)
     const data = await testDb.command({ usersInfo: 1 })
     expect(serviceUsers.length).toBe(data.users.length)
     serviceUsers.forEach(user => expect(user.name).toBeDefined())
@@ -137,8 +121,7 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('removes a user', async () => {
-    const serviceUser = await userService.remove('test-user')
-    debug(serviceUser)
+    await userService.remove('test-user')
     try {
       await testDb.command({ usersInfo: 'test-user' })
     } catch (error) {
@@ -147,8 +130,7 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('removes a database', async () => {
-    const db = await databaseService.remove('test-db')
-    debug(db)
+    await databaseService.remove('test-db')
     const dbsInfo = await adminDb.listDatabases()
     expect(dbsInfo.databases.find(item => item.name === 'test-db')).toBeUndefined()
   })
