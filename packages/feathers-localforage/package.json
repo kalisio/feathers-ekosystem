@@ -56,15 +56,6 @@
     "@feathersjs/adapter-tests": "catalog:",
     "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
-    "@feathersjs/socketio": "catalog:",
-    "@types/debug": "catalog:",
-    "@types/express": "catalog:",
-    "@types/node": "catalog:",
-    "core-js": "catalog:",
-    "fs-extra": "catalog:",
-    "npm-check-updates": "catalog:",
-    "ts-node": "catalog:",
-    "tslint": "catalog:",
-    "typescript": "catalog:"
+    "@feathersjs/socketio": "catalog:"
   }
 }
