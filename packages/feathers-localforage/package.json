@@ -1,67 +1,49 @@
 {
   "name": "@kalisio/feathers-localforage",
-  "version": "1.2.0",
   "description": "A FeathersJS client side service based on localforage that persists to IndexedDB, WebSQL, or LocalStorage",
+  "version": "1.2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "development": "./src/index.js",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "standard": {
+    "ignore": [
+      "dist/**"
+    ]
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "standard --fix",
+    "test": "vitest run --coverage"
+  },
   "keywords": [
-    "feathers",
-    "feathers-plugin",
-    "feathersjs-offline",
+    "feathersjs",
+    "locaforage",
     "offline-first",
     "mobile"
   ],
   "author": {
-    "name": "Feathersjs-offline contributors",
-    "email": "feathersjs-offline@hillerstrom.name",
-    "url": "https://github.com/feathersjs-offline"
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
   },
-  "contributors": [
-    {
-      "name": "Kalisio contributors",
-      "url": "https://github.com/kalisio"
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/feathersjs-offline/localforage/issues"
-  },
-  "homepage": "https://github.com/feathersjs-offline/localforage",
+  "contributors": [],
   "license": "MIT",
-  "main": "lib/feathers-localforage.js",
-  "type": "module",
-  "directories": {
-    "src": "src",
-    "lib": "lib",
-    "test": "test"
-  },
-  "files": [
-    "src",
-    "lib"
-  ],
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/feathers"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/feathersjs-offline/localforage.git"
+    "url": "git://github.com/kalisio/feathers-ekosystem.git",
+    "directory": "packages/feathers-localforage"
   },
-  "engines": {
-    "node": ">= 12"
+  "bugs": {
+    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
-  "standard": {
-    "ignore": ["lib/"]
-  },
-  "scripts": {
-    "test": "npm run vitest",
-    "vitest": "vitest run",
-    "test:watch": "vitest",
-    "lint": "standard --fix",
-    "prepublish": "npm run build",
-    "publish": "git push origin --tags && git push origin",
-    "build": "vite build",
-    "release:patch": "npm version --force patch && npm publish --access public",
-    "release:minor": "npm version --force minor && npm publish --access public",
-    "release:major": "npm version --force major && npm publish --access public"
-  },
+  "homepage": "https://kalisio.github.io/feathers-ekosystem/packages/feathers-locaforage",
   "dependencies": {
     "@feathersjs/adapter-commons": "catalog:",
     "@feathersjs/commons": "catalog:",
@@ -78,21 +60,11 @@
     "@types/debug": "catalog:",
     "@types/express": "catalog:",
     "@types/node": "catalog:",
-    "chai": "catalog:",
     "core-js": "catalog:",
-    "cross-env": "catalog:",
-    "eslint-config-standard": "catalog:",
     "fs-extra": "catalog:",
     "npm-check-updates": "catalog:",
-    "nyc": "catalog:",
-    "parallel-webpack": "catalog:",
-    "shx": "catalog:",
     "ts-node": "catalog:",
     "tslint": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-node-polyfills": "catalog:",
-    "webpack": "catalog:",
-    "webpack-merge": "catalog:"
+    "typescript": "catalog:"
   }
 }

@@ -5,10 +5,12 @@
   "type": "module",
   "exports": {
     "./server": {
+      "development": "./src/server/index.js",
       "import": "./dist/server.mjs",
       "require": "./dist/server.cjs"
     },
     "./client": {
+      "development": "./src/client/index.js",
       "import": "./dist/client.mjs",
       "require": "./dist/client.cjs"
     }

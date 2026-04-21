@@ -379,6 +379,6 @@ export class Service extends Adapter {
     return this._remove(id, params)
   }
 }
-export default function init (options) {
+export function init (options) {
   return new Service(options)
-};
+}

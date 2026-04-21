@@ -1,9 +1,9 @@
+import { describe, it, beforeEach, afterAll, afterEach } from 'vitest'
 import adapterTests from '@feathersjs/adapter-tests'
 import errors from '@feathersjs/errors'
 import { feathers } from '@feathersjs/feathers'
 import assert from 'assert'
 import service from '../src/index.js'
-import { describe, it, beforeEach, afterAll, afterEach } from 'vitest'
 
 const testSuite = adapterTests([
   '.options',

@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export default mergeConfig(baseConfig, defineConfig({
   root: __dirname,
   test: {
-    name: 'feathers-distributed',
+    name: 'feathers-localforage',
     globals: true,
     environment: 'node',
     setupFiles: ['./vitest.setup.js'],

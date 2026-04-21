@@ -1,32 +1,28 @@
-import { dirname, resolve } from 'node:path'
-import path from 'path'
-import fs from 'fs-extra'
 import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { builtinModules } from 'node:module'
+import path from 'node:path'
+import { defineConfig, mergeConfig } from 'vite'
+import { baseConfig } from '../../vite.base-config'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const packageInfo = fs.readJsonSync(path.join(__dirname, 'package.json'))
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig({
-  plugins: [nodePolyfills({})],
-  test: {
-    globals: true,
-    environment: 'node'
-  },
+export default mergeConfig(baseConfig, defineConfig({
+  root: __dirname,
   build: {
-    outDir: './lib',
-    minify: false,
-    emptyOutDir: true,
-    rollupOptions: {
-      // Make sure to externalize deps that shouldn't be bundled into your library
-      external: Object.keys(packageInfo.dependencies)
-    },
     lib: {
-      entry: resolve(__dirname, './src/index.js'),
-      name: '@kalisio/feathers-localforage',
-      // the proper extensions will be added
-      fileName: 'feathers-localforage'
+      entry: 'src/index.js',
+      formats: ['es', 'cjs'],
+      fileName: (format) => format === 'es' ? 'index.mjs' : 'index.cjs'
+    },
+    rollupOptions: {
+      external: [
+        ...builtinModules,
+        ...builtinModules.map(m => `node:${m}`),
+        /@feathersjs\//,
+        'debug',
+        'localforage',
+        'sift'
+      ]
     }
   }
-})
+}))

@@ -1,6 +1,6 @@
 # feathers-localforage
 
-__
+_A FeathersJS client side service based on localforage that persists to IndexedDB, WebSQL, or LocalStorage_
 
 ---
 
