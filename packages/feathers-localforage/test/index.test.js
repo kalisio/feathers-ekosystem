@@ -3,7 +3,7 @@ import adapterTests from '@feathersjs/adapter-tests'
 import errors from '@feathersjs/errors'
 import { feathers } from '@feathersjs/feathers'
 import assert from 'assert'
-import service from '../src/index.js'
+import { init as service } from '../src/index.js'
 
 const testSuite = adapterTests([
   '.options',
