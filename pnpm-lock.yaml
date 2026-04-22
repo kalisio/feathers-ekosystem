@@ -22,49 +22,49 @@ catalogs:
       specifier: ~2.30.0
       version: 2.30.0
     '@feathersjs/adapter-commons':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/adapter-tests':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/authentication':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/authentication-client':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/authentication-local':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/client':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/commons':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/errors':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/express':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/feathers':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/memory':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/mongodb':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/rest-client':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/socketio':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@feathersjs/socketio-client':
-      specifier: ~5.0.8
+      specifier: ~5.0.44
       version: 5.0.44
     '@vitest/coverage-v8':
       specifier: ~4.1.4

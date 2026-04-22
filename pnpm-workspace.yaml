@@ -14,24 +14,24 @@ catalog:
   "@casl/mongoose": ~7.1.0
   "@changesets/cli": ~2.30.0
   "@eslint/js": ~9.14.0
-  "@feathersjs/adapter-commons": ~5.0.8
-  "@feathersjs/adapter-tests": ~5.0.8
-  "@feathersjs/authentication": ~5.0.8
-  "@feathersjs/authentication-client": ~5.0.8
-  "@feathersjs/authentication-local": ~5.0.8
-  "@feathersjs/authentication-oauth": ~5.0.8
-  "@feathersjs/client": ~5.0.8
-  "@feathersjs/commons": ~5.0.8
-  "@feathersjs/configuration": ~5.0.8
-  "@feathersjs/errors": ~5.0.8
-  "@feathersjs/express": ~5.0.8
-  "@feathersjs/feathers": ~5.0.8
-  "@feathersjs/memory": ~5.0.8
-  "@feathersjs/mongodb": ~5.0.8
-  "@feathersjs/rest-client": ~5.0.8
-  "@feathersjs/schema": ~5.0.8
-  "@feathersjs/socketio": ~5.0.8
-  "@feathersjs/socketio-client": ~5.0.8
+  "@feathersjs/adapter-commons": ~5.0.44
+  "@feathersjs/adapter-tests": ~5.0.44
+  "@feathersjs/authentication": ~5.0.44
+  "@feathersjs/authentication-client": ~5.0.44
+  "@feathersjs/authentication-local": ~5.0.44
+  "@feathersjs/authentication-oauth": ~5.0.44
+  "@feathersjs/client": ~5.0.44
+  "@feathersjs/commons": ~5.0.44
+  "@feathersjs/configuration": ~5.0.44
+  "@feathersjs/errors": ~5.0.44
+  "@feathersjs/express": ~5.0.44
+  "@feathersjs/feathers": ~5.0.44
+  "@feathersjs/memory": ~5.0.44
+  "@feathersjs/mongodb": ~5.0.44
+  "@feathersjs/rest-client": ~5.0.44
+  "@feathersjs/schema": ~5.0.44
+  "@feathersjs/socketio": ~5.0.44
+  "@feathersjs/socketio-client": ~5.0.44
   "@kalisio/feathers-automerge": ~0.3.8
   "@kalisio/feathers-distributed": ~2.4.0
   "@kalisio/feathers-import-export": ~1.4.1
@@ -46,6 +46,7 @@ catalog:
   "@thumbmarkjs/thumbmarkjs": ~1.7.5
   "@turf/bbox": ~7.3.4
   "@turf/boolean-clockwise": ~7.3.4
+  "@turf/intersect": ~7.3.5
   "@turf/kinks": ~7.3.4
   "@vitejs/plugin-vue": ~6.0.4
   "@vitest/coverage-v8": ~4.1.4
@@ -109,6 +110,7 @@ catalog:
   moment: ~2.30.1
   moment-timezone: ~0.6.0
   mongodb: ~6.20.0
+  nock: ~14.0.13
   nodemailer: ~6.9.8
   papaparse: ~5.5.3
   password-generator: ~2.3.2
