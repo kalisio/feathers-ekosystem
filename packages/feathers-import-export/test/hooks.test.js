@@ -104,11 +104,11 @@ const scenarios = [
 
 function runTests (scenario) {
   it(`[${scenario.name}] remove mongo service`, async () => {
-    await removeMongoService(servicePath)
+    await expect(removeMongoService(servicePath)).resolves.not.toThrow()
   })
 
   it(`[${scenario.name}] unzip input dataset`, async () => {
-    await gunzipDataset(namespace, scenario.dataset)
+    await expect(gunzipDataset(namespace, scenario.dataset)).resolves.not.toThrow()
   })
 
   it(`[${scenario.name}] upload input dataset`, async () => {
