@@ -36,6 +36,8 @@ const chunkSize = 1024 * 1024 * 5
 let uploadId
 const parts = []
 
+fs.mkdirSync('test/tmp', { recursive: true })
+
 describe('feathers-s3-service', () => {
   beforeAll(async () => {
     app = express(feathers())

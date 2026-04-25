@@ -44,6 +44,7 @@ const textFileContent = fs.readFileSync('test/data/text.txt')
 const imageFileContent = fs.readFileSync('test/data/image.png')
 const archiveFileContent = fs.readFileSync('test/data/archive.zip')
 const featuresFileContent = fs.readFileSync('test/data/features.geojson')
+fs.mkdirSync('test/tmp', { recursive: true })
 
 function runTests (message, options) {
   const { checkEvents, useProxy } = options

@@ -27,8 +27,7 @@ const options = {
 const fileId = 'image.png'
 const fileContent = fs.readFileSync('test/data/image.png')
 let resizedFileContent
-
-console.log(fileId, fileContent)
+fs.mkdirSync('test/tmp', { recursive: true })
 
 async function resizeImage (hook) {
   resizedFileContent = await sharp(hook.data.buffer)

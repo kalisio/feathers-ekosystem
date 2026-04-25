@@ -79,6 +79,7 @@ const distributionConfig = {
 
 const fileId = 'image.png'
 const fileContent = fs.readFileSync('test/data/image.png')
+fs.mkdirSync('test/tmp', { recursive: true })
 
 describe('feathers-s3-distribution', () => {
   beforeAll(() => {
