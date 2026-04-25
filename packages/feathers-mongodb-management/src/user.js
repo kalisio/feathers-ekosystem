@@ -4,8 +4,7 @@ import Service from './service.js'
 class UserService extends Service {
   constructor (options) {
     super(options)
-
-    if (!options || !options.db) {
+    if (!options?.db) {
       throw new Error('MongoDB DB option has to be provided')
     }
     this.db = options.db

@@ -54,9 +54,10 @@ export class LocalForageAdapter extends AdapterBase {
 
     this.checkStoreName()
 
-    this._debugSuffix = this._name.includes('_local')
-      ? '  LOCAL'
-      : (this._name.includes('_queue') ? '  QUEUE' : '')
+    let debugSuffix = ''
+    if (this._name.includes('_local')) debugSuffix = '  LOCAL'
+    else if (this._name.includes('_queue')) debugSuffix = '  QUEUE'
+    this._debugSuffix = debugSuffix
 
     this._ready = null
   }
@@ -82,10 +83,8 @@ export class LocalForageAdapter extends AdapterBase {
   checkStoreName () {
     if (usedKeys.indexOf(this._storageKey) === -1) {
       usedKeys.push(this._storageKey)
-    } else {
-      if (!this._reuseKeys) {
-        throw new errors.Forbidden(`The storage name '${this._storageKey}' is already in use by another instance.`)
-      }
+    } else if (!this._reuseKeys) {
+      throw new errors.Forbidden(`The storage name '${this._storageKey}' is already in use by another instance.`)
     }
   }
 
@@ -167,7 +166,7 @@ export class LocalForageAdapter extends AdapterBase {
       data: values.map(value => _select(value, params, this.id))
     }
 
-    if (!(paginate && paginate.default)) {
+    if (!paginate?.default) {
       debug(`_find res = ${JSON.stringify(result.data)}`)
       return result.data
     }
@@ -212,9 +211,7 @@ export class LocalForageAdapter extends AdapterBase {
       return item
     }
 
-    const data = Array.isArray(raw)
-      ? raw.map(item => addId(Object.assign({}, item)))
-      : addId(Object.assign({}, raw))
+    const data = Array.isArray(raw) ? raw.map(item => addId({ ...item })) : addId({ ...raw })
 
     const addItemId = (!Object.prototype.hasOwnProperty.call(params, 'addId') || params.addId)
 

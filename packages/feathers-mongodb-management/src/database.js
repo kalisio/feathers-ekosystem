@@ -4,10 +4,9 @@ import Service from './service.js'
 class DatabaseService extends Service {
   constructor (options) {
     super(options)
-    if (!options || !options.adminDb || !options.client) {
+    if (!options?.adminDb || !options?.client) {
       throw new Error('Database service options (admin DB and DB client) have to be provided')
     }
-
     // Use the admin database for some operations
     this.adminDb = options.adminDb
     // And the client for some others
