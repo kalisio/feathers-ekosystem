@@ -58,7 +58,7 @@ export class LocalForageAdapter extends AdapterBase {
       ? '  LOCAL'
       : (this._name.includes('_queue') ? '  QUEUE' : '')
 
-    this._ready = this.ready()
+    this._ready = null
   }
 
   sanitizeParameters (options) {
@@ -129,6 +129,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _find (params = {}) {
     debug(`_find(${JSON.stringify(params)})` + this._debugSuffix)
+    if (!this._ready) this._ready = this.ready()
     await this._ready
     const { paginate } = this.getOptions(params)
     const { query, filters } = this.getQuery(params)
@@ -177,9 +178,9 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _get (id, params = {}) {
     debug(`_get(${id}, ${JSON.stringify(params)})` + this._debugSuffix)
+    if (!this._ready) this._ready = this.ready()
     await this._ready
     const { query } = this.getQuery(params)
-
     return this.getModel().getItem(String(id), null)
       .catch(err => { throw new errors.NotFound(`No record found for ${this.id} '${id}', err=${err.name} ${err.message}` + this._debugSuffix) })
       .then(item => {
