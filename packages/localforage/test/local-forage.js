@@ -2,7 +2,7 @@ import { vi } from 'vitest'
 
 const mockStore = new Map()
 
-export const createLocalForageInstance = () => ({
+export const createLocalForage = () => ({
   INDEXEDDB: 1,
   WEBSQL: 2,
   LOCALSTORAGE: 3,
@@ -29,6 +29,6 @@ export const createLocalForageInstance = () => ({
   keys: vi.fn(() => Promise.resolve(Array.from(mockStore.keys())))
 })
 
-export const clearLocalForageMock = () => {
+export const clearLocalForage = () => {
   mockStore.clear()
 }

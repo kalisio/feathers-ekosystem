@@ -1,6 +1,6 @@
 import { vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest'
-import { LocalStorage } from './test/utilities/local-storage.js'
-import { createLocalForageInstance, clearLocalForageMock } from './test/utilities/local-forage.js'
+import { LocalStorage } from './test/local-storage.js'
+import { createLocalForage, clearLocalForage } from './test/local-forage.js'
 
 // For mocha @feathersjs/adapter-tests
 global.before = beforeAll
@@ -11,7 +11,7 @@ global.localStorage = new LocalStorage()
 // Mock localforage
 vi.mock('localforage', () => ({
   default: {
-    createInstance: vi.fn(() => createLocalForageInstance()),
+    createInstance: vi.fn(() => createLocalForage()),
     INDEXEDDB: 1,
     WEBSQL: 2,
     LOCALSTORAGE: 3
@@ -19,11 +19,11 @@ vi.mock('localforage', () => ({
 }))
 
 beforeEach(() => {
-  clearLocalForageMock()
+  clearLocalForage()
   vi.clearAllMocks()
 })
 
 afterEach(() => {
-  clearLocalForageMock()
+  clearLocalForage()
   vi.clearAllMocks()
 })
