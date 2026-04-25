@@ -1,5 +1,5 @@
 {
-  "name": "feathers-tasks-orchestration-example",
+  "name": "tasks-orchestration",
   "description": "feathers-tasks example with dockerode and Kubernetes API ephemeral workers",
   "packageManager": "pnpm@10.1.0",
   "type": "module",

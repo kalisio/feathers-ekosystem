@@ -1,11 +1,11 @@
 {
-  "name": "feathers-tasks-example",
-  "description": "feathers-tasks example",
+  "name": "s3",
+  "description": "feathers-s3 example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
   "scripts": {
     "dev": "pnpm dev:server & pnpm dev:client",
-    "dev:server": "node --watch --conditions development server/index.js",
+    "dev:server": "node --watch server/index.js",
     "dev:client": "vite",
     "lint": "standard --fix"
   },
@@ -16,13 +16,11 @@
   "contributors": [],
   "license": "MIT",
   "devDependencies": {
+    "@feathersjs/client": "catalog:",
     "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
-    "@feathersjs/memory": "catalog:",
     "@feathersjs/socketio": "catalog:",
-    "@feathersjs/socketio-client": "catalog:",
-    "@kalisio/feathers-tasks": "workspace:*",
-    "socket.io-client": "catalog:",
+    "@kalisio/feathers-s3": "workspace:*",
     "vite": "catalog:"
   }
 }

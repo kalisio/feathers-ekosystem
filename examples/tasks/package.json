@@ -1,16 +1,11 @@
 {
-  "name": "feathers-webpush",
-  "description": "feathers-webpush example",
+  "name": "tasks",
+  "description": "feathers-tasks example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
-  "standard": {
-    "globals": [
-      "self"
-    ]
-  },
   "scripts": {
     "dev": "pnpm dev:server & pnpm dev:client",
-    "dev:server": "node --watch server/index.js",
+    "dev:server": "node --watch --conditions development server/index.js",
     "dev:client": "vite",
     "lint": "standard --fix"
   },
@@ -21,16 +16,13 @@
   "contributors": [],
   "license": "MIT",
   "devDependencies": {
-    "@feathersjs/errors": "catalog:",
     "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
     "@feathersjs/memory": "catalog:",
     "@feathersjs/socketio": "catalog:",
     "@feathersjs/socketio-client": "catalog:",
-    "@kalisio/feathers-webpush": "workspace:*",
-    "lodash": "catalog:",
-    "socket.io-client": "^4.7.1",
-    "vite": "catalog:",
-    "web-push": "catalog:"
+    "@kalisio/feathers-tasks": "workspace:*",
+    "socket.io-client": "catalog:",
+    "vite": "catalog:"
   }
 }

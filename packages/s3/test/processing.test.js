@@ -28,6 +28,8 @@ const fileId = 'image.png'
 const fileContent = fs.readFileSync('test/data/image.png')
 let resizedFileContent
 
+console.log(fileId, fileContent)
+
 async function resizeImage (hook) {
   resizedFileContent = await sharp(hook.data.buffer)
     .resize(128, 48, { fit: 'contain', background: '#00000000' })
