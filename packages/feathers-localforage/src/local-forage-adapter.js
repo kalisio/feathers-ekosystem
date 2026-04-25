@@ -128,7 +128,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _find (params = {}) {
     debug(`_find(${JSON.stringify(params)})` + this._debugSuffix)
-    if (!this._ready) this._ready = this.ready()
+    if (this._ready === null) this._ready = this.ready()
     await this._ready
     const { paginate } = this.getOptions(params)
     const { query, filters } = this.getQuery(params)
@@ -177,7 +177,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _get (id, params = {}) {
     debug(`_get(${id}, ${JSON.stringify(params)})` + this._debugSuffix)
-    if (!this._ready) this._ready = this.ready()
+    if (this._ready === null) this._ready = this.ready()
     await this._ready
     const { query } = this.getQuery(params)
     return this.getModel().getItem(String(id), null)
