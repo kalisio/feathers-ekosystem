@@ -25,7 +25,7 @@ describe('feathers-mongodb-management', () => {
   })
 
   it('registers the plugin', () => {
-    app.configure(plugin)
+    expect(() => app.configure(plugin)).not.toThrow()
   })
 
   it('creates the database service', () => {
@@ -86,7 +86,7 @@ describe('feathers-mongodb-management', () => {
   it('removes a collection', async () => {
     await collectionService.remove('test-collection')
     const collections = await testDb.collections()
-    expect(!collections.includes('test-collection'))
+    expect(collections).not.toContain('test-collection')
   })
 
   it('creates the user service', () => {
