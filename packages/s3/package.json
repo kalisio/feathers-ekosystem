@@ -26,7 +26,6 @@
   "scripts": {
     "build": "vite build",
     "lint": "standard --fix",
-    "pretest": "pnpm --filter @kalisio/feathers-s3 build",
     "test": "vitest run --coverage"
   },
   "keywords": [
