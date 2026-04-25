@@ -12,6 +12,19 @@ const { Unavailable } = errors
 const debug = makeDebug('feathers-distributed')
 const debugIgnore = makeDebug('feathers-distributed:ignore')
 
+function parseServiceSubscriberEvent (data, eventName) {
+  if (!data.advertisement || (data.advertisement.name !== COMPONENTS.SERVICES_SUBSCRIBER)) {
+    debugIgnore(`Ignoring ${eventName} event for other components than services subscriber`, data.advertisement)
+    return null
+  }
+  const { appDistributionKey: key, appUuid: uuid } = data.advertisement
+  if (!key || !uuid) {
+    debugIgnore(`Ignoring ${eventName} event for services subscriber without key/uuid`, data.advertisement)
+    return null
+  }
+  return { key, uuid, shortUuid: uuid.split('-')[0] }
+}
+
 export async function initialize (app) {
   debug('Initializing cote with options', app.coteOptions)
   // Setup cote with options
@@ -164,38 +177,19 @@ export async function initialize (app) {
   // Each time a new app pops up we republish local services so that
   // service distribution does not depend on the initialization order of the apps
   app.servicePublisher.on('cote:added', (data) => {
-    // As this event is emitted for all cote components filtering one should be sufficient
-    if (!data.advertisement || (data.advertisement.name !== COMPONENTS.SERVICES_SUBSCRIBER)) {
-      debugIgnore('Ignoring cote:added event for other components than services subscriber', data.advertisement)
-      return
-    }
-    const key = data.advertisement.appDistributionKey
-    const uuid = data.advertisement.appUuid
-    if (!key || !uuid) {
-      debugIgnore('Ignoring cote:added event for services subscriber without key/uuid', data.advertisement)
-      return
-    }
-    const shortUuid = uuid.split('-')[0]
+    const parsed = parseServiceSubscriberEvent(data, 'cote:added')
+    if (!parsed) return
+    const { key, uuid, shortUuid } = parsed
     debug('New services subscriber detected for app with uuid ' + shortUuid + ' and key ' + key + ' from app with uuid ' + app.shortUuid + ' and key ' + app.distributionKey, data.advertisement)
-    // When a new app pops up create the required proxy to it first
     registerApplication(app, { uuid, shortUuid, key })
   })
   // Manage app going offline
   app.servicePublisher.on('cote:removed', (data) => {
     // As this event is emitted for all cote components filtering one should be sufficient
-    if (!data.advertisement || (data.advertisement.name !== COMPONENTS.SERVICES_SUBSCRIBER)) {
-      debugIgnore('Ignoring cote:removed event for other components than services subscriber', data.advertisement)
-      return
-    }
-    const key = data.advertisement.appDistributionKey
-    const uuid = data.advertisement.appUuid
-    if (!key || !uuid) {
-      debugIgnore('Ignoring cote:removed event for services subscriber without key/uuid', data.advertisement)
-      return
-    }
-    const shortUuid = uuid.split('-')[0]
+    const parsed = parseServiceSubscriberEvent(data, 'cote:removed')
+    if (!parsed) return
+    const { key, uuid, shortUuid } = parsed
     debug('Services subscriber loss detected for app with uuid ' + shortUuid + ' and key ' + key + ' from app with uuid ' + app.shortUuid + ' and key ' + app.distributionKey, data.advertisement)
-    // When an app goes offline check if we need to keep cote components alive for remaining replicas
     unregisterApplication(app, { uuid, shortUuid, key })
   })
 
