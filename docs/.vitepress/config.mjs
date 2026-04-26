@@ -3,7 +3,7 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 import { generateSideBar } from './sidebar.mjs'
 import packages from './packages.json'
 
-const sortePackagesNavBar = packages.sort().map(pkg => {
+const sortedPackagesNavBar = packages.sort().map(pkg => {
   return { text: pkg, link: `/packages/${pkg}/` }
 })
 
@@ -29,11 +29,10 @@ export default withMermaid(
         ,
         {
           text: 'Packages',
-          items: sortePackagesNavBar
+          items: sortedPackagesNavBar
         }
       ],
       sidebar: {
-      '/packages/feathers-localforage/': generateSideBar('feathers-localforage'),
         '/overview/': [
           { text: 'About', link: '/overview/about' },
           { text: 'Contributing', link: '/overview/contributing' },
