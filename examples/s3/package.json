@@ -3,6 +3,7 @@
   "description": "feathers-s3 example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "pnpm dev:server & pnpm dev:client",
     "dev:server": "node --watch server/index.js",

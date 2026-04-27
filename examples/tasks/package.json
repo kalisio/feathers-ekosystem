@@ -3,6 +3,7 @@
   "description": "feathers-tasks example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "pnpm dev:server & pnpm dev:client",
     "dev:server": "node --watch --conditions development server/index.js",

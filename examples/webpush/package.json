@@ -3,6 +3,7 @@
   "description": "feathers-webpush example",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
+  "private": true,
   "standard": {
     "globals": [
       "self"

@@ -3,6 +3,7 @@
   "description": "feathers-tasks example with dockerode and Kubernetes API ephemeral workers",
   "packageManager": "pnpm@10.1.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev:server": "node --watch --conditions development server/index.js",
     "worker": "node worker/run-job.js",
