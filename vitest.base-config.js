@@ -26,6 +26,7 @@ export const baseConfig = defineConfig({
   },
   resolve: {
     alias: {
+      '@kalisio/feathers-distributed': path.resolve(__dirname, 'packages/feathers-distributed/src/index.js'),
       '@kalisio/feathers-s3/server': path.resolve(__dirname, 'packages/feathers-s3/src/server/index.js'),
       '@kalisio/feathers-s3/client': path.resolve(__dirname, 'packages/feathers-s3/src/client/index.js')
     }
