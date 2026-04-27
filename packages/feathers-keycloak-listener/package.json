@@ -5,7 +5,6 @@
   "type": "module",
   "exports": {
     ".": {
-      "development": "./src/index.js",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
