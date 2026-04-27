@@ -49,10 +49,7 @@
     "archiver": "catalog:",
     "debug": "catalog:",
     "lodash": "catalog:",
-    "mathjs": "catalog:",
-    "moment": "catalog:",
-    "papaparse": "catalog:",
-    "sift": "catalog:"
+    "papaparse": "catalog:"
   },
   "devDependencies": {
     "@feathersjs/errors": "catalog:",

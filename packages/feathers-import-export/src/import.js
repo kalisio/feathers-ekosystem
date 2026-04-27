@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import { promisify } from 'node:util'
 import { pipeline, Writable } from 'node:stream'
+import { transform } from '@kalisio/common-core'
 import { importers } from './importers/index.js'
-import { transform } from './utils.js'
 
 import createDebug from 'debug'
 const debug = createDebug('feathers-import-export:import')
