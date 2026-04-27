@@ -14,7 +14,7 @@
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
     "build:feathers-localforage": "pnpm --filter @kalisio/feathers-localforage build",
     "changeset": "changeset",
-    "changeset:release": "pnpm build && changeset publish",
+    "changeset:publish": "pnpm build && changeset publish",
     "changeset:status": "changeset status",
     "changeset:version": "changeset version",
     "clear": "pnpm -r exec rimraf node_modules dist coverage",
@@ -102,6 +102,6 @@
   },
   "metaCatalog": {
     "version": "0.8.0",
-    "syncedAt": "2026-04-25T08:17:22.328Z"
+    "syncedAt": "2026-04-27T09:27:43.260Z"
   }
 }

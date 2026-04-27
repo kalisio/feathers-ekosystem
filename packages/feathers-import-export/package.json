@@ -43,6 +43,7 @@
   },
   "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-import-export",
   "dependencies": {
+    "@kalisio/common-core": "catalog:",
     "@kalisio/feathers-s3": "workspace:",
     "JSONStream": "^1.3.5",
     "archiver": "catalog:",

@@ -66,6 +66,9 @@ catalogs:
     '@feathersjs/socketio-client':
       specifier: ~5.0.44
       version: 5.0.44
+    '@kalisio/common-core':
+      specifier: ~0.1.0
+      version: 0.1.0
     '@vitest/coverage-v8':
       specifier: ~4.1.4
       version: 4.1.5
@@ -448,6 +451,9 @@ importers:
 
   packages/feathers-import-export:
     dependencies:
+      '@kalisio/common-core':
+        specifier: 'catalog:'
+        version: 0.1.0(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sift@17.1.3)
       '@kalisio/feathers-s3':
         specifier: 'workspace:'
         version: link:../feathers-s3
@@ -1668,6 +1674,23 @@ packages:
     engines: {node: '>= 10.16.0'}
     peerDependencies:
       jsep: ^0.4.0||^1.0.0
+
+  '@kalisio/common-core@0.1.0':
+    resolution: {integrity: sha512-hvrU99qtKuzS7AyQNz9MSBl4oKPgoYEyY5Wtoz9FjmHRCvHb6iyOXUmq/QiVg1MFbhdb3AK7PQ/LolE5VbK6Zg==}
+    peerDependencies:
+      lodash-es: ~4.18.1
+      mathjs: ~15.1.1
+      moment: ~2.30.1
+      sift: ~17.1.3
+    peerDependenciesMeta:
+      lodash-es:
+        optional: true
+      mathjs:
+        optional: true
+      moment:
+        optional: true
+      sift:
+        optional: true
 
   '@kubernetes/client-node@1.4.0':
     resolution: {integrity: sha512-Zge3YvF7DJi264dU1b3wb/GmzR99JhUpqTvp+VGHfwZT+g7EOOYNScDJNZwXy9cszyIGPIs0VHr+kk8e95qqrA==}
@@ -7172,6 +7195,13 @@ snapshots:
   '@jsep-plugin/regex@1.0.4(jsep@1.4.0)':
     dependencies:
       jsep: 1.4.0
+
+  '@kalisio/common-core@0.1.0(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sift@17.1.3)':
+    optionalDependencies:
+      lodash-es: 4.18.1
+      mathjs: 15.1.1
+      moment: 2.30.1
+      sift: 17.1.3
 
   '@kubernetes/client-node@1.4.0':
     dependencies:
