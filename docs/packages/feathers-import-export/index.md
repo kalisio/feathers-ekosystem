@@ -5,7 +5,7 @@
 **feathers-import-export** has been specially designed to process large volumes of data and to overcome data transfer problems during import and export, it relies on the capabilities of the S3 API.
 
 > [!WARNING]
-> Consequently, the use of this library requires being able to operate a store compatible with the **S3 API**.
+> Consequently, using this library requires access to a storage service compatible with the **S3 API**.
 
 > [!NOTE]
 > To deal with the objects in the stores, `feathers-import-export` relies on the [feathers-s3](https://github.com/kalisio/feathers-s3) library. It is highly recommended to read a little more about this library upfront.
