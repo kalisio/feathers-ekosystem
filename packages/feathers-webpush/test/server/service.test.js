@@ -53,7 +53,7 @@ describe('feathers-webpush:service', () => {
       subscriptionProperty: 'subscriptions'
     })
     expect(response).toBeDefined()
-    expect(response.succesful[0].statusCode).toEqual(201)
+    expect(response.succeeded[0].statusCode).toEqual(201)
   })
 
   afterAll(async () => {

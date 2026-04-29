@@ -47,7 +47,7 @@ export class Service {
       }
     })
     // Send webpush notification for each subscription
-    const webpushNotificationSend = { succesful: [], failed: [], subscriptionService, subscriptionProperty }
+    const webpushNotificationSend = { succeeded: [], failed: [], subscriptionService, subscriptionProperty }
     for (const subscription of subscriptions) {
       // Check data subscription required
       if (!subscription.endpoint) throw new BadRequest('feathers-webpush:create: expected missing \'subscription.endpoint\' parameter')
@@ -57,7 +57,7 @@ export class Service {
       try {
         const response = await webpush.sendNotification(subscription, JSON.stringify(notification))
         debug('webpush notification send:', subscription.endpoint)
-        webpushNotificationSend.succesful.push(response)
+        webpushNotificationSend.succeeded.push(response)
       } catch (error) {
         webpushNotificationSend.failed.push(error)
         debug('error sending webpush notification:', subscription.endpoint)
