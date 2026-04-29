@@ -1,0 +1,27 @@
+{
+  "name": "docs",
+  "description": "feathers-ekosystem docs",
+  "packageManager": "pnpm@10.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "vitepress build",
+    "dev": "vitepress dev"
+  },
+  "author": {
+    "name": "KALISIO <contact@kalisio.com>",
+    "url": "https://github.com/kalisio"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "keycloak-js": "catalog:",
+    "lodash": "catalog:",
+    "mermaid": "catalog:",
+    "moment": "catalog:",
+    "quasar": "catalog:",
+    "vitepress": "catalog:",
+    "vitepress-plugin-mermaid": "catalog:",
+    "vitepress-theme-kalisio": "catalog:"
+  }
+}

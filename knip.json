@@ -1,6 +1,3 @@
 {
-  "ignore": [
-    "docs/.vitepress/**"
-  ],
   "exclude": ["catalog"]
 }

@@ -1,6 +1,7 @@
 packages:
   - packages/**
   - examples/**
+  - docs/
 catalog:
   "@automerge/automerge-repo": ~2.4.0
   "@automerge/automerge-repo-network-websocket": ~2.4.0
