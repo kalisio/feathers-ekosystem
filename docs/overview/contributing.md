@@ -36,6 +36,22 @@ pnpm lint:<package>
 > **common-ekosystem** follows the [standardJS](https://standardjs.com/) style guide for linting and code consistency.
 > By default, **standard** is called with the `--fix` option to automatically fix style issues before committing.
 
+### Auditing
+
+Two tools are available for inspecting the codebase:
+
+```bash
+pnpm inspect 
+```
+
+`inspect` detects unused files, exports, and dependencies via [knip](https://knip.dev)
+
+```bash
+pnpm audit
+```
+
+`audit` checks for known vulnerabilities in the dependency tree. See the [command reference](https://pnpm.io/fr/cli/audit) for more details.
+
 ### Testing
 
 ```bash
