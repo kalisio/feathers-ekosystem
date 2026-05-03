@@ -83,6 +83,7 @@
     "lint-staged": "catalog:",
     "rimraf": "catalog:",
     "standard": "catalog:",
+    "typescript": "catalog:",
     "vite": "catalog:",
     "vite-bundle-visualizer": "catalog:",
     "vitest": "catalog:"
@@ -99,6 +100,6 @@
   },
   "metaCatalog": {
     "version": "0.9.0",
-    "syncedAt": "2026-04-27T15:42:10.418Z"
+    "syncedAt": "2026-05-03T19:50:10.348Z"
   }
 }

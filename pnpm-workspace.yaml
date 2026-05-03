@@ -33,9 +33,9 @@ catalog:
   "@feathersjs/schema": ~5.0.44
   "@feathersjs/socketio": ~5.0.44
   "@feathersjs/socketio-client": ~5.0.44
-  "@kalisio/common-core": ~0.1.2
-  "@kalisio/common-geospatial": ~0.1.2
-  "@kalisio/common-graphics": ~0.1.2
+  "@kalisio/common-core": ~0.3.0
+  "@kalisio/common-geospatial": ~0.3.0
+  "@kalisio/common-graphics": ~0.3.0
   "@kalisio/feathers-automerge": ~0.3.8
   "@kalisio/feathers-distributed": ~2.4.0
   "@kalisio/feathers-import-export": ~1.4.1
@@ -48,10 +48,11 @@ catalog:
   "@quasar/extras": ~1.17.0
   "@quasar/quasar-app-extension-testing-unit-vitest": ~1.2.4
   "@thumbmarkjs/thumbmarkjs": ~1.7.5
-  "@turf/bbox": ~7.3.4
-  "@turf/boolean-clockwise": ~7.3.4
+  "@turf/bbox": ~7.3.5
+  "@turf/boolean-clockwise": ~7.3.5
   "@turf/intersect": ~7.3.5
-  "@turf/kinks": ~7.3.4
+  "@turf/kinks": ~7.3.5
+  "@turf/truncate": ~7.3.5
   "@vitejs/plugin-vue": ~6.0.4
   "@vitest/coverage-v8": ~4.1.4
   "@vue/eslint-config-prettier": " ^10.1.0"
@@ -96,6 +97,7 @@ catalog:
   glob: ~13.0.1
   globals: ~16.4.0
   happy-dom: ~20.3.1
+  heap-js: ~2.7.1
   helmet: ~3.5.0
   husky: ~9.1.7
   ioredis: ~5.10.1
@@ -111,7 +113,7 @@ catalog:
   lodash: ~4.18.1
   lodash-es: ~4.18.1
   loglevel: ~1.9.2
-  lru-cache: ~10.2.2
+  lru-cache: ~11.3.5
   mathjs: ~15.1.1
   mermaid: ~10.8.0
   moment: ~2.30.1
@@ -139,6 +141,7 @@ catalog:
   standard: ~17.1.2
   superagent: ~10.3.0
   tar: ~7.5.13
+  typescript: ~6.0.3
   unzipper: ~0.12.3
   vite: ~7.3.1
   vite-bundle-visualizer: ~1.2.1
