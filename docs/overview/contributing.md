@@ -41,7 +41,7 @@ pnpm lint:<package>
 Two tools are available for inspecting the codebase:
 
 ```bash
-pnpm inspect 
+pnpm inspect
 ```
 
 `inspect` detects unused files, exports, and dependencies via [knip](https://knip.dev)
@@ -160,7 +160,7 @@ flowchart TD
 During development, any change that should appear in a release must be recorded by creating a **changeset**:
 
 ```bash
-pnpm changeset
+pnpm change
 ```
 
 This command will guide you through a short interactive process where you:
@@ -180,7 +180,7 @@ Each **changeset** represents one contribution to the next release. Multiple cha
 When preparing a release, run:
 
 ```bash
-pnpm changeset:version
+pnpm bump
 ```
 
 **Changesets** then automatically:
@@ -200,7 +200,7 @@ git push
 To publish the packages to [NPM](https://www.npmjs.com/), use:
 
 ```bash
-pnpm changeset:publish
+pnpm release
 git push --follow-tags
 ```
 
