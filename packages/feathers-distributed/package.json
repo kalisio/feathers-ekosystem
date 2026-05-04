@@ -47,7 +47,7 @@
     "cote": "~1.2.0",
     "debug": "catalog:",
     "portfinder": "~1.0.38",
-    "uuid": "^8.3.2"
+    "uuid": "~14.0.0"
   },
   "devDependencies": {
     "@feathersjs/authentication": "catalog:",
