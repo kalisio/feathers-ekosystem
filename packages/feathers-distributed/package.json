@@ -46,7 +46,7 @@
     "@feathersjs/feathers": "catalog:",
     "cote": "~1.2.0",
     "debug": "catalog:",
-    "portfinder": "^1.0.25",
+    "portfinder": "~1.0.38",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
