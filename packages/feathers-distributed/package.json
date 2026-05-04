@@ -44,7 +44,7 @@
     "@feathersjs/commons": "catalog:",
     "@feathersjs/errors": "catalog:",
     "@feathersjs/feathers": "catalog:",
-    "cote": "^1.0.3",
+    "cote": "~1.2.0",
     "debug": "catalog:",
     "portfinder": "^1.0.25",
     "uuid": "^8.3.2"
