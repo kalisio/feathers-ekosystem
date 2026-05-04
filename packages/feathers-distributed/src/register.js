@@ -63,7 +63,11 @@ export async function registerApplication (app, applicationDescriptor) {
       debug(`Dispatching ${event} remote service event on path ${object.path} in local app with uuid ${app.shortUuid} and key ${app.distributionKey}`, object, context)
       const servicePath = getServicePath(app, object)
       const service = getService(app, servicePath)
-      if (context) Object.assign(context, { service, app })
+      if (context) {
+        // We override the context path as the remote service might be registered on a different one.
+        // Otherwise the socket client will not receive the event as listening to the 'remote-path created' event and not the 'local-path created' event.
+        Object.assign(context, { path: servicePath, service, app })
+      }
       // Ensure we don't have any local service with the same name to avoid infinite looping
       if (service?.remote) service.emit(event, object, context)
     })

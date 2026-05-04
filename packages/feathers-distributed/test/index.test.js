@@ -1,7 +1,5 @@
 import { vi, beforeAll, afterAll, describe, it, expect } from 'vitest'
 import { setTimeout as sleep } from 'node:timers/promises'
-// FIXME
-// import util from 'node:util'
 import { authenticate } from '@feathersjs/authentication'
 import auth from '@feathersjs/authentication-client'
 import restClient from '@feathersjs/rest-client'
@@ -446,8 +444,6 @@ describe('feathers-distributed:main', () => {
     expect(name).toBe('Donald Doe')
   }, 5000)
 
-  /*
-  FIXME
   it('dispatch custom events and ignore the ones not configured for distribution', async () => {
     let createdCount = 0
     const updatedCount = 0
@@ -460,52 +456,56 @@ describe('feathers-distributed:main', () => {
       socketClientCustomServices[service2].removeAllListeners('updated')
       socketClientCustomServices[service1].removeAllListeners('custom')
     }
-    await new Promise((resolve, reject) => {
-      const checkIsDone = () => {
+    const testFunction = async (resolve, reject) => {
+      const checkIsDone = (data, context) => {
         if ((createdCount === 2) && (updatedCount === 0) && (customCount === 2)) {
           removeListeners()
           resolve()
         }
       }
-      customServices[service1].once('created', user => {
+      customServices[service1].once('created', (user, context) => {
         expect(user.id === 0).toBe(true)
         createdCount++
-        checkIsDone()
+        checkIsDone(user, context)
       })
-      customServices[service2].once('updated', () => {
+      customServices[service2].once('updated', (data, context) => {
         removeListeners()
         reject(new Error('updated should not be called'))
       })
       customServices[service1].once('custom', (data, context) => {
         expect(data.payload === 'Donald Doe').toBe(true)
-        expect(context.app === apps[service1]).toBe(true)
-        expect(context.service === customServices[service1]).toBe(true)
+        if (context) { // When not emitted from hook context might be missing
+          expect(context.app === apps[service1]).toBe(true)
+          expect(context.service === customServices[service1]).toBe(true)
+        }
         customCount++
-        checkIsDone()
+        checkIsDone(data, context)
       })
-      // FIXME: not called whatever the reason
-      socketClientCustomServices[service1].once('created', user => {
+      socketClientCustomServices[service1].once('created', (user, context) => {
         expect(user.id === 0).toBe(true)
         createdCount++
-        checkIsDone()
+        checkIsDone(user, context)
       })
       socketClientCustomServices[service2].once('updated', () => {
         removeListeners()
         reject(new Error('updated should not be called'))
       })
-      socketClientCustomServices[service1].once('custom', data => {
+      socketClientCustomServices[service1].once('custom', (data, context) => {
         expect(data.payload === 'Donald Doe').toBe(true)
         customCount++
-        checkIsDone()
+        checkIsDone(data, context)
       })
-      util.promisify(setTimeout)(5000)
-        .then(() => customServices[gateway].create({ name: 'Donald Doe' }))
-        .then(() => customServices[gateway].update(0, { name: 'Donald Dover' }))
-        .then(() => customServices[gateway].emit('custom', { payload: 'Donald Doe' }))
-        .catch(reject)
-    })
-  }, 40000)
-  */
+      try {
+        await sleep(5000)
+        await customServices[gateway].create({ name: 'Donald Doe' })
+        await customServices[gateway].update(0, { name: 'Donald Dover' })
+        await customServices[gateway].emit('custom', { payload: 'Donald Doe' })
+      } catch (error) {
+        reject(error)
+      }
+    }
+    await new Promise(testFunction)
+  }, 20000)
 
   it('not found request should return 404 on local service', async () => {
     const url = 'http://localhost:' + (baseListenPort + gateway) + '/xxx'
