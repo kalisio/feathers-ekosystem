@@ -18,15 +18,17 @@ The initial use case was to simplify data segregation for SaaS applications wher
 
 Install with your preferred package manager:
 
-```shell
+::: code-group
+
+```bash [pnpm]
 pnpm add @kalisio/feathers-mongodb-management
 ```
 
-```shell
+```bash [npm]
 npm install @kalisio/feathers-mongodb-management
 ```
 
-```shell
+```bash [yarn]
 yarn add @kalisio/feathers-mongodb-management
 ```
 

@@ -30,19 +30,23 @@ app.service('tasks').create()
 
 Install with your preferred package manager:
 
-```shell
+::: code-group
+
+```bash [pnpm]
 pnpm add @kalisio/feathers-tasks
 ```
 
-```shell
+```bash [npm]
 npm install @kalisio/feathers-tasks
 ```
 
-```shell
+```bash [yarn]
 yarn add @kalisio/feathers-tasks
 ```
 
-`feathers-tasks` requires **Redis** as infrastructure dependency. BullMQ manages the Redis connection internally — no separate Redis client is needed in your app.
+> [!WARNING]
+> `feathers-tasks` requires **Redis** as infrastructure dependency. BullMQ manages the Redis connection
+> internally — no separate Redis client is needed in your app.
 
 ## Configuration
 

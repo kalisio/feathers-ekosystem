@@ -17,15 +17,17 @@ It leverages the [web-push package](https://github.com/web-push-libs/web-push) t
 
 Install with your preferred package manager:
 
-```shell
+::: code-group
+
+```bash [pnpm]
 pnpm add @kalisio/feathers-webpush
 ```
 
-```shell
+```bash [npm]
 npm install @kalisio/feathers-webpush
 ```
 
-```shell
+```bash [yarn]
 yarn add @kalisio/feathers-webpush
 ```
 

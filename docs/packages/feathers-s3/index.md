@@ -48,15 +48,17 @@ The `upload` process can be a **singlepart** upload or a **multipart** upload de
 
 Install with your preferred package manager:
 
-```shell
+::: code-group
+
+```bash [pnpm]
 pnpm add @kalisio/feathers-s3
 ```
 
-```shell
+```bash [npm]
 npm install @kalisio/feathers-s3
 ```
 
-```shell
+```bash [yarn]
 yarn add @kalisio/feathers-s3
 ```
 
