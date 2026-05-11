@@ -1,8 +1,4 @@
-import { fileURLToPath } from 'node:url'
-import path from 'node:path'
 import { defineConfig } from 'vitest/config'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export const baseConfig = defineConfig({
   test: {
@@ -22,13 +18,6 @@ export const baseConfig = defineConfig({
       ],
       reporter: ['text', 'html', 'lcov'],
       reportsDirectory: './coverage/'
-    }
-  },
-  resolve: {
-    alias: {
-      '@kalisio/feathers-distributed': path.resolve(__dirname, 'packages/feathers-distributed/src/index.js'),
-      '@kalisio/feathers-s3/server': path.resolve(__dirname, 'packages/feathers-s3/src/server/index.js'),
-      '@kalisio/feathers-s3/client': path.resolve(__dirname, 'packages/feathers-s3/src/client/index.js')
     }
   }
 })
