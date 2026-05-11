@@ -28,12 +28,13 @@
     "lint:feathers-tasks": "pnpm --filter @kalisio/feathers-tasks lint",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint",
     "lint:feathers-localforage": "pnpm --filter @kalisio/feathers-localforage lint",
-    "posttest": "pnpm lcov-result-merger --prepend-source-files 'packages/*/coverage/lcov.info' coverage/lcov.info",
     "prepare": "husky",
     "prerelease": "pnpm build",
-    "pretest": "mkdir -p coverage",
     "release": "changeset publish",
+    "postrelease": "git push --follow-tags",
+    "pretest": "mkdir -p coverage",
     "test": "pnpm -r test",
+    "posttest": "pnpm lcov-result-merger --prepend-source-files 'packages/*/coverage/lcov.info' coverage/lcov.info",
     "test:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed test",
     "test:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export test",
     "test:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener test",
@@ -68,12 +69,6 @@
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/",
-  "dependencies": {
-    "keycloak-js": "catalog:",
-    "lodash": "catalog:",
-    "moment": "catalog:",
-    "quasar": "catalog:"
-  },
   "devDependencies": {
     "@changesets/cli": "catalog:",
     "@vitest/coverage-v8": "catalog:",
@@ -85,7 +80,6 @@
     "standard": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-bundle-visualizer": "catalog:",
     "vitest": "catalog:"
   },
   "pnpm": {
@@ -100,6 +94,6 @@
   },
   "metaCatalog": {
     "version": "0.10.0",
-    "syncedAt": "2026-05-04T09:46:18.462Z"
+    "syncedAt": "2026-05-11T16:03:11.421Z"
   }
 }

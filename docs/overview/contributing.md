@@ -79,6 +79,19 @@ pnpm build
 pnpm build:<package>
 ```
 
+> [!NOTE]
+> There are two different tools to inspect your packages and their generated bundles. These tools must be run
+> from within a package directory:
+> 1. [publint](https://github.com/publint/publint) is a tool that checks whether an npm package is correctly
+> configured for publishing:
+> ```bash
+> pnpm dlx publint
+> ```
+> 2. [vite-bundle-visualizer]() is a tool for analyzing the size and composition of a Vite build output:
+> ```bash
+> pnpm dlx vite-bundle-visualizer
+> ```
+
 ### Committing
 
 **feathers-ekosystem** follows the [Conventional commits specifications](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
@@ -201,7 +214,6 @@ To publish the packages to [NPM](https://www.npmjs.com/), use:
 
 ```bash
 pnpm release
-git push --follow-tags
 ```
 
 > [!NOTE]

@@ -1,3 +1,4 @@
 {
-  "exclude": ["catalog"]
+  "exclude": ["catalog"],
+  "ignore": ["docs/**"]
 }
