@@ -47,7 +47,8 @@
     "archiver": "catalog:",
     "debug": "catalog:",
     "lodash": "catalog:",
-    "papaparse": "catalog:"
+    "papaparse": "catalog:",
+    "sanitize-html": "catalog:"
   },
   "devDependencies": {
     "@feathersjs/errors": "catalog:",
