@@ -63,7 +63,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kalisio/feathers-ekosystem.git"
+    "url": "git+https://github.com/kalisio/feathers-ekosystem.git"
   },
   "bugs": {
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
