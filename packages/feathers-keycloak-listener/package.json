@@ -45,7 +45,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kalisio/feathers-ekosystem.git",
+    "url": "git+https://github.com/kalisio/feathers-ekosystem.git",
     "directory": "packages/feathers-keycloak-listener"
   },
   "bugs": {
