@@ -76,6 +76,7 @@
     "knip": "catalog:",
     "lcov-result-merger": "catalog:",
     "lint-staged": "catalog:",
+    "publint": "catalog:",
     "rimraf": "catalog:",
     "standard": "catalog:",
     "typescript": "catalog:",
@@ -94,6 +95,6 @@
   },
   "metaCatalog": {
     "version": "0.10.0",
-    "syncedAt": "2026-05-11T16:03:11.421Z"
+    "syncedAt": "2026-05-12T08:01:20.773Z"
   }
 }

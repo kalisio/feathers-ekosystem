@@ -18,18 +18,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "exports": {
-      "./server": {
-        "import": "./dist/server.mjs",
-        "require": "./dist/server.cjs"
-      },
-      "./client": {
-        "import": "./dist/client.mjs",
-        "require": "./dist/client.cjs"
-      }
-    }
-  },
   "standard": {
     "ignore": [
       "dist/**"
@@ -37,6 +25,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "postbuild": "publint",
     "lint": "standard --fix",
     "test": "vitest run --coverage"
   },
@@ -72,5 +61,20 @@
     "@feathersjs/express": "catalog:",
     "@feathersjs/memory": "catalog:",
     "happy-dom": "catalog:"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "exports": {
+      "./server": {
+        "import": "./dist/server.mjs",
+        "require": "./dist/server.cjs"
+      },
+      "./client": {
+        "import": "./dist/client.mjs",
+        "require": "./dist/client.cjs"
+      }
+    }
   }
 }

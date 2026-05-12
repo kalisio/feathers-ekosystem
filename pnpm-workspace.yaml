@@ -129,6 +129,7 @@ catalog:
   postcss: ~8.4.14
   prettier: ~3.8.1
   proj4: ~2.20.4
+  publint: ~0.3.20
   qs: ~6.15.1
   quasar: ~2.18.7
   register-service-worker: ~1.7.2
