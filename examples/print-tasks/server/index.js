@@ -2,7 +2,7 @@ import { feathers } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import socketio from '@feathersjs/socketio'
 import { MemoryService } from '@feathersjs/memory'
-import { TaskService, createQueue, createWorker, setupQueueEvents, setupDashboard } from '@kalisio/feathers-tasks'
+import { TaskService, createQueue, createWorker, setupQueueEvents, setupDashboard, QueueEvents } from '@kalisio/feathers-tasks'
 import { generate } from '@pdfme/generator'
 import { text, image, rectangle } from '@pdfme/schemas'
 import { readFileSync, readdirSync } from 'node:fs'
@@ -81,18 +81,33 @@ app.get('/templates/:name', (req, res) => {
 
 app.use('task-store', new MemoryService())
 
-const queueName = 'kapture-tasks'
+const queueName = 'print-tasks'
 const queue = createQueue(queueName, redis)
 
+// QueueEvents lets workers call waitUntilFinished() to block on a delegated job
+const workerQueueEvents = new QueueEvents(queueName, { connection: redis })
+
 createWorker(queueName, redis, {
-  // Worker kapture
+  // Worker kapture — direct screenshot via the Kapture service.
+  // Accepts optional size and layout overrides so it can be called
+  // both from the client (default 1024×768) and from the pdfme worker
+  // (template-derived size + clean layout).
   kapture: async (job) => {
-    console.log(`[worker:kapture] start — job ${job.id}, data:`, JSON.stringify(job.data))
+    console.log(`[worker:kapture] job ${job.id}`)
     try {
-      const { layers, bbox, delay = 2000 } = job.data
-      console.log(`[worker:kapture] calling kapture at ${kaptureUrl}`)
-      const imageBase64 = await callKapture({ layers, bbox, size: { width: 1024, height: 768 }, delay })
-      console.log(`[worker:kapture] kapture responded — base64 length: ${imageBase64.length}`)
+      const {
+        layers,
+        bbox,
+        time,
+        delay = 2000,
+        size = { width: 1024, height: 768 },
+        layout
+      } = job.data
+      const payload = { layers, bbox, time, size, delay }
+      if (layout) payload.layout = layout
+      console.log(`[worker:kapture] calling ${kaptureUrl} — size ${size.width}×${size.height}`)
+      const imageBase64 = await callKapture(payload)
+      console.log(`[worker:kapture] done — base64 length: ${imageBase64.length}`)
       return { image: imageBase64, contentType: 'image/png', filename: `kapture-${Date.now()}.png` }
     } catch (err) {
       console.error('[worker:kapture] FAILED:', err.message)
@@ -100,26 +115,34 @@ createWorker(queueName, redis, {
     }
   },
 
-  // Worker pdfme
+  // Worker pdfme — delegates the map capture to the kapture worker via a real
+  // BullMQ job, then waits for its result with waitUntilFinished() before
+  // building the PDF. No shared helper function — true job delegation.
   pdfme: async (job) => {
-    console.log(`[worker:pdfme] start — job ${job.id}, template: ${job.data?.templateName}`)
+    console.log(`[worker:pdfme] job ${job.id} — template: ${job.data?.templateName}`)
     try {
-      const { templateName, inputs, captureParams } = job.data
+      const { templateName, inputs, maps } = job.data
 
       const template = loadTemplate(templateName)
       const mapSize = mapSizeFromTemplate(template)
-      console.log(`[worker:pdfme] map size derived from template: ${mapSize.width}×${mapSize.height}px`)
+      console.log(`[worker:pdfme] map size: ${mapSize.width}×${mapSize.height}px`)
 
-      console.log(`[worker:pdfme] calling kapture at ${kaptureUrl}`)
-      const mapBase64 = await callKapture({
-        ...captureParams,
+      // Delegate to the kapture worker — enqueue a real BullMQ job
+      const kaptureJob = await queue.add('kapture', {
+        ...maps,
         size: mapSize,
         layout: { panes: { left: false, top: false, right: false, bottom: false }, fab: { visible: false } }
       })
-      console.log(`[worker:pdfme] kapture responded — base64 length: ${mapBase64.length}`)
+      console.log(`[worker:pdfme] delegated kapture job ${kaptureJob.id} — waiting…`)
 
-      // Inject the map via both schema.content (readOnly=true path) and inputs (readOnly=false path)
-      // so the image renders regardless of pdfme version behaviour.
+      // Block until the kapture job finishes (completed or failed)
+      const kaptureResult = await kaptureJob.waitUntilFinished(workerQueueEvents)
+      const { image: mapBase64 } = typeof kaptureResult === 'string'
+        ? JSON.parse(kaptureResult)
+        : kaptureResult
+      console.log(`[worker:pdfme] kapture job ${kaptureJob.id} done — base64 length: ${mapBase64.length}`)
+
+      // Inject image via schema.content + inputs to cover all pdfme version behaviours
       const mapDataUrl = `data:image/png;base64,${mapBase64}`
       const templateForGen = {
         ...template,
@@ -134,7 +157,7 @@ createWorker(queueName, redis, {
       const pdfInputs = [{ ...inputs, map: mapDataUrl }]
       console.log('[worker:pdfme] generating PDF…')
       const pdfBytes = await generate({ template: templateForGen, inputs: pdfInputs, plugins: pdfPlugins })
-      console.log(`[worker:pdfme] PDF generated — ${pdfBytes.length} bytes`)
+      console.log(`[worker:pdfme] PDF done — ${pdfBytes.length} bytes`)
 
       return {
         pdf: Buffer.from(pdfBytes).toString('base64'),

@@ -44,9 +44,14 @@ catalog:
   "@kalisio/feathers-webpush": ~1.0.1
   "@kalisio/kdk": ~2.7.0
   "@logtape/logtape": ~0.7.0
+  "@pdfme/common": ^6.0.0
+  "@pdfme/generator": ^6.0.0
+  "@pdfme/schemas": ^6.0.0
+  "@pdfme/ui": ^6.0.0
   "@quasar/app-vite": ~2.5.1
   "@quasar/extras": ~1.17.0
   "@quasar/quasar-app-extension-testing-unit-vitest": ~1.2.4
+  "@quasar/vite-plugin": ~1.11.0
   "@thumbmarkjs/thumbmarkjs": ~1.7.5
   "@turf/bbox": ~7.3.5
   "@turf/boolean-clockwise": ~7.3.5
@@ -154,6 +159,7 @@ catalog:
   vue-eslint-parser: ~10.2.0
   vue-i18n: ~11.3.0
   vue-router: ~5.0.3
+  vue-router-mock: ~2.0.2
   web-push: ~3.6.5
   winston: ~3.19.0
   winston-daily-rotate-file: ~4.7.1

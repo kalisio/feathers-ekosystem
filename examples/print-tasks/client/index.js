@@ -308,7 +308,7 @@ window.onTemplateChange = () => {
   if (name) initPdfmeForm(name).catch(err => addNotif(`Template : ${err.message}`, 'error'))
 }
 
-function readPdfmeCaptureParams () {
+function readPdfmeMaps () {
   return {
     layers: $('p-layers').value.split(',').map(s => s.trim()).filter(Boolean),
     bbox: [
@@ -332,12 +332,12 @@ window.submitPdfme = async () => {
   delete inputs.map
 
   const templateName = $('p-template').value
-  const captureParams = readPdfmeCaptureParams()
+  const maps = readPdfmeMaps()
 
   try {
     const task = await api.service('tasks').create({
       type: 'pdfme',
-      payload: { templateName, inputs, captureParams }
+      payload: { templateName, inputs, maps }
     })
     addNotif(`Task PDF créée : ${task.id.substring(0, 8)}`)
     renderTaskRow(task)

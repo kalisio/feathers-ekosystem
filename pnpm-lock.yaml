@@ -69,6 +69,18 @@ catalogs:
     '@kalisio/common-core':
       specifier: ~0.4.1
       version: 0.4.1
+    '@pdfme/common':
+      specifier: ^6.0.0
+      version: 6.1.2
+    '@pdfme/generator':
+      specifier: ^6.0.0
+      version: 6.1.2
+    '@pdfme/schemas':
+      specifier: ^6.0.0
+      version: 6.1.2
+    '@pdfme/ui':
+      specifier: ^6.0.0
+      version: 6.1.2
     '@vitest/coverage-v8':
       specifier: ~4.1.4
       version: 4.1.5
@@ -279,7 +291,7 @@ importers:
         specifier: ^4.0.2
         version: 4.0.10
 
-  examples/kapture-tasks:
+  examples/print-tasks:
     devDependencies:
       '@feathersjs/express':
         specifier: 'catalog:'
@@ -300,17 +312,20 @@ importers:
         specifier: workspace:*
         version: link:../../packages/feathers-tasks
       '@pdfme/common':
-        specifier: ^6.0.0
+        specifier: 'catalog:'
         version: 6.1.2
       '@pdfme/generator':
-        specifier: ^6.0.0
+        specifier: 'catalog:'
         version: 6.1.2(@pdfme/common@6.1.2)(@pdfme/schemas@6.1.2(@pdfme/common@6.1.2))
       '@pdfme/schemas':
-        specifier: ^6.0.0
+        specifier: 'catalog:'
         version: 6.1.2(@pdfme/common@6.1.2)
       '@pdfme/ui':
-        specifier: ^6.0.0
+        specifier: 'catalog:'
         version: 6.1.2(@pdfme/common@6.1.2)(@pdfme/schemas@6.1.2(@pdfme/common@6.1.2))(date-fns@4.1.0)(luxon@3.7.2)(moment@2.30.1)
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       socket.io-client:
         specifier: 'catalog:'
         version: 4.8.3

@@ -1,4 +1,4 @@
-# kapture-tasks
+# print-tasks
 
 Example showing how to use the [Kapture](https://github.com/kalisio/kapture) screenshot service with [feathers-tasks](../../packages/feathers-tasks) workers and [@pdfme/generator](https://pdfme.com) for PDF generation.
 
@@ -43,13 +43,6 @@ pnpm install
 feathers-tasks uses BullMQ which requires Redis. Use the `k-redis` helper from [kalisio/development](https://github.com/kalisio/development):
 
 ```bash
-# First time only — symlink the helper scripts
-cd /path/to/development
-./install-kalisio-tools.sh
-
-# Set the data directory (add to ~/.bashrc to make it permanent)
-export REDIS_DATA_DIR=/path/to/redis-data
-
 k-redis
 ```
 
@@ -58,8 +51,6 @@ k-redis
 ```bash
 k-dev kalisio apps
 ```
-
-Kano frontend: `http://localhost:8086`
 
 ### 4. Start Kapture
 
@@ -75,7 +66,7 @@ yarn start
 ## Running
 
 ```bash
-cd examples/kapture-tasks
+cd examples/print-tasks
 KAPTURE_URL=http://localhost:3000 pnpm dev
 ```
 
