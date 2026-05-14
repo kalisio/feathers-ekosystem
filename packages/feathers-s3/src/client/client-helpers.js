@@ -1,29 +1,12 @@
-// Taken from https://github.com/juanelas/base64
-export const base64Encode = function (bytes) {
-  bytes = new Uint8Array(bytes)
-  const CHUNK_SIZE = 0x8000
-  const array = []
-  for (let i = 0; i < bytes.length; i += CHUNK_SIZE) {
-    array.push(String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK_SIZE)))
-  }
-  return btoa(array.join(''))
-}
-
-export const base64Decode = function (encoded) {
-  return new Uint8Array(
-    atob(encoded)
-      .split('')
-      .map((c) => c.charCodeAt(0))
-  ).buffer
-}
+import { byte } from '@kalisio/common-core/utilities'
 
 export class ClientHelpers {
   constructor (app, service, options) {
     this.app = app
     this.service = service
     this.proxy = options.useProxy
-    this.atob = options.atob || base64Decode
-    this.btoa = options.btoa || base64Encode
+    this.atob = options.atob || byte.fromBase64Bytes
+    this.btoa = options.btoa || byte.toBase64
     this.fetch = options.fetch
     this.debug = (message) => {
       if (options.debug) options.debug(message)

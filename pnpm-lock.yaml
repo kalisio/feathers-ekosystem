@@ -67,19 +67,19 @@ catalogs:
       specifier: ~5.0.44
       version: 5.0.44
     '@kalisio/common-core':
-      specifier: ~0.4.1
-      version: 0.4.1
+      specifier: ~0.4.2
+      version: 0.4.2
     '@pdfme/common':
-      specifier: ^6.0.0
+      specifier: ~6.1.2
       version: 6.1.2
     '@pdfme/generator':
-      specifier: ^6.0.0
+      specifier: ~6.1.2
       version: 6.1.2
     '@pdfme/schemas':
-      specifier: ^6.0.0
+      specifier: ~6.1.2
       version: 6.1.2
     '@pdfme/ui':
-      specifier: ^6.0.0
+      specifier: ~6.1.2
       version: 6.1.2
     '@vitest/coverage-v8':
       specifier: ~4.1.4
@@ -147,6 +147,9 @@ catalogs:
     sanitize-html:
       specifier: ~2.17.1
       version: 2.17.3
+    sharp:
+      specifier: ~0.34.5
+      version: 0.34.5
     sift:
       specifier: ~17.1.3
       version: 17.1.3
@@ -518,7 +521,7 @@ importers:
     dependencies:
       '@kalisio/common-core':
         specifier: 'catalog:'
-        version: 0.4.1(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sanitize-html@2.17.3)(sift@17.1.3)
+        version: 0.4.2(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sanitize-html@2.17.3)(sift@17.1.3)
       '@kalisio/feathers-s3':
         specifier: 'workspace:'
         version: link:../feathers-s3
@@ -658,6 +661,9 @@ importers:
       '@feathersjs/errors':
         specifier: 'catalog:'
         version: 5.0.44
+      '@kalisio/common-core':
+        specifier: 'catalog:'
+        version: 0.4.2(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sanitize-html@2.17.3)(sift@17.1.3)
       debug:
         specifier: 'catalog:'
         version: 4.4.3
@@ -684,7 +690,7 @@ importers:
         specifier: 'workspace:'
         version: link:../feathers-distributed
       sharp:
-        specifier: ^0.34.5
+        specifier: 'catalog:'
         version: 0.34.5
       socket.io-client:
         specifier: 'catalog:'
@@ -1835,8 +1841,9 @@ packages:
     peerDependencies:
       jsep: ^0.4.0||^1.0.0
 
-  '@kalisio/common-core@0.4.1':
-    resolution: {integrity: sha512-EEgx3sZNIxpruUbQi3dQlSBGv2krKGwVgZX2Bzfqj3ho4WEQvVEgRMTGWcjAHqfCjA5eg30g76VcS5qKwYseGQ==}
+  '@kalisio/common-core@0.4.2':
+    resolution: {integrity: sha512-pk/tikLYY2pggH1WZ+ThGqMdio6pUSTLN/xYpde2Sc/aJkyTDlCzJcUJ2uMAd90cgqzmfEsU856v1EkCz70DNA==}
+    engines: {node: '>=20'}
     peerDependencies:
       lodash-es: ~4.18.1
       mathjs: ~15.1.1
@@ -8610,7 +8617,7 @@ snapshots:
     dependencies:
       jsep: 1.4.0
 
-  '@kalisio/common-core@0.4.1(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sanitize-html@2.17.3)(sift@17.1.3)':
+  '@kalisio/common-core@0.4.2(lodash-es@4.18.1)(mathjs@15.1.1)(moment@2.30.1)(sanitize-html@2.17.3)(sift@17.1.3)':
     optionalDependencies:
       lodash-es: 4.18.1
       mathjs: 15.1.1

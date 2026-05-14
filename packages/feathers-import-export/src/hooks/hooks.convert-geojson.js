@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { execSync } from 'node:child_process'
-import { getFullExtension } from '../utils.js'
+import { file } from '@kalisio/common-core/utilities'
 import createDebug from 'debug'
 
 const debug = createDebug('feathers-import-export:export:hooks:convert-geojson')
@@ -32,9 +32,8 @@ export async function convertGeoJson (hook) {
   const workingDir = `${hook.data.filePath}-convert`
   fs.mkdirSync(workingDir)
   // create ogr input file
-  const extFilename = getFullExtension(hook.data.context.filename)
-  const baseFilename = path.basename(hook.data.context.filename, extFilename)
-  const inputFile = path.join(workingDir, `${baseFilename}.geojson`)
+  const { baseName } = file.parse(hook.data.context.filename)
+  const inputFile = path.join(workingDir, `${baseName}.geojson`)
   fs.copyFileSync(hook.data.filePath, inputFile)
   // compute ogr output file
   const outputFile = path.join(workingDir, hook.data.context.filename)

@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { execSync } from 'node:child_process'
-import { getFullExtension } from '../utils.js'
+import { file } from '@kalisio/common-core/utilities'
 import createDebug from 'debug'
 
 const debug = createDebug('feathers-import-export:export:hooks:reproject-geojson')
@@ -31,10 +31,9 @@ export async function reprojectGeoJson (hook) {
   // compute ogr output file
   const outputFile = path.join(workingDir, hook.data.context.filename)
   // retrieve ogr output layer name
-  const extFilename = getFullExtension(hook.data.context.filename)
-  const layerName = path.basename(hook.data.context.filename, extFilename)
+  const { baseName } = file.parse(hook.data.context.filename)
   // reproject the file
-  const ogr2ogr = `ogr2ogr -f GeoJSON -s_srs EPSG:4326 -t_srs ${hook.data.context.reprojectGeoJson.srs} -nln ${layerName} ${outputFile} ${inputFile}`
+  const ogr2ogr = `ogr2ogr -f GeoJSON -s_srs EPSG:4326 -t_srs ${hook.data.context.reprojectGeoJson.srs} -nln ${baseName} ${outputFile} ${inputFile}`
   debug(ogr2ogr)
   execSync(ogr2ogr)
   // remove input file
