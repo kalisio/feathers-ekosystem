@@ -2,6 +2,7 @@
   "name": "@kalisio/feathers-tasks",
   "description": "Task execution service for FeathersJS based on BullMQ",
   "version": "0.0.0",
+  "packageManager": "pnpm@10.1.0",
   "type": "module",
   "exports": {
     ".": {

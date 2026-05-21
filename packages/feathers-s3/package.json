@@ -2,6 +2,7 @@
   "name": "@kalisio/feathers-s3",
   "description": "Manage S3 objects using presigned url",
   "version": "0.0.0",
+  "packageManager": "pnpm@10.1.0",
   "type": "module",
   "exports": {
     "./server": {

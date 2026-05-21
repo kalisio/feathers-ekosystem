@@ -2,6 +2,7 @@
   "name": "@kalisio/feathers-distributed",
   "description": "Distribute your Feathers services as microservices",
   "version": "0.0.0",
+  "packageManager": "pnpm@10.1.0",
   "type": "module",
   "exports": {
     ".": {

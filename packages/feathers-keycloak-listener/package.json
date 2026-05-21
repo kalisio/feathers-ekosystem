@@ -2,6 +2,7 @@
   "name": "@kalisio/feathers-keycloak-listener",
   "description": "Bridge Keycloak authentication events into your FeathersJS application",
   "version": "0.0.0",
+  "packageManager": "pnpm@10.1.0",
   "type": "module",
   "exports": {
     ".": {
