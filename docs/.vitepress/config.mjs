@@ -19,10 +19,10 @@ export default withMermaid(
     ignoreDeadLinks: true,
     head: [
       ['link', { href: 'https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css', rel: 'stylesheet' }],
-      ['link', { rel: 'icon', href: 'https://kalisio.github.io/kalisioscope/kalisio/kalisio-icon-2048x2048.png' }]
+      ['link', { rel: 'icon', href: 'https://kalisio.github.io/kalisioscope/kalisio/kalisio-icon-light.svg' }]
     ],
     themeConfig: {
-      logo: 'https://kalisio.github.io/kalisioscope/kalisio/kalisio-icon-2048x2048.png',
+      logo: 'https://kalisio.github.io/kalisioscope/kalisio/kalisio-icon-light.svg',
       socialLinks: [{ icon: 'github', link: 'https://github.com/kalisio/feathers-ekosystem' }],
       nav: [
         { text: 'Overview', link: '/overview/about' }
