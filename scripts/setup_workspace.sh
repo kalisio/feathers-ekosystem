@@ -48,7 +48,7 @@ if [ "$CI" != true ]; then
     WORKSPACE_DIR="$1"
 
     # Clone project in the workspace
-    git_shallow_clone "$KALISIO_GITHUB_URL/kalisio/kdk.git" "$WORKSPACE_DIR/kdk" "$WORKSPACE_REF"
+    git_shallow_clone "$KALISIO_GITHUB_URL/kalisio/feathers-ekosystem.git" "$WORKSPACE_DIR/feathers-ekosystem" "$WORKSPACE_REF"
 
     # unset KALISIO_DEVELOPMENT_DIR because we want kli to clone everything in $WORKSPACE_DIR
     unset KALISIO_DEVELOPMENT_DIR
