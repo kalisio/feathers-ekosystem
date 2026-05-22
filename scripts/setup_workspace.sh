@@ -35,4 +35,9 @@ fi
 
 setup_lib_workspace "$WORKSPACE_DIR" "$KALISIO_GITHUB_URL/kalisio/development.git"
 
+# Only use kli when requested + on master branch
+if [ "$WORKSPACE_REF" = "master" ]; then
+    run_kli "$WORKSPACE_DIR" "$WORKSPACE_NODE" "$WORKSPACE_DIR/development/workspaces/libs/feathers-ekosystem/dev/feathers-ekosystem.js" "$WORKSPACE_KIND"
+fi
+
 end_group "Setting up workspace ..."
