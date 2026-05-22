@@ -14,6 +14,8 @@ WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 
 begin_group "Setting up workspace ..."
 
+WORKSPACE_REF="${WORKSPACE_TAG:-${WORKSPACE_BRANCH:-}}"
+
 if [ "$CI" != true ]; then
     while getopts "b:t" option; do
         case $option in
