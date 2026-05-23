@@ -34,7 +34,8 @@
     "kalisio"
   ],
   "author": {
-    "name": "KALISIO <contact@kalisio.com>",
+    "name": "Kalisio",
+    "email": "contact@kalisio.com",
     "url": "https://github.com/kalisio"
   },
   "contributors": [],
@@ -72,6 +73,7 @@
     "node": ">=20"
   },
   "publishConfig": {
+    "access": "public",
     "exports": {
       "./server": {
         "import": "./dist/server.mjs",
