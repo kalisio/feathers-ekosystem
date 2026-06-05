@@ -91,10 +91,12 @@
       "esbuild",
       "sharp"
     ],
-    "overrides": {}
+    "overrides": {
+      "fast-xml-parser@5.2.5": ">=5.3.5"
+    }
   },
   "metaCatalog": {
     "version": "0.10.0",
-    "syncedAt": "2026-05-22T11:47:34.049Z"
+    "syncedAt": "2026-06-05T13:17:30.316Z"
   }
 }
