@@ -25,8 +25,8 @@ while getopts "n:pr:" OPT; do
             ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
-            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_LIBS.enc.env"
-            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_LIBS"' EXIT
+            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_DOCS.enc.env"
+            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_DOCS"' EXIT
             ;;
         *)
             ;;
