@@ -11,11 +11,13 @@ THIS_DIR=$(dirname "$THIS_FILE")
 ### Github Actions
 
 init_github_run_tests() {
+    sudo apt-get update
     install_reqs age sops nvm node20 mongo7 sonar_scanner_cli
     sudo apt-get install gdal-bin
 }
 
 init_github_additional_tests() {
+    sudo apt-get update
     install_reqs age sops nvm node24 mongo7 mongo8
     sudo apt-get install gdal-bin
 }
