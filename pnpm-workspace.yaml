@@ -33,9 +33,9 @@ catalog:
   "@feathersjs/schema": ~5.0.44
   "@feathersjs/socketio": ~5.0.44
   "@feathersjs/socketio-client": ~5.0.44
-  "@kalisio/common-core": ~0.5.0
-  "@kalisio/common-geospatial": ~0.5.0
-  "@kalisio/common-graphics": ~0.5.0
+  "@kalisio/common-core": ~0.6.0
+  "@kalisio/common-geospatial": ~0.6.0
+  "@kalisio/common-graphics": ~0.6.0
   "@kalisio/feathers-automerge": ~0.3.8
   "@kalisio/feathers-distributed": ~2.4.0
   "@kalisio/feathers-import-export": ~1.4.1
@@ -44,6 +44,8 @@ catalog:
   "@kalisio/feathers-webpush": ~1.0.1
   "@kalisio/kdk": ~2.7.0
   "@logtape/logtape": ~0.7.0
+  "@mapbox/mbtiles": ~0.12.1
+  "@mapbox/vtquery": ~0.6.0
   "@pdfme/common": ~6.1.2
   "@pdfme/generator": ~6.1.2
   "@pdfme/schemas": ~6.1.2
@@ -58,6 +60,7 @@ catalog:
   "@turf/boolean-clockwise": ~7.3.5
   "@turf/center-of-mass": ~7.3.5
   "@turf/clean-coords": ~7.3.5
+  "@turf/distance": ~7.3.5
   "@turf/envelope": ~7.3.5
   "@turf/flatten": ~7.3.5
   "@turf/helpers": ~7.3.5
@@ -65,6 +68,8 @@ catalog:
   "@turf/invariant": ~7.3.5
   "@turf/kinks": ~7.3.5
   "@turf/meta": ~7.3.5
+  "@turf/point-to-line-distance": ~7.3.5
+  "@turf/point-to-polygon-distance": ~7.3.5
   "@turf/truncate": ~7.3.5
   "@vitejs/plugin-vue": ~6.0.4
   "@vitest/coverage-v8": ~4.1.4
@@ -96,6 +101,7 @@ catalog:
   email-validator: ~2.0.4
   eslint: ~9.14.0
   eslint-plugin-vue: ~10.4.0
+  express: ~5.2.1
   express-rate-limit: ^5.1.0
   feathers-authentication-management: ^4.0.0
   feathers-hooks-common: ~8.2.1
@@ -128,21 +134,26 @@ catalog:
   lru-cache: ~11.3.5
   mathjs: ~15.1.1
   mermaid: ~10.8.0
+  minimatch: ~10.2.5
   moment: ~2.30.1
   moment-timezone: ~0.6.0
   mongodb: ~6.20.0
   nock: ~14.0.13
+  node-geocoder: git+https://github.com/nchaulet/node-geocoder.git#f66ea8db928d780b5d4268938909f86fba503eef
   nodemailer: ~6.9.8
   papaparse: ~5.5.3
   password-generator: ~2.3.2
   password-validator: ~4.0.0
   path-browserify: ~1.0.1
   pinch-zoom-element: ~1.1.1
+  pixelmatch: ~7.2.0
   pmtiles: ~4.4.1
+  pngjs: ~7.0.0
   postcss: ~8.4.14
   prettier: ~3.8.1
   proj4: ~2.20.4
   publint: ~0.3.20
+  puppeteer: ~25.1.0
   qs: ~6.15.1
   quasar: ~2.18.7
   register-service-worker: ~1.7.2
@@ -162,7 +173,7 @@ catalog:
   vite-plugin-checker: ~0.11.0
   vitepress: ~1.6.3
   vitepress-plugin-mermaid: ~2.0.16
-  vitepress-theme-kalisio: https://github.com/kalisio/vitepress-theme-kalisio
+  vitepress-theme-kalisio: https://github.com/kalisio/vitepress-theme-kalisio#v1.0.0
   vitest: ~4.1.4
   vue: ~3.5.30
   vue-eslint-parser: ~10.2.0
@@ -180,3 +191,4 @@ catalog:
   workbox-routing: ~7.0.0
   workbox-strategies: ~7.0.0
   xml2js: ~0.6.2
+  zlib: ~1.0.5
