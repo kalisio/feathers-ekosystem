@@ -3,7 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:meta="http://kalisio.com/bpmn/meta"
              targetNamespace="http://kalisio.com/bpmn"
-             id="feathers-bpmn-orchestration">
+             id="bpmn-orchestration">
 
   <process id="orchestration-process" isExecutable="true">
 

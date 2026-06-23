@@ -1,8 +1,8 @@
-# feathers-tasks-orchestration
+# tasks-orchestration
 
 Submit tasks to a BullMQ queue; the server spawns **one ephemeral Docker container or Kubernetes pod per job** to execute it, via [`dockerode`](https://github.com/apocas/dockerode) and [`@kubernetes/client-node`](https://github.com/kubernetes-client/javascript) respectively.
 
-No BPMN, no workflows — this example focuses on the dispatch + tracking mechanics. For a BPMN-driven version, see [`examples/feathers-bpmn-orchestration`](../feathers-bpmn-orchestration/).
+No BPMN, no workflows — this example focuses on the dispatch + tracking mechanics. For a BPMN-driven version, see [`examples/bpmn-orchestration`](../bpmn-orchestration/).
 
 ## Architecture
 
@@ -71,7 +71,7 @@ pnpm install
 redis-server
 
 # 3 — Build the worker image (from the example folder)
-cd examples/feathers-tasks-orchestration
+cd examples/tasks-orchestration
 pnpm build:image
 #   → builds feathers-tasks-worker:latest using Dockerfile from the workspace root.
 

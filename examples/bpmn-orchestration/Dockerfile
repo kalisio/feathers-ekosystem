@@ -11,13 +11,13 @@ COPY package.json ./
 COPY packages/feathers-tasks/package.json ./packages/feathers-tasks/
 COPY packages/feathers-tasks/src ./packages/feathers-tasks/src/
 
-COPY examples/feathers-bpmn-orchestration/package.json ./examples/feathers-bpmn-orchestration/
+COPY examples/bpmn-orchestration/package.json ./examples/bpmn-orchestration/
 
-RUN pnpm install --filter feathers-bpmn-orchestration-example --prod --ignore-scripts
+RUN pnpm install --filter bpmn-orchestration --prod --ignore-scripts
 
-COPY examples/feathers-bpmn-orchestration/worker ./examples/feathers-bpmn-orchestration/worker
+COPY examples/bpmn-orchestration/worker ./examples/bpmn-orchestration/worker
 
-WORKDIR /app/examples/feathers-bpmn-orchestration
+WORKDIR /app/examples/bpmn-orchestration
 
 ENV NODE_ENV=production
 
