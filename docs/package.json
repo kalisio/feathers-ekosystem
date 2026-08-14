@@ -21,6 +21,7 @@
     "moment": "catalog:",
     "quasar": "catalog:",
     "vitepress": "catalog:",
+    "vitepress-openapi": "catalog:",
     "vitepress-plugin-mermaid": "catalog:",
     "vitepress-theme-kalisio": "catalog:"
   }

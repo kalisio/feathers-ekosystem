@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
-import { generateSideBar } from './sidebar.mjs'
+import { generateSideBar } from 'vitepress-theme-kalisio/sidebar'
 import packages from './packages.json'
 
 const sortedPackagesNavBar = packages.sort().map(pkg => {
