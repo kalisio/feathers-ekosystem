@@ -13,8 +13,8 @@
     "build:feathers-tasks": "pnpm --filter @kalisio/feathers-tasks build",
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
     "build:feathers-localforage": "pnpm --filter @kalisio/feathers-localforage build",
+    "prebump": "changeset",
     "bump": "changeset version",
-    "change": "changeset",
     "clear": "pnpm -r exec rimraf node_modules dist coverage",
     "docs:build": "pnpm --filter docs run build",
     "docs:dev": "pnpm --filter docs run dev",
@@ -56,8 +56,10 @@
     "kalisio"
   ],
   "author": {
-    "name": "KALISIO <contact@kalisio.com>",
-    "url": "https://github.com/kalisio"
+    "name": "KALISIO",
+    "email": "contact@kalisio.com",
+    "url": "https://github.com/kalisio",
+    "logo": "https://kalisio.github.io/kalisioscope/kalisio/kalisio-logo-light.svg"
   },
   "contributors": [],
   "license": "MIT",
@@ -66,7 +68,7 @@
     "url": "git+https://github.com/kalisio/feathers-ekosystem.git"
   },
   "bugs": {
-    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+    "url": "git+https://github.com/kalisio/feathers-ekosystem/issues"
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/",
   "devDependencies": {
