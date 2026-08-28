@@ -4,7 +4,7 @@
   "packageManager": "pnpm@10.34.5",
   "type": "module",
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm -r --filter './packages/*' build",
     "build:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed build",
     "build:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export build",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
@@ -16,6 +16,7 @@
     "prebump": "changeset",
     "bump": "changeset version",
     "clear": "pnpm -r exec rimraf node_modules dist coverage",
+    "docs:prepare": "pnpm --filter './examples/*' build",
     "docs:build": "pnpm --filter docs run build",
     "docs:dev": "pnpm --filter docs run dev",
     "inspect": "pnpm knip",
