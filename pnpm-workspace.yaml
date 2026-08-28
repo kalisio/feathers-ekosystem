@@ -45,14 +45,15 @@ catalog:
   "@kalisio/feathers-webpush": ~1.0.1
   "@kalisio/geo-pixel-stream": https://github.com/kalisio/geo-pixel-stream#gdal-async
   "@kalisio/kdk": ~2.7.0
+  "@kalisio/vitepress-theme": ~2.1.0
   "@logtape/logtape": ~0.7.0
   "@mapbox/mbtiles": ~0.12.1
   "@mapbox/vtquery": ~0.6.0
   "@modelcontextprotocol/sdk": ~1.29.0
-  "@pdfme/common": ~6.1.2
-  "@pdfme/generator": ~6.1.2
-  "@pdfme/schemas": ~6.1.2
-  "@pdfme/ui": ~6.1.2
+  "@pdfme/common": ~5.2.0
+  "@pdfme/generator": ~5.2.0
+  "@pdfme/schemas": ~5.2.0
+  "@pdfme/ui": ~5.2.0
   "@quasar/app-vite": ~2.5.1
   "@quasar/extras": ~1.17.0
   "@quasar/quasar-app-extension-testing-unit-vitest": ~1.2.4
@@ -88,7 +89,7 @@ catalog:
   "@vue/test-utils": ~2.4.6
   "@weacast/core": ~2.3.1
   "@xmldom/xmldom": ~0.9.11
-  ajv: ~8.18.0
+  ajv: ~8.20.0
   ajv-formats: ~3.0.1
   ajv-i18n: ~4.2.0
   ajv-keywords: ~5.1.0
@@ -120,13 +121,13 @@ catalog:
   eslint: ~9.14.0
   eslint-plugin-vue: ~10.4.0
   express: ~5.2.1
-  express-rate-limit: ^5.1.0
-  feathers-authentication-management: ^4.0.0
+  express-rate-limit: ~5.1.0
+  feathers-authentication-management: ~4.0.0
   feathers-hooks-common: ~8.2.1
-  feathers-mailer: ^3.0.0
-  feathers-mongodb: ^6.0.0
-  feathers-mongodb-fuzzy-search: ^2.0.1
-  feathers-mongodb-management: ^2.0.1
+  feathers-mailer: ~3.0.0
+  feathers-mongodb: ~6.0.0
+  feathers-mongodb-fuzzy-search: ~2.0.1
+  feathers-mongodb-management: ~2.0.1
   feathers-reactive: ~0.11.0
   fs-blob-store: ~5.2.1
   fs-extra: ~8.1.0
@@ -154,9 +155,9 @@ catalog:
   lodash: ~4.18.1
   lodash-es: ~4.18.1
   loglevel: ~1.9.2
-  lru-cache: ~11.3.5
+  lru-cache: ~11.5.2
   maplibre-gl: ~6.4.0
-  mathjs: ~15.1.1
+  mathjs: ~15.2.0
   memory-blob-store: ~5.0.1
   mermaid: ~10.8.0
   minimatch: ~10.2.5
@@ -169,7 +170,7 @@ catalog:
   node-geocoder: git+https://github.com/nchaulet/node-geocoder.git#f66ea8db928d780b5d4268938909f86fba503eef
   nodemailer: ~6.9.8
   osmtogeojson: 3.0.0-beta.5
-  papaparse: ~5.5.3
+  papaparse: ~5.7.0
   password-generator: ~2.3.2
   password-validator: ~4.0.0
   path-browserify: ~1.0.1
@@ -195,7 +196,7 @@ catalog:
   socket.io-client: ~4.8.2
   standard: ~17.1.2
   superagent: ~10.3.0
-  tar: ~7.5.13
+  tar: ~7.5.22
   tough-cookie: ~6.0.2
   typescript: ~6.0.3
   unzipper: ~0.12.3

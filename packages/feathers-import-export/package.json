@@ -2,7 +2,7 @@
   "name": "@kalisio/feathers-import-export",
   "description": "Import / Export data with FeathersJS",
   "version": "1.4.1",
-  "packageManager": "pnpm@10.1.0",
+  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {

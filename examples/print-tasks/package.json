@@ -1,7 +1,7 @@
 {
   "name": "print-tasks",
   "description": "print-tasks example",
-  "packageManager": "pnpm@10.1.0",
+  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "private": true,
   "scripts": {

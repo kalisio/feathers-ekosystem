@@ -2,7 +2,7 @@
   "name": "@kalisio/feathers-webpush",
   "description": "Manage Web Push notifications with FeathersJS",
   "version": "1.0.1",
-  "packageManager": "pnpm@10.1.0",
+  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     "./server": {

@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@10.1.0 --activate
+RUN corepack enable && corepack prepare pnpm@10.34.5 --activate
 
 COPY pnpm-workspace.yaml ./
 COPY pnpm-lock.yaml ./

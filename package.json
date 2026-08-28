@@ -1,7 +1,7 @@
 {
   "name": "feathers-ekosystem",
   "description": "A collection of modules for FeathersJS",
-  "packageManager": "pnpm@10.1.0",
+  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "scripts": {
     "build": "pnpm -r build",
@@ -99,6 +99,6 @@
   },
   "metaCatalog": {
     "version": "0.10.0",
-    "syncedAt": "2026-08-24T14:24:50.917Z"
+    "syncedAt": "2026-08-28T12:16:52.552Z"
   }
 }
