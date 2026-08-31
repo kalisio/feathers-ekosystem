@@ -9,6 +9,10 @@ WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 
 . "$THIS_DIR/kash/kash.sh"
 
+slack_report() {
+    slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$KASH_EXIT_CODE" "$SLACK_WEBHOOK_DOCS"
+}
+
 ## Parse options
 ##
 
@@ -25,8 +29,8 @@ while getopts "n:pr:" OPT; do
             ;;
         r) # report outcome to slack
             CI_STEP_NAME=$OPTARG
-            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_LIBS.enc.env"
-            trap 'slack_ci_report "$ROOT_DIR" "$CI_STEP_NAME" "$?" "$SLACK_WEBHOOK_LIBS"' EXIT
+            load_env_files "$WORKSPACE_DIR/development/common/SLACK_WEBHOOK_DOCS.enc.env"
+            add_function_to_trap slack_report
             ;;
         *)
             ;;

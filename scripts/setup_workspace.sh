@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# set -x
+set -x
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "$THIS_FILE")
@@ -12,27 +12,59 @@ WORKSPACE_DIR="$(dirname "$ROOT_DIR")"
 ## Parse options
 ##
 
+WORKSPACE_NODE=20
+WORKSPACE_KIND=klifull
+WORKSPACE_BRANCH=
+WORKSPACE_TAG=
+OPT_LIST="n:k:"
+if [ "$CI" != true ]; then
+    OPT_LIST="b:n:t:k:"
+else
+    WORKSPACE_BRANCH=$(get_git_branch "$ROOT_DIR")
+    WORKSPACE_TAG=$(get_git_tag "$ROOT_DIR")
+fi
+
+while getopts "$OPT_LIST" OPT; do
+    case $OPT in
+        n) # defines node version
+            WORKSPACE_NODE=$OPTARG;;
+        k) # workspace kind (nokli kli klifull)
+            WORKSPACE_KIND=$OPTARG;;
+        b) # defines branch
+            WORKSPACE_BRANCH=$OPTARG;;
+        t) # defines tag
+            WORKSPACE_TAG=$OPTARG;;
+        *)
+        ;;
+    esac
+done
+
 begin_group "Setting up workspace ..."
 
-if [ "$CI" != true ]; then
-    while getopts "b:t" option; do
-        case $option in
-            b) # defines branch
-                WORKSPACE_BRANCH=$OPTARG;;
-            t) # defines tag
-                WORKSPACE_TAG=$OPTARG;;
-            *)
-            ;;
-        esac
-    done
+WORKSPACE_REF="${WORKSPACE_TAG:-${WORKSPACE_BRANCH:-}}"
 
+if [ "$CI" != true ]; then
     shift $((OPTIND-1))
     WORKSPACE_DIR="$1"
 
     # Clone project in the workspace
-    git_shallow_clone "$KALISIO_GITHUB_URL/kalisio/feathers-ekosystem.git" "$WORKSPACE_DIR/feathers-ekosystem" "${WORKSPACE_TAG:-${WORKSPACE_BRANCH:-}}"
+    git_shallow_clone "$KALISIO_GITHUB_URL/kalisio/feathers-ekosystem.git" "$WORKSPACE_DIR/feathers-ekosystem" "$WORKSPACE_REF"
+
+    # unset KALISIO_DEVELOPMENT_DIR because we want kli to clone everything in $WORKSPACE_DIR
+    unset KALISIO_DEVELOPMENT_DIR
 fi
 
 setup_lib_workspace "$WORKSPACE_DIR" "$KALISIO_GITHUB_URL/kalisio/development.git"
+
+# Only use kli when requested + on master branch
+# otherwise package.json version will be used
+if [ "$WORKSPACE_KIND" != "nokli" ]; then
+    # On master branch we use kli, on other branches / tags we just install
+    if [ "$WORKSPACE_REF" = "master" ]; then
+        run_kli "$WORKSPACE_DIR" "$WORKSPACE_NODE" "$WORKSPACE_DIR/development/workspaces/libs/feathers-ekosystem/dev/feathers-ekosystem.js" "$WORKSPACE_KIND"
+    else
+        cd "$WORKSPACE_DIR/feathers-ekosystem" && nvm exec "$WORKSPACE_NODE" pnpm install && cd ~-
+    fi
+fi
 
 end_group "Setting up workspace ..."

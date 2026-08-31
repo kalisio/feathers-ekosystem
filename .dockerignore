@@ -1,0 +1,17 @@
+**/node_modules
+**/dist
+**/coverage
+**/.turbo
+**/.vitepress/cache
+**/.vitepress/dist
+
+.git
+.github
+.husky
+.changeset
+docs
+
+**/*.log
+**/.DS_Store
+**/.env
+**/.env.*

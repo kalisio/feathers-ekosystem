@@ -1,8 +1,8 @@
-# feathers-bpmn-orchestration
+# bpmn-orchestration
 
 BPMN-driven orchestration on top of [`@kalisio/feathers-tasks`](../../packages/feathers-tasks). Each BPMN `serviceTask` is routed — via the `meta:jobType` extension — to either a **Docker container** (created via [`dockerode`](https://github.com/apocas/dockerode)) or a **Kubernetes pod** (created via [`@kubernetes/client-node`](https://github.com/kubernetes-client/javascript)). One BPMN service task = one BullMQ job = one ephemeral container/pod.
 
-For a simpler version without BPMN, see [`examples/feathers-tasks-orchestration`](../feathers-tasks-orchestration/).
+For a simpler version without BPMN, see [`examples/tasks-orchestration`](../tasks-orchestration/).
 
 ## Architecture
 
@@ -105,7 +105,7 @@ pnpm install
 redis-server
 
 # 3 — Build the worker image (from the example folder)
-cd examples/feathers-bpmn-orchestration
+cd examples/bpmn-orchestration
 pnpm build:image
 
 # 4 — (kind only) Load the image into the cluster
@@ -160,7 +160,7 @@ kubectl get jobs,pods -l app=feathers-tasks-worker
 
 ## Configuration
 
-Identical to the simpler example — see [`feathers-tasks-orchestration/README.md`](../feathers-tasks-orchestration/README.md#configuration-environment-variables). Additionally:
+Identical to the simpler example — see [`tasks-orchestration/README.md`](../tasks-orchestration/README.md#configuration-environment-variables). Additionally:
 
 | Variable | Default | Description |
 |----------|---------|-------------|

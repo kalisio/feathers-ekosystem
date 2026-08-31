@@ -1,10 +1,10 @@
 {
   "name": "feathers-ekosystem",
   "description": "A collection of modules for FeathersJS",
-  "packageManager": "pnpm@10.1.0",
+  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm -r --filter './packages/*' build",
     "build:feathers-distributed": "pnpm --filter @kalisio/feathers-distributed build",
     "build:feathers-import-export": "pnpm --filter @kalisio/feathers-import-export build",
     "build:feathers-keycloak-listener": "pnpm --filter @kalisio/feathers-keycloak-listener build",
@@ -13,9 +13,10 @@
     "build:feathers-tasks": "pnpm --filter @kalisio/feathers-tasks build",
     "build:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush build",
     "build:feathers-localforage": "pnpm --filter @kalisio/feathers-localforage build",
+    "prebump": "changeset",
     "bump": "changeset version",
-    "change": "changeset",
     "clear": "pnpm -r exec rimraf node_modules dist coverage",
+    "docs:prepare": "pnpm --filter './examples/*' build",
     "docs:build": "pnpm --filter docs run build",
     "docs:dev": "pnpm --filter docs run dev",
     "inspect": "pnpm knip",
@@ -56,8 +57,10 @@
     "kalisio"
   ],
   "author": {
-    "name": "KALISIO <contact@kalisio.com>",
-    "url": "https://github.com/kalisio"
+    "name": "KALISIO",
+    "email": "contact@kalisio.com",
+    "url": "https://github.com/kalisio",
+    "logo": "https://kalisio.github.io/kalisioscope/kalisio/kalisio-logo-light.svg"
   },
   "contributors": [],
   "license": "MIT",
@@ -66,7 +69,7 @@
     "url": "git+https://github.com/kalisio/feathers-ekosystem.git"
   },
   "bugs": {
-    "url": "https://github.com/kalisio/feathers-ekosystem/issues"
+    "url": "git+https://github.com/kalisio/feathers-ekosystem/issues"
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/",
   "devDependencies": {
@@ -89,9 +92,12 @@
     ],
     "onlyBuiltDependencies": [
       "esbuild",
-      "sharp"
+      "sharp",
+      "vue-demi"
     ],
-    "overrides": {}
+    "overrides": {
+      "fast-xml-parser@5.2.5": ">=5.3.5"
+    }
   },
   "metaCatalog": {
     "version": "0.10.0",

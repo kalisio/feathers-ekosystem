@@ -1,7 +1,8 @@
 {
   "name": "@kalisio/feathers-webpush",
   "description": "Manage Web Push notifications with FeathersJS",
-  "version": "0.0.0",
+  "version": "1.0.1",
+  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     "./server": {
@@ -36,7 +37,8 @@
     "kalisio"
   ],
   "author": {
-    "name": "KALISIO <contact@kalisio.com>",
+    "name": "Kalisio",
+    "email": "contact@kalisio.com",
     "url": "https://github.com/kalisio"
   },
   "contributors": [],
@@ -66,6 +68,7 @@
     "node": ">=20"
   },
   "publishConfig": {
+    "access": "public",
     "exports": {
       "./server": {
         "import": "./dist/server.mjs",
