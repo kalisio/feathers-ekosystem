@@ -2,7 +2,7 @@ import path from 'node:path'
 import fs from 'node:fs'
 import { PassThrough } from 'node:stream'
 import _ from 'lodash'
-import { transform } from '@kalisio/common-core'
+import { transform } from '@kalisio/common-core/transform'
 import { exporters } from './exporters/index.js'
 import Archiver from 'archiver'
 
