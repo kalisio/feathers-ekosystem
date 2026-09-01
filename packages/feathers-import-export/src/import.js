@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { promisify } from 'node:util'
 import { pipeline, Writable } from 'node:stream'
-import { transform } from '@kalisio/common-core/transform'
+import { transform } from '@kalisio/common-core/operators/transform'
 import { importers } from './importers/index.js'
 
 import createDebug from 'debug'
