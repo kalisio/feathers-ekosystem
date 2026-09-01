@@ -2,6 +2,14 @@ packages:
   - packages/**
   - examples/**
   - docs/
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - vue-demi
+ignoredBuiltDependencies:
+  - msgpackr-extract
+overrides:
+  fast-xml-parser@5.2.5: '>=5.3.5'
 catalog:
   "@automerge/automerge-repo": ~2.4.0
   "@automerge/automerge-repo-network-websocket": ~2.4.0
