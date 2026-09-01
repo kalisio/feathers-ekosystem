@@ -29,7 +29,7 @@
     "lint:feathers-tasks": "pnpm --filter @kalisio/feathers-tasks lint",
     "lint:feathers-webpush": "pnpm --filter @kalisio/feathers-webpush lint",
     "lint:feathers-localforage": "pnpm --filter @kalisio/feathers-localforage lint",
-    "prepare": "husky",
+    "prepare": "node scripts/prepare.mjs",
     "prerelease": "pnpm build",
     "release": "changeset publish",
     "postrelease": "git push --follow-tags",
