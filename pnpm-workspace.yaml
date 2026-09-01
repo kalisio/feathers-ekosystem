@@ -125,7 +125,6 @@ catalog:
   feathers-authentication-management: ~4.0.0
   feathers-hooks-common: ~8.2.1
   feathers-mailer: ~3.0.0
-  feathers-mongodb: ~6.0.0
   feathers-mongodb-fuzzy-search: ~2.0.1
   feathers-mongodb-management: ~2.0.1
   feathers-reactive: ~0.11.0
