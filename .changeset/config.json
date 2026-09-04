@@ -2,7 +2,17 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.2/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [],
+  "fixed": [
+    [ "@kalisio/feathers-distributed",
+      "@kalisio/feathers-import-export",
+      "@kalisio/feathers-keycloak-listener",
+      "@kalisio/feathers-localforage",
+      "@kalisio/feathers-mongodb-management",
+      "@kalisio/feathers-s3",
+      "@kalisio/feathers-tasks",
+      "@kalisio/feathers-webpush"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "master",

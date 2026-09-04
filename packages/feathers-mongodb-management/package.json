@@ -1,7 +1,7 @@
 {
   "name": "@kalisio/feathers-mongodb-management",
   "description": "Manage MongoDB Databases, Users &amp; Collections with this Feathers service adapter",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
