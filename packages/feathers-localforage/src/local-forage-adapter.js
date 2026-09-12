@@ -1,6 +1,6 @@
 import { sorter, select, getLimit, AdapterBase } from '@feathersjs/adapter-commons'
 import { _ } from '@feathersjs/commons'
-import errors from '@feathersjs/errors'
+import { BadRequest, Forbidden, GeneralError, MethodNotAllowed, NotAcceptable, NotFound } from '@feathersjs/errors'
 import LocalForage from 'localforage'
 import sift from 'sift'
 import makeDebug from 'debug'
@@ -70,7 +70,7 @@ export class LocalForageAdapter extends AdapterBase {
     storage = Array.isArray(storage) ? storage : [storage]
     const ok = storage.reduce((value, s) => value && (s.toUpperCase() in validDrivers), true)
     if (!ok) {
-      throw new errors.NotAcceptable(`Unknown storage type specified '${this.options.storage}\nPlease use one (or more) of 'websql', 'indexeddb', or 'localstorage'.`)
+      throw new NotAcceptable(`Unknown storage type specified '${this.options.storage}\nPlease use one (or more) of 'websql', 'indexeddb', or 'localstorage'.`)
     }
 
     this._storageType = storage.map(s => validDrivers[s.toUpperCase()])
@@ -84,7 +84,7 @@ export class LocalForageAdapter extends AdapterBase {
     if (usedKeys.indexOf(this._storageKey) === -1) {
       usedKeys.push(this._storageKey)
     } else if (!this._reuseKeys) {
-      throw new errors.Forbidden(`The storage name '${this._storageKey}' is already in use by another instance.`)
+      throw new Forbidden(`The storage name '${this._storageKey}' is already in use by another instance.`)
     }
   }
 
@@ -181,11 +181,11 @@ export class LocalForageAdapter extends AdapterBase {
     await this._ready
     const { query } = this.getQuery(params)
     return this.getModel().getItem(String(id), null)
-      .catch(err => { throw new errors.NotFound(`No record found for ${this.id} '${id}', err=${err.name} ${err.message}` + this._debugSuffix) })
+      .catch(err => { throw new NotFound(`No record found for ${this.id} '${id}', err=${err.name} ${err.message}` + this._debugSuffix) })
       .then(item => {
-        if (item === null) throw new errors.NotFound(`No match for ${this.id} = '${id}', query=${JSON.stringify(query)}` + this._debugSuffix)
+        if (item === null) throw new NotFound(`No match for ${this.id} = '${id}', query=${JSON.stringify(query)}` + this._debugSuffix)
         if (this.options.matcher(query)(item)) return item
-        throw new errors.NotFound(`No match for item = ${JSON.stringify(item)}, query=${JSON.stringify(query)}` + this._debugSuffix)
+        throw new NotFound(`No match for item = ${JSON.stringify(item)}, query=${JSON.stringify(query)}` + this._debugSuffix)
       })
       .then(select(params, this.id))
       .then(stringsToDates(this._dates))
@@ -201,7 +201,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _create (raw, params = {}) {
     if (Array.isArray(raw) && !this.allowsMulti('create', params)) {
-      throw new errors.MethodNotAllowed('Can not create multiple entries')
+      throw new MethodNotAllowed('Can not create multiple entries')
     }
     debug(`_create(${JSON.stringify(raw)}, ${JSON.stringify(params)})` + this._debugSuffix)
 
@@ -224,7 +224,7 @@ export class LocalForageAdapter extends AdapterBase {
         .then(select(params, this.id))
         .then(stringsToDates(this._dates))
         .catch(err => {
-          throw new errors.GeneralError(`_create doOne: ERROR: err=${err.name}, ${err.message}`)
+          throw new GeneralError(`_create doOne: ERROR: err=${err.name}, ${err.message}`)
         })
     }
 
@@ -233,7 +233,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _patch (id, data, params = {}) {
     if (id === null && !this.allowsMulti('patch', params)) {
-      throw new errors.MethodNotAllowed('Can not patch multiple entries')
+      throw new MethodNotAllowed('Can not patch multiple entries')
     }
     debug(`_patch(${id}, ${JSON.stringify(data)}, ${JSON.stringify(params)})` + this._debugSuffix)
 
@@ -258,7 +258,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _update (id, data, params = {}) {
     if (id === null || Array.isArray(data)) {
-      throw new errors.BadRequest("You can not replace multiple instances. Did you mean 'patch'?")
+      throw new BadRequest("You can not replace multiple instances. Did you mean 'patch'?")
     }
     debug(`_update(${id}, ${JSON.stringify(data)}, ${JSON.stringify(params)})` + this._debugSuffix)
 
@@ -285,7 +285,7 @@ export class LocalForageAdapter extends AdapterBase {
 
   async _remove (id, params = {}) {
     if (id === null && !this.allowsMulti('remove', params)) {
-      throw new errors.MethodNotAllowed('Can not remove multiple entries')
+      throw new MethodNotAllowed('Can not remove multiple entries')
     }
     debug(`_remove(${id}, ${JSON.stringify(params)})` + this._debugSuffix)
 
