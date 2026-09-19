@@ -53,7 +53,6 @@ function runTests (message, options) {
       servicePath: 's3',
       transport,
       useProxy,
-      fetch: globalThis.fetch,
       debug: debugClient
     })
     expect(s3ClientService).toBeTruthy()

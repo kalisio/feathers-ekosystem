@@ -7,7 +7,6 @@ export class ClientHelpers {
     this.proxy = options.useProxy
     this.atob = options.atob || byte.fromBase64Bytes
     this.btoa = options.btoa || byte.toBase64
-    this.fetch = options.fetch
     this.debug = (message) => {
       if (options.debug) options.debug(message)
     }
@@ -79,11 +78,11 @@ export class ClientHelpers {
     // create the signedUrl to upload the blob
     const { SignedUrl } = await this.service.create({ command, id, ...options }, params)
     this.debug(`singlePartUpload uses signedUrl ${SignedUrl}`)
-    const response = await this.fetch(SignedUrl, {
+    const response = await globalThis.fetch(SignedUrl, {
       method: 'PUT',
       body: blob,
       headers: {
-        'Content-Length': blob.size,
+        // 'Content-Length': blob.size,
         'Content-Type': blob.type
       }
     })
@@ -106,7 +105,7 @@ export class ClientHelpers {
     // use a signedurl
     const { SignedUrl } = await this.service.create({ id, command: 'GetObject', ...options }, params)
     this.debug(`download uses signedUrl ${SignedUrl}`)
-    const response = await this.fetch(SignedUrl, {
+    const response = await globalThis.fetch(SignedUrl, {
       method: 'GET'
     })
     const type = response.headers.get('content-type')
