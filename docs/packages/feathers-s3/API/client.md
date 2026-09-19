@@ -22,7 +22,6 @@ The options are:
 | `servicePath` | the path to the service. | `s3` |
 | `chunkSize` | the size of the chunk to perfom multipart upload. | `5MB` |
 | `useProxy` | define whether to use backend as a proxy for custom methods. | `false` |
-| `fetch` | the fetch function. | browser fetch function |
 | `btoa` | the binary to ascii function used to transform sent data into a string. | transform to base64 |
 | `atob` | the ascii to binary function used to transform received data into a Buffer. | transform from base64 |
 | `debug` | the debug function. | null |
