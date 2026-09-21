@@ -1,4 +1,5 @@
-import { byte } from '@kalisio/common-core/utilities'
+import { byte, promise } from '@kalisio/common-core/utilities'
+import { request } from '@kalisio/common-core/operators/request'
 
 export class ClientHelpers {
   constructor (app, service, options) {
@@ -7,6 +8,8 @@ export class ClientHelpers {
     this.proxy = options.useProxy
     this.atob = options.atob || byte.fromBase64Bytes
     this.btoa = options.btoa || byte.toBase64
+    this.requestOptions = options.request || {}
+    this.concurrency = options.concurrency || 4
     this.debug = (message) => {
       if (options.debug) options.debug(message)
     }
@@ -27,32 +30,29 @@ export class ClientHelpers {
     if (!blob) throw new Error('multipartUpload: missing \'blob\'')
     if (!blob.type) throw new Error('multipartUpload: missing \'blob.type\'')
     this.debug(`multipartUpload called with 'id': ${id}`)
-    // setup required variables
-    let offset = 0
-    let PartNumber = 0
-    const parts = []
     // initialize the multipart upload
     const { UploadId } = await this.service.createMultipartUpload({ id, type: blob.type }, params)
     this.debug(`multipart upload created with 'UploadId': ${UploadId}`)
-    // do the multipart upload
+    // slice the blob into parts, one upload task per part
+    const tasks = []
+    let offset = 0
     while (offset < blob.size) {
-      let chunk
-      PartNumber++
-      if (offset + this.service.chunkSize <= blob.size) {
-        chunk = blob.slice(offset, offset + this.service.chunkSize, blob.type)
-        offset += this.service.chunkSize
-      } else {
-        chunk = blob.slice(offset, blob.size, blob.type)
-        offset = blob.size
-      }
-      this.debug(`upload part with number: ${PartNumber} and UploadId: ${UploadId}`)
-      const { ETag } = await this.singlePartUpload('UploadPart', id, chunk, {
-        ...options,
-        UploadId,
-        PartNumber
-      }, params)
-      parts.push({ PartNumber, ETag })
+      const end = Math.min(offset + this.service.chunkSize, blob.size)
+      const chunk = blob.slice(offset, end, blob.type)
+      const PartNumber = tasks.length + 1
+      tasks.push(async () => {
+        this.debug(`upload part with number: ${PartNumber} and UploadId: ${UploadId}`)
+        const { ETag } = await this.singlePartUpload('UploadPart', id, chunk, {
+          ...options,
+          UploadId,
+          PartNumber
+        }, params)
+        return { PartNumber, ETag }
+      })
+      offset = end
     }
+    // upload parts with bounded concurrency — run() keeps task order
+    const parts = await promise.run(tasks, { concurrency: this.concurrency })
     // finalize the multipart upload
     this.debug(`complete multipart upload with UploadId: ${UploadId}`)
     return this.service.completeMultipartUpload({ id, UploadId, parts }, params)
@@ -78,11 +78,11 @@ export class ClientHelpers {
     // create the signedUrl to upload the blob
     const { SignedUrl } = await this.service.create({ command, id, ...options }, params)
     this.debug(`singlePartUpload uses signedUrl ${SignedUrl}`)
-    const response = await globalThis.fetch(SignedUrl, {
+    const requester = request(this.requestOptions)
+    const response = await requester.fetch(SignedUrl, {
       method: 'PUT',
       body: blob,
       headers: {
-        // 'Content-Length': blob.size,
         'Content-Type': blob.type
       }
     })
@@ -105,7 +105,8 @@ export class ClientHelpers {
     // use a signedurl
     const { SignedUrl } = await this.service.create({ id, command: 'GetObject', ...options }, params)
     this.debug(`download uses signedUrl ${SignedUrl}`)
-    const response = await globalThis.fetch(SignedUrl, {
+    const requester = request(this.requestOptions)
+    const response = await requester.fetch(SignedUrl, {
       method: 'GET'
     })
     const type = response.headers.get('content-type')

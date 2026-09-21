@@ -42,20 +42,23 @@ catalog:
   "@feathersjs/schema": ~5.0.44
   "@feathersjs/socketio": ~5.0.44
   "@feathersjs/socketio-client": ~5.0.44
-  "@kalisio/common-core": ~0.11.0
-  "@kalisio/common-geospatial": ~0.11.0
-  "@kalisio/common-graphics": ~0.11.0
+  "@kalisio/common-core": ~0.12.0
+  "@kalisio/common-geospatial": ~0.12.0
+  "@kalisio/common-graphics": ~0.12.0
   "@kalisio/feathers-automerge": ~0.3.8
-  "@kalisio/feathers-distributed": ~2.4.0
-  "@kalisio/feathers-import-export": ~1.4.1
-  "@kalisio/feathers-localforage": ~1.2.0
-  "@kalisio/feathers-s3": ~1.6.0
-  "@kalisio/feathers-webpush": ~1.0.1
+  "@kalisio/feathers-distributed": ~3.0.0
+  "@kalisio/feathers-import-export": ~3.0.0
+  "@kalisio/feathers-localforage": ~3.0.0
+  "@kalisio/feathers-mongodb-management": ~3.0.0
+  "@kalisio/feathers-s3": ~3.0.0
+  "@kalisio/feathers-tasks": ~3.0.0
+  "@kalisio/feathers-webpush": ~3.0.0
   "@kalisio/geo-pixel-stream": https://github.com/kalisio/geo-pixel-stream#gdal-async
   "@kalisio/kdk": ~2.7.0
   "@kalisio/vitepress-theme": ~2.1.0
   "@logtape/logtape": ~0.7.0
   "@mapbox/mbtiles": ~0.12.1
+  "@mapbox/sphericalmercator": ~2.0.2
   "@mapbox/vtquery": ~0.6.0
   "@modelcontextprotocol/sdk": ~1.29.0
   "@pdfme/common": ~5.2.0
@@ -130,6 +133,7 @@ catalog:
   eslint-plugin-vue: ~10.4.0
   express: ~5.2.1
   express-rate-limit: ~5.1.0
+  fast-xml-parser: ~5.11.1
   feathers-authentication-management: ~4.0.0
   feathers-hooks-common: ~8.2.1
   feathers-mailer: ~3.0.0
@@ -150,7 +154,7 @@ catalog:
   imapflow: ~1.7.1
   ioredis: ~5.10.1
   is-docker: ~2.2.1
-  js-yaml: ~5.3.0
+  js-yaml: ~5.4.1
   jsdap: ~8.1.0
   jwt-decode: ~3.1.2
   keycloak-js: ~23.0.4
