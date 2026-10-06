@@ -2,21 +2,13 @@ packages:
   - packages/**
   - examples/**
   - docs/
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - vue-demi
-ignoredBuiltDependencies:
-  - msgpackr-extract
-overrides:
-  fast-xml-parser@5.2.5: ">=5.3.5"
 catalog:
   "@automerge/automerge-repo": ~2.4.0
   "@automerge/automerge-repo-network-websocket": ~2.4.0
   "@automerge/automerge-repo-storage-indexeddb": ~2.4.0
-  "@aws-sdk/client-s3": ~3.943.0
-  "@aws-sdk/lib-storage": ~3.943.0
-  "@aws-sdk/s3-request-presigner": ~3.943.0
+  "@aws-sdk/client-s3": ~3.981.0
+  "@aws-sdk/lib-storage": ~3.981.0
+  "@aws-sdk/s3-request-presigner": ~3.981.0
   "@bull-board/api": ~6.20.6
   "@bull-board/express": ~6.20.6
   "@bull-board/ui": ~6.20.6
@@ -24,27 +16,27 @@ catalog:
   "@casl/mongoose": ~7.1.0
   "@changesets/cli": ~2.30.0
   "@eslint/js": ~9.14.0
-  "@feathersjs/adapter-commons": ~5.0.44
-  "@feathersjs/adapter-tests": ~5.0.44
-  "@feathersjs/authentication": ~5.0.44
-  "@feathersjs/authentication-client": ~5.0.44
-  "@feathersjs/authentication-local": ~5.0.44
-  "@feathersjs/authentication-oauth": ~5.0.44
-  "@feathersjs/client": ~5.0.44
-  "@feathersjs/commons": ~5.0.44
-  "@feathersjs/configuration": ~5.0.44
-  "@feathersjs/errors": ~5.0.44
-  "@feathersjs/express": ~5.0.44
-  "@feathersjs/feathers": ~5.0.44
-  "@feathersjs/memory": ~5.0.44
-  "@feathersjs/mongodb": ~5.0.44
-  "@feathersjs/rest-client": ~5.0.44
-  "@feathersjs/schema": ~5.0.44
-  "@feathersjs/socketio": ~5.0.44
-  "@feathersjs/socketio-client": ~5.0.44
-  "@kalisio/common-core": ~0.12.0
-  "@kalisio/common-geospatial": ~0.12.0
-  "@kalisio/common-graphics": ~0.12.0
+  "@feathersjs/adapter-commons": ~5.0.50
+  "@feathersjs/adapter-tests": ~5.0.50
+  "@feathersjs/authentication": ~5.0.50
+  "@feathersjs/authentication-client": ~5.0.50
+  "@feathersjs/authentication-local": ~5.0.50
+  "@feathersjs/authentication-oauth": ~5.0.50
+  "@feathersjs/client": ~5.0.50
+  "@feathersjs/commons": ~5.0.50
+  "@feathersjs/configuration": ~5.0.50
+  "@feathersjs/errors": ~5.0.50
+  "@feathersjs/express": ~5.0.50
+  "@feathersjs/feathers": ~5.0.50
+  "@feathersjs/memory": ~5.0.50
+  "@feathersjs/mongodb": ~5.0.50
+  "@feathersjs/rest-client": ~5.0.50
+  "@feathersjs/schema": ~5.0.50
+  "@feathersjs/socketio": ~5.0.50
+  "@feathersjs/socketio-client": ~5.0.50
+  "@kalisio/common-core": ~0.12.1
+  "@kalisio/common-geospatial": ~0.12.1
+  "@kalisio/common-graphics": ~0.12.1
   "@kalisio/feathers-automerge": ~0.3.8
   "@kalisio/feathers-distributed": ~3.0.0
   "@kalisio/feathers-import-export": ~3.0.0
@@ -99,7 +91,7 @@ catalog:
   "@vue/eslint-config-prettier": " ^10.1.0"
   "@vue/test-utils": ~2.4.6
   "@weacast/core": ~2.3.1
-  "@xmldom/xmldom": ~0.9.11
+  "@xmldom/xmldom": ~0.9.12
   ajv: ~8.20.0
   ajv-formats: ~3.0.1
   ajv-i18n: ~4.2.0
@@ -178,7 +170,6 @@ catalog:
   mubsub-es: ~2.1.0
   nock: ~14.0.13
   node-cron: ~4.6.0
-  node-geocoder: git+https://github.com/nchaulet/node-geocoder.git#f66ea8db928d780b5d4268938909f86fba503eef
   nodemailer: ~6.9.8
   osmtogeojson: 3.0.0-beta.5
   papaparse: ~5.7.0
@@ -240,3 +231,15 @@ catalog:
   xml2js: ~0.6.2
   zlib: ~1.0.5
   zod: ~4.4.3
+ignoredBuiltDependencies:
+  - msgpackr-extract
+onlyBuiltDependencies:
+  - core-js
+  - cpu-features
+  - esbuild
+  - protobufjs
+  - sharp
+  - ssh2
+  - vue-demi
+overrides:
+  fast-xml-parser@5.2.5: ">=5.3.5"

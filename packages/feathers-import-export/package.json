@@ -51,6 +51,7 @@
     "archiver": "catalog:",
     "debug": "catalog:",
     "lodash": "catalog:",
+    "mathjs": "catalog:",
     "papaparse": "catalog:",
     "sanitize-html": "catalog:"
   },
