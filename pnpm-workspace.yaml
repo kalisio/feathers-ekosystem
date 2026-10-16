@@ -45,6 +45,7 @@ catalog:
   '@kalisio/feathers-mongodb-management': 3.0.0
   '@kalisio/feathers-s3': 3.0.0
   '@kalisio/feathers-webpush': 3.0.0
+  '@kalisio/krawler': 2.8.2
   '@kalisio/geo-pixel-stream': https://github.com/kalisio/geo-pixel-stream#gdal-async
   '@kalisio/kdk': 2.7.0
   '@kalisio/vitepress-theme': 2.1.0
@@ -125,7 +126,7 @@ catalog:
   eslint: 9.14.0
   eslint-plugin-vue: 10.4.0
   express: 5.2.1
-  express-rate-limit: 5.1.0
+  express-rate-limit: 5.5.1
   fast-xml-parser: 5.11.1
   feathers-authentication-management: 4.0.0
   feathers-mailer: 3.0.0
@@ -205,7 +206,6 @@ catalog:
   typescript: 6.0.3
   unzipper: 0.12.3
   vite: 7.3.1
-  vite-bundle-visualizer: 1.2.1
   vite-plugin-checker: 0.11.0
   vitepress: 1.6.3
   vitepress-openapi: 0.2.1
