@@ -209,6 +209,10 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      '@kalisio/common-core':
+        specifier: link:../common-ekosystem/packages/common-core
+        version: link:../common-ekosystem/packages/common-core
     devDependencies:
       '@changesets/cli':
         specifier: 'catalog:'

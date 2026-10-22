@@ -2,6 +2,19 @@ packages:
   - packages/**
   - examples/**
   - docs/
+allowBuilds:
+  '@mapbox/vtquery': true
+  core-js: true
+  cpu-features: true
+  esbuild: true
+  gdal-async: true
+  msgpackr-extract: false
+  protobufjs: true
+  puppeteer: true
+  sharp: true
+  sqlite3: true
+  ssh2: true
+  vue-demi: true
 catalog:
   '@automerge/automerge-repo': 2.4.0
   '@automerge/automerge-repo-network-websocket': 2.4.0
@@ -140,7 +153,7 @@ catalog:
   glob: 13.0.1
   globals: 16.4.0
   got: 15.1.0
-  fs-extra: 8.1.0
+  fs-extra: 11.4.1
   imapflow: 1.7.1
   ioredis: 5.10.1
   js-yaml: 5.4.3
@@ -182,7 +195,7 @@ catalog:
   pg: 8.23.0
   pinch-zoom-element: 1.1.1
   pixelmatch: 7.2.0
-  pmtiles: 4.4.1
+  pmtiles: 4.5.0
   pngjs: 7.0.0
   postcss: 8.4.14
   prettier: 3.8.1
@@ -232,6 +245,7 @@ catalog:
   xml2js: 0.6.2
   zlib: 1.0.5
   zod: 4.4.3
+disallowWorkspaceCycles: true
 overrides:
   '@xmldom/xmldom@<0.8.4': '>=0.8.15 <0.9'
   brace-expansion@1.1.14: 1.1.18
@@ -244,18 +258,4 @@ overrides:
   socket.io-parser@4.2.6: 4.2.7
   undici@6.25.0: 6.27.0
   ws@8.18.3: 8.21.3
-allowBuilds:
-  '@mapbox/vtquery': true
-  core-js: true
-  cpu-features: true
-  esbuild: true
-  gdal-async: true
-  msgpackr-extract: false
-  protobufjs: true
-  puppeteer: true
-  sharp: true
-  sqlite3: true
-  ssh2: true
-  vue-demi: true
-disallowWorkspaceCycles: true
 pmOnFail: error

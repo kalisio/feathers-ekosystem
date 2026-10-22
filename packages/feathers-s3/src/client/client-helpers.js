@@ -78,14 +78,15 @@ export class ClientHelpers {
     // create the signedUrl to upload the blob
     const { SignedUrl } = await this.service.create({ command, id, ...options }, params)
     this.debug(`singlePartUpload uses signedUrl ${SignedUrl}`)
-    const requester = request(this.requestOptions)
-    const response = await requester.fetch(SignedUrl, {
+    const req = request(SignedUrl, this.requestOptions)
+    const response = await req.fetch({
       method: 'PUT',
       body: blob,
       headers: {
         'Content-Type': blob.type
       }
     })
+    if (!response.ok) throw new Error(`S3 upload failed: HTTP ${response.status}`)
     const etag = response.headers.get('etag')
     this.debug(`singlePartUpload succeeded with ETag ${etag}`)
     return { ETag: etag }
@@ -105,10 +106,9 @@ export class ClientHelpers {
     // use a signedurl
     const { SignedUrl } = await this.service.create({ id, command: 'GetObject', ...options }, params)
     this.debug(`download uses signedUrl ${SignedUrl}`)
-    const requester = request(this.requestOptions)
-    const response = await requester.fetch(SignedUrl, {
-      method: 'GET'
-    })
+    const req = request(SignedUrl, this.requestOptions)
+    const response = await req.fetch({ method: 'GET' })
+    if (!response.ok) throw new Error(`S3 download failed: HTTP ${response.status}`)
     const type = response.headers.get('content-type')
     const buffer = await response.arrayBuffer()
     this.debug('download succeeded')
