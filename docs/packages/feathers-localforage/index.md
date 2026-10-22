@@ -27,6 +27,7 @@ npm install @kalisio/feathers-localforage
 ```bash [yarn]
 yarn add @kalisio/feathers-localforage
 ```
+:::
 
 ## Configuration
 

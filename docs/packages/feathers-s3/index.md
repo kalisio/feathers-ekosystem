@@ -61,6 +61,7 @@ npm install @kalisio/feathers-s3
 ```bash [yarn]
 yarn add @kalisio/feathers-s3
 ```
+:::
 
 ## Configuration
 

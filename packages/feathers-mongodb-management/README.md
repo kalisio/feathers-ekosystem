@@ -6,7 +6,7 @@ _Manage MongoDB Databases, Users &amp; Collections with this Feathers service ad
 
 ## Documentation
 
-Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/pacakges/feathers-mongodb-management).
+Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/packages/feathers-mongodb-management).
 
 ## License
 

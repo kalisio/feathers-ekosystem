@@ -6,7 +6,7 @@ __
 
 ## Documentation
 
-Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/pacakges/feathers-distributed).
+Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/packages/feathers-distributed).
 
 In the tests four apps are actually created, each app has a distribution key corresponding to its index:
 - a gateway (index 0) with a local `users` service then a dynamically added local `custom` service with an additional `custom` event (`created`/`custom` events distributed)

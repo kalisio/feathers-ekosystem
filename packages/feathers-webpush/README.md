@@ -6,7 +6,7 @@
 
 ## Documentation
 
-Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/pacakges/feathers-webpush).
+Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/packages/feathers-webpush).
 
 ## License
 

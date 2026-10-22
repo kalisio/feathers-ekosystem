@@ -6,7 +6,7 @@ _Task execution service for FeathersJS_
 
 ## Documentation
 
-Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/pacakges/feathers-tasks).
+Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/packages/feathers-tasks).
 
 ## License
 

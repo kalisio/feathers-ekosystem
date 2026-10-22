@@ -20,9 +20,24 @@ You might find this [presentation](http://slides.com/armaganamcalar/apiconf-zero
 
 ## Installation
 
+Install with your preferred package manager:
+
+::: code-group
+
+```bash [pnpm]
+pnpm add @kalisio/feathers-localforage
 ```
-npm install @kalisio/feathers-distributed --save
+
+```bash [npm]
+npm install @kalisio/feathers-localforage
 ```
+
+```bash [yarn]
+yarn add @kalisio/feathers-localforage
+```
+
+:::
+
 
 **To get the latest version please use the following command:**
 ```

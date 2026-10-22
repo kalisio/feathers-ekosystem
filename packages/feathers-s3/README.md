@@ -6,7 +6,7 @@ _Manage S3 objects using presigned url_
 
 ## Documentation
 
-Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/pacakges/feathers-s3).
+Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/packages/feathers-s3).
 
 ## License
 

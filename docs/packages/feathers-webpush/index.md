@@ -31,6 +31,8 @@ npm install @kalisio/feathers-webpush
 yarn add @kalisio/feathers-webpush
 ```
 
+:::
+
 ## Configuration
 
 To configure `feathers-webpush` in your **FeathersJS** application, you need to set up both the **server** and the **client** parts.

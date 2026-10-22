@@ -17,6 +17,7 @@ npm install @kalisio/feathers-keycloak-listener
 ```shell
 yarn add @kalisio/feathers-keycloak-listener
 ```
+:::
 
 ## Configuration
 

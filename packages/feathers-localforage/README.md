@@ -6,7 +6,7 @@ _A FeathersJS client side service based on localforage that persists to IndexedD
 
 ## Documentation
 
-Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/pacakges/feathers-localforage).
+Detailed documentation is available at the following [link](https://kalisio.github.io/feathers-ekosystem/packages/feathers-localforage).
 
 ## License
 

@@ -26,17 +26,20 @@ The following sections illustrate the different processes implemented by `feathe
 
 Install with your preferred package manager:
 
-```shell
-pnpm add @kalisio/feathers-import-export
+::: code-group
+
+```bash [pnpm]
+pnpm add @kalisio/feathers-localforage
 ```
 
-```shell
-npm install @kalisio/feathers-import-export
+```bash [npm]
+npm install @kalisio/feathers-localforage
 ```
 
-```shell
-yarn add @kalisio/feathers-import-export
+```bash [yarn]
+yarn add @kalisio/feathers-localforage
 ```
+:::
 
 ## Configuration
 
