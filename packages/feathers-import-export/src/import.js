@@ -30,7 +30,7 @@ class ServiceWriteStream extends Writable {
 }
 
 export async function _import (data) {
-  debug(`Import file with data ${JSON.stringify(_.omit(data, 's3Service'), null, 2)}`)
+  debug('Import file with data', _.omit(data, ['s3Service', 'service', 'app']))
   // retrieve the stream to the s3 object
   const response = await data.s3Service.getObjectCommand({
     id: data.id,

@@ -89,7 +89,7 @@ async function _writeData (stream, data) {
 }
 
 export async function _export (data) {
-  debug(`Export file with data ${JSON.stringify(_.omit(data, 's3Service'), null, 2)}`)
+  debug('Export file with data', _.omit(data, ['s3Service', 'service', 'app']))
   // create a write stream on a tmp file named with the uuid
   const tmpFile = path.join(data.workingDir, data.uuid)
   const tmpStream = fs.createWriteStream(tmpFile)
