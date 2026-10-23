@@ -3,7 +3,8 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [
-    [ "@kalisio/feathers-distributed",
+    [
+      "@kalisio/feathers-distributed",
       "@kalisio/feathers-import-export",
       "@kalisio/feathers-keycloak-listener",
       "@kalisio/feathers-localforage",
