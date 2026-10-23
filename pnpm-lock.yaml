@@ -67,8 +67,8 @@ catalogs:
       specifier: 5.0.50
       version: 5.0.50
     '@kalisio/common-core':
-      specifier: 0.12.1
-      version: 0.12.1
+      specifier: 1.0.1
+      version: 1.0.1
     '@kalisio/vitepress-theme':
       specifier: 2.1.0
       version: 2.1.0
@@ -535,7 +535,7 @@ importers:
     dependencies:
       '@kalisio/common-core':
         specifier: 'catalog:'
-        version: 0.12.1(ajv@8.20.0)(lodash-es@4.18.1)(mathjs@15.2.0)(moment@2.30.1)(papaparse@5.7.0)(sanitize-html@2.17.4)(sift@17.1.3)
+        version: 1.0.1(ajv@8.20.0)(lodash-es@4.18.1)(mathjs@15.2.0)(moment@2.30.1)(papaparse@5.7.0)(sanitize-html@2.17.4)(sift@17.1.3)
       '@kalisio/feathers-s3':
         specifier: 'workspace:'
         version: link:../feathers-s3
@@ -680,7 +680,7 @@ importers:
         version: 5.0.50
       '@kalisio/common-core':
         specifier: 'catalog:'
-        version: 0.12.1(ajv@8.20.0)(lodash-es@4.18.1)(mathjs@15.2.0)(moment@2.30.1)(papaparse@5.7.0)(sanitize-html@2.17.4)(sift@17.1.3)
+        version: 1.0.1(ajv@8.20.0)(lodash-es@4.18.1)(mathjs@15.2.0)(moment@2.30.1)(papaparse@5.7.0)(sanitize-html@2.17.4)(sift@17.1.3)
       debug:
         specifier: 'catalog:'
         version: 4.4.3
@@ -1883,20 +1883,20 @@ packages:
     peerDependencies:
       jsep: ^0.4.0||^1.0.0
 
-  '@kalisio/common-core@0.12.1':
-    resolution: {integrity: sha512-nGTm7M9kpl/BlG1JLrRzLGf77LcWyMv8V72y3YK+6wOsXzqXmCFLPsWpiL44i6bqDGrABKmlzzZz6K3El1Zkxw==}
+  '@kalisio/common-core@1.0.1':
+    resolution: {integrity: sha512-ZYPJKoLNUek1bHWK1J7+cucVPsSg8T/Fy+hO7CZh1KZKsn+9eyA/Ob1tNKes0MdcAEdXBEUL2NfNTI6aXYcrLg==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@xmldom/xmldom': ~0.9.11
-      ajv: ~8.20.0
-      fast-xml-parser: ~5.11.1
-      js-yaml: ~5.4.1
-      lodash-es: ~4.18.1
-      mathjs: ~15.2.0
-      moment: ~2.30.1
-      papaparse: ~5.7.0
-      sanitize-html: ~2.17.4
-      sift: ~17.1.3
+      '@xmldom/xmldom': 0.9.12
+      ajv: 8.20.0
+      fast-xml-parser: 5.11.1
+      js-yaml: 5.4.3
+      lodash-es: 4.18.1
+      mathjs: 15.2.0
+      moment: 2.30.1
+      papaparse: 5.7.0
+      sanitize-html: 2.17.4
+      sift: 17.1.3
     peerDependenciesMeta:
       '@xmldom/xmldom':
         optional: true
@@ -8499,7 +8499,7 @@ snapshots:
     dependencies:
       jsep: 1.4.0
 
-  '@kalisio/common-core@0.12.1(ajv@8.20.0)(lodash-es@4.18.1)(mathjs@15.2.0)(moment@2.30.1)(papaparse@5.7.0)(sanitize-html@2.17.4)(sift@17.1.3)':
+  '@kalisio/common-core@1.0.1(ajv@8.20.0)(lodash-es@4.18.1)(mathjs@15.2.0)(moment@2.30.1)(papaparse@5.7.0)(sanitize-html@2.17.4)(sift@17.1.3)':
     optionalDependencies:
       ajv: 8.20.0
       lodash-es: 4.18.1

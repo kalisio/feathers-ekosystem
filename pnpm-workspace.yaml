@@ -47,9 +47,9 @@ catalog:
   '@feathersjs/schema': 5.0.50
   '@feathersjs/socketio-client': 5.0.50
   '@feathersjs/socketio': 5.0.50
-  '@kalisio/common-core': 0.12.1
-  '@kalisio/common-geospatial': 0.12.1
-  '@kalisio/common-graphics': 0.12.1
+  '@kalisio/common-core': 1.0.1
+  '@kalisio/common-geospatial': 1.0.1
+  '@kalisio/common-graphics': 1.0.1
   '@kalisio/feathers-automerge': 0.3.8
   '@kalisio/feathers-distributed': 3.0.0
   '@kalisio/feathers-import-export': 3.0.0
