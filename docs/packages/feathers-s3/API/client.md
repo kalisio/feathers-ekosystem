@@ -1,5 +1,5 @@
 ---
-title: Client API
+title: Client
 description: Helper functions to simplify S3 uploads and downloads on the client side.
 ---
 
