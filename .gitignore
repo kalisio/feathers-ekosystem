@@ -52,6 +52,9 @@ coverage/
 .nyc_output/
 jest-*.json
 
+# PNPM hook
+.pnpmfile.cjs
+
 # Husky hooks
 .husky/_
 
