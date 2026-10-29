@@ -18,7 +18,7 @@ init_github_run_tests() {
 
 init_github_additional_tests() {
     sudo apt-get update
-    install_reqs age sops nvm node24 mongo7 mongo8
+    install_reqs age sops nvm node24 node26 mongo7 mongo8
     sudo apt-get install gdal-bin
 }
 
