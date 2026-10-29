@@ -1,5 +1,6 @@
 # feathers-ekosystem
 
+[![CI](https://github.com/kalisio/feathers-ekosystem/actions/workflows/main.yaml/badge.svg)](https://github.com/kalisio/feathers-ekosystem/actions/workflows/main.yaml)
 [![Quality Gate Status](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-feathers-ekosystem&metric=alert_status&token=sqb_fc41cdf23c7c03206e7f4e94e76059318bdf520f)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-feathers-ekosystem)
 [![Maintainability Rating](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-feathers-ekosystem&metric=software_quality_maintainability_rating&token=sqb_fc41cdf23c7c03206e7f4e94e76059318bdf520f)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-feathers-ekosystem)
 [![Security Rating](https://sonar.portal.kalisio.com/api/project_badges/measure?project=kalisio-feathers-ekosystem&metric=software_quality_security_rating&token=sqb_fc41cdf23c7c03206e7f4e94e76059318bdf520f)](https://sonar.portal.kalisio.com/dashboard?id=kalisio-feathers-ekosystem)
