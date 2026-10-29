@@ -12,7 +12,7 @@ THIS_DIR=$(dirname "$THIS_FILE")
 
 init_github_run_tests() {
     sudo apt-get update
-    install_reqs age sops nvm node20 mongo7 sonar_scanner_cli
+    install_reqs age sops nvm node24 mongo7 sonar_scanner_cli
     sudo apt-get install gdal-bin
 }
 
