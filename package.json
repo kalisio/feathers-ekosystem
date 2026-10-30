@@ -88,7 +88,7 @@
   },
   "metaWorkspace": {
     "version": "0.11.0",
-    "syncedAt": "2026-10-29T10:22:17.362Z"
+    "syncedAt": "2026-10-30T08:15:23.026Z"
   },
   "dependencies": {
     "@kalisio/common-core": "link:../common-ekosystem/packages/common-core"

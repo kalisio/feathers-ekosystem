@@ -4,8 +4,11 @@ packages:
   - docs/
 allowBuilds:
   '@mapbox/vtquery': true
+  canvas: true
+  cbor-extract: true
   core-js: true
   cpu-features: true
+  ejs: true
   esbuild: true
   gdal-async: true
   msgpackr-extract: false
@@ -50,7 +53,7 @@ catalog:
   '@kalisio/common-core': 1.0.1
   '@kalisio/common-geospatial': 1.0.1
   '@kalisio/common-graphics': 1.0.1
-  '@kalisio/feathers-automerge': 0.3.8
+  '@kalisio/feathers-automerge': 0.4.0
   '@kalisio/feathers-distributed': 3.1.0
   '@kalisio/feathers-import-export': 3.1.0
   '@kalisio/feathers-tasks': 3.1.0
@@ -60,7 +63,7 @@ catalog:
   '@kalisio/feathers-webpush': 3.1.0
   '@kalisio/krawler': 2.8.2
   '@kalisio/geo-pixel-stream': https://github.com/kalisio/geo-pixel-stream#gdal-async
-  '@kalisio/kdk': 2.7.0
+  '@kalisio/kdk': 2.9.1
   '@kalisio/vitepress-theme': 2.1.0
   '@logtape/logtape': 0.7.0
   '@mapbox/mbtiles': 0.12.1
