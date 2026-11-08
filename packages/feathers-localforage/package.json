@@ -2,7 +2,6 @@
   "name": "@kalisio/feathers-localforage",
   "description": "A FeathersJS client side service based on localforage that persists to IndexedDB, WebSQL, or LocalStorage",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {
@@ -49,11 +48,8 @@
   "bugs": {
     "url": "https://github.com/kalisio/feathers-ekosystem/issues"
   },
-  "homepage": "https://kalisio.github.io/feathers-ekosystem/packages/feathers-locaforage",
+  "homepage": "https://kalisio.github.io/feathers-ekosystem/packages/feathers-localforage",
   "dependencies": {
-    "@feathersjs/adapter-commons": "catalog:",
-    "@feathersjs/commons": "catalog:",
-    "@feathersjs/errors": "catalog:",
     "debug": "catalog:",
     "localforage": "catalog:",
     "sift": "catalog:"
@@ -64,8 +60,13 @@
     "@feathersjs/feathers": "catalog:",
     "@feathersjs/socketio": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/adapter-commons": "catalog:",
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

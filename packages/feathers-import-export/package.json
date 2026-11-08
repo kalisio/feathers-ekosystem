@@ -2,7 +2,6 @@
   "name": "@kalisio/feathers-import-export",
   "description": "Import / Export data with FeathersJS",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {
@@ -56,7 +55,6 @@
     "sanitize-html": "catalog:"
   },
   "devDependencies": {
-    "@feathersjs/errors": "catalog:",
     "@feathersjs/express": "catalog:",
     "@feathersjs/feathers": "catalog:",
     "@feathersjs/mongodb": "catalog:",
@@ -64,8 +62,11 @@
     "tar": "catalog:",
     "unzipper": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/errors": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

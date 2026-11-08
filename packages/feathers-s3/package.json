@@ -2,7 +2,6 @@
   "name": "@kalisio/feathers-s3",
   "description": "Manage S3 objects using presigned url",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     "./server": {
@@ -52,8 +51,6 @@
   "dependencies": {
     "@aws-sdk/client-s3": "catalog:",
     "@aws-sdk/s3-request-presigner": "catalog:",
-    "@feathersjs/commons": "catalog:",
-    "@feathersjs/errors": "catalog:",
     "@kalisio/common-core": "catalog:",
     "debug": "catalog:",
     "lodash": "catalog:",
@@ -69,8 +66,12 @@
     "socket.io-client": "catalog:",
     "superagent": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

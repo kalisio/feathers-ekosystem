@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { defineConfig, mergeConfig } from 'vitest/config'
-import { baseConfig } from '../../vitest.base-config'
+import { baseConfig } from '../../vitest.base-config.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 

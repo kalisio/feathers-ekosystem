@@ -103,7 +103,7 @@ catalog:
   '@turf/simplify': 7.3.5
   '@turf/truncate': 7.3.5
   '@turf/union': 7.3.5
-  '@vitest/coverage-v8': 4.1.4
+  '@vitest/coverage-v8': 5.1.0
   '@vitejs/plugin-vue': 6.0.4
   '@vue/eslint-config-prettier': ^10.1.0
   '@vue/test-utils': 2.4.6
@@ -223,12 +223,12 @@ catalog:
   tough-cookie: 6.0.2
   typescript: 6.0.3
   unzipper: 0.12.3
-  vite: 7.3.1
+  vite: 8.3.6
   vite-plugin-checker: 0.11.0
   vitepress: 1.6.3
   vitepress-openapi: 0.2.1
   vitepress-plugin-mermaid: 2.0.16
-  vitest: 4.1.4
+  vitest: 5.1.0
   vue: 3.5.30
   vue-eslint-parser: 10.2.0
   vue-i18n: 11.3.0

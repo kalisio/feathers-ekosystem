@@ -243,7 +243,8 @@ describe('feathers-distributed:main', () => {
     expect(user.id).toBe(startId)
   }, 5000)
 
-  it('ensure distribution hooks have been called on remote service', () => {
+  it('ensure distribution hooks have been called on remote service', async () => {
+    await restClientServices[service1].find({})
     expect(beforeHook).toHaveBeenCalled()
     expect(afterHook).toHaveBeenCalled()
   }, 5000)

@@ -11,8 +11,9 @@ import { getTmpPath, gunzipDataset, clearDataset } from './utils.dataset.js'
 
 feathers.setDebug(makeDebug)
 
-const port = 3103
-const namespace = 'hooks'
+const SIZE_TOLERANCE = 0.01
+const NAMESPACE = 'hooks'
+const PORT = 3103
 
 let app
 let s3Service
@@ -35,15 +36,15 @@ const options = {
     bucket: process.env.S3_BUCKET,
     prefix: crypto.randomUUID()
   },
-  allowedServicePaths: `${namespace}-features`,
+  allowedServicePaths: `${NAMESPACE}-features`,
   workingDir: './test/tmp'
 }
 
-const servicePath = `${namespace}-features`
+const servicePath = `${NAMESPACE}-features`
 
 const scenarios = [
   {
-    name: `${namespace}-features-geojson`,
+    name: `${NAMESPACE}-features-geojson`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
     import: { method: 'import', servicePath, id: 'features.geojson' },
@@ -62,7 +63,7 @@ const scenarios = [
     }
   },
   {
-    name: `${namespace}-features-shp`,
+    name: `${NAMESPACE}-features-shp`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
     import: { method: 'import', servicePath, id: 'features.geojson' },
@@ -82,7 +83,7 @@ const scenarios = [
     }
   },
   {
-    name: `${namespace}-features-kml`,
+    name: `${NAMESPACE}-features-kml`,
     dataset: 'features.geojson',
     upload: { contentType: 'application/geo+json' },
     import: { method: 'import', servicePath, id: 'features.geojson' },
@@ -108,12 +109,12 @@ function runTests (scenario) {
   })
 
   it(`[${scenario.name}] unzip input dataset`, async () => {
-    await expect(gunzipDataset(namespace, scenario.dataset)).resolves.not.toThrow()
+    await expect(gunzipDataset(NAMESPACE, scenario.dataset)).resolves.not.toThrow()
   })
 
   it(`[${scenario.name}] upload input dataset`, async () => {
     const response = await s3Service.uploadFile({
-      filePath: getTmpPath(namespace, scenario.dataset),
+      filePath: getTmpPath(NAMESPACE, scenario.dataset),
       contentType: scenario.upload.contentType,
       chunkSize: 1024 * 1024 * 10
     })
@@ -135,7 +136,7 @@ function runTests (scenario) {
   it(`[${scenario.name}] clean input dataset`, async () => {
     const response = await s3Service.remove(inputId)
     expect(response.$metadata.httpStatusCode).toBe(204)
-    clearDataset(namespace, scenario.dataset)
+    clearDataset(NAMESPACE, scenario.dataset)
   })
 
   it(`[${scenario.name}] export collection`, async () => {
@@ -152,17 +153,19 @@ function runTests (scenario) {
   })
 
   it(`[${scenario.name}] download output file`, async () => {
-    const tmpFilePath = getTmpPath(namespace, outputId)
+    const tmpFilePath = getTmpPath(NAMESPACE, outputId)
     const response = await s3Service.downloadFile({ id: outputId, filePath: tmpFilePath })
     expect(response.id).toBeTruthy()
-    const size = fs.statSync(getTmpPath(namespace, outputId)).size
-    expect(size).toBeCloseTo(scenario.expect.export.size, -2) // ±50 octets
+    const size = fs.statSync(tmpFilePath).size
+    const expected = scenario.expect.export.size
+    expect(size).toBeGreaterThanOrEqual(expected * (1 - SIZE_TOLERANCE))
+    expect(size).toBeLessThanOrEqual(expected * (1 + SIZE_TOLERANCE))
   })
 
   it(`[${scenario.name}] clean output files`, async () => {
     const response = await s3Service.remove(outputId)
     expect(response.$metadata.httpStatusCode).toBe(204)
-    clearDataset(namespace, outputId)
+    clearDataset(NAMESPACE, outputId)
     outputId = undefined
   })
 
@@ -198,7 +201,7 @@ describe('feathers-import-export:hooks', () => {
       }
     })
 
-    expressServer = await app.listen(port)
+    expressServer = await app.listen(PORT)
   })
 
   it('is ES module compatible', () => {

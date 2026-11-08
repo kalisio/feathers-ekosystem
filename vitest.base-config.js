@@ -7,7 +7,6 @@ export const baseConfig = defineConfig({
     testTimeout: 30000,
     coverage: {
       provider: 'v8',
-      all: true,
       clean: true,
       include: ['src/**/*.js'],
       exclude: [

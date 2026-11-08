@@ -2,7 +2,6 @@
   "name": "@kalisio/feathers-webpush",
   "description": "Manage Web Push notifications with FeathersJS",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     "./server": {
@@ -53,7 +52,6 @@
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/packages/feathers-webpush",
   "dependencies": {
-    "@feathersjs/errors": "catalog:",
     "debug": "catalog:",
     "lodash": "catalog:",
     "web-push": "catalog:"
@@ -64,8 +62,11 @@
     "@feathersjs/memory": "catalog:",
     "happy-dom": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/errors": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

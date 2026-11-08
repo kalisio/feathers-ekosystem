@@ -1,8 +1,7 @@
 {
   "name": "@kalisio/feathers-mongodb-management",
-  "description": "Manage MongoDB Databases, Users &amp; Collections with this Feathers service adapter",
+  "description": "Manage MongoDB Databases, Users & Collections with this Feathers service adapter",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {
@@ -45,18 +44,20 @@
   },
   "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-mongodb-management",
   "dependencies": {
-    "@feathersjs/adapter-commons": "catalog:",
-    "@feathersjs/commons": "catalog:",
-    "@feathersjs/errors": "catalog:",
-    "@feathersjs/feathers": "catalog:",
     "debug": "catalog:",
     "sift": "catalog:"
   },
   "devDependencies": {
     "mongodb": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/adapter-commons": "catalog:",
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/feathers": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

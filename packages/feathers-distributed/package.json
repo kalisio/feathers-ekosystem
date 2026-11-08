@@ -2,7 +2,6 @@
   "name": "@kalisio/feathers-distributed",
   "description": "Distribute your Feathers services as microservices",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {
@@ -45,9 +44,6 @@
   },
   "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-distributed",
   "dependencies": {
-    "@feathersjs/commons": "catalog:",
-    "@feathersjs/errors": "catalog:",
-    "@feathersjs/feathers": "catalog:",
     "cote": "~1.2.0",
     "debug": "catalog:",
     "portfinder": "~1.0.38",
@@ -59,7 +55,6 @@
     "@feathersjs/authentication-local": "catalog:",
     "@feathersjs/rest-client": "catalog:",
     "@feathersjs/socketio-client": "catalog:",
-    "@feathersjs/errors": "catalog:",
     "@feathersjs/express": "catalog:",
     "@feathersjs/memory": "catalog:",
     "@feathersjs/socketio": "catalog:",
@@ -68,8 +63,13 @@
     "socket.io-client": "catalog:",
     "superagent": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/commons": "catalog:",
+    "@feathersjs/errors": "catalog:",
+    "@feathersjs/feathers": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

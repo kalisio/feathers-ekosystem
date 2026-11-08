@@ -2,12 +2,11 @@
   "name": "@kalisio/feathers-keycloak-listener",
   "description": "Bridge Keycloak authentication events into your FeathersJS application",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {
       "development": "./src/index.js",
-      "import": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
   },
@@ -48,7 +47,6 @@
   },
   "homepage": "https://kalisio.github.io/feathers-ekosystem/packages/feathers-keycloak-listener",
   "dependencies": {
-    "@feathersjs/errors": "catalog:",
     "debug": "catalog:",
     "lodash": "catalog:"
   },
@@ -57,8 +55,11 @@
     "@feathersjs/feathers": "catalog:",
     "@feathersjs/memory": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/errors": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",

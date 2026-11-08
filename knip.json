@@ -1,4 +1,13 @@
 {
   "exclude": ["catalog"],
-  "ignore": ["docs/**"]
+  "workspaces": {
+    "packages/*": {
+      "entry": ["src/index.js!", "src/{server,client}/index.js!"],
+      "project": ["src/**/*.js!"]
+    }
+  },
+  "ignoreWorkspaces": ["examples/*"],
+  "rules": {
+    "optionalPeerDependencies": "off"
+  }
 }

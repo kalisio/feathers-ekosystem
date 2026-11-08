@@ -2,7 +2,6 @@
   "name": "@kalisio/feathers-tasks",
   "description": "Task execution service for FeathersJS based on BullMQ",
   "version": "3.1.0",
-  "packageManager": "pnpm@10.34.5",
   "type": "module",
   "exports": {
     ".": {
@@ -52,7 +51,6 @@
   "dependencies": {
     "@bull-board/api": "catalog:",
     "@bull-board/express": "catalog:",
-    "@feathersjs/errors": "catalog:",
     "bullmq": "catalog:",
     "debug": "catalog:"
   },
@@ -62,8 +60,11 @@
     "@feathersjs/memory": "catalog:",
     "ioredis": "catalog:"
   },
+  "peerDependencies": {
+    "@feathersjs/errors": "catalog:"
+  },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public",
