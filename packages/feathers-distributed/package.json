@@ -44,10 +44,9 @@
   },
   "homepage": "https://github.com/kalisio/feathers-ekosystem/tree/main/packages/feathers-distributed",
   "dependencies": {
-    "cote": "~1.2.0",
+    "cote": "catalog:",
     "debug": "catalog:",
-    "portfinder": "~1.0.38",
-    "uuid": "~14.0.0"
+    "portfinder": "catalog:"
   },
   "devDependencies": {
     "@feathersjs/authentication": "catalog:",

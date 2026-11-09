@@ -1,9 +1,9 @@
+import { randomUUID } from 'node:crypto'
 import { promisify } from 'util'
 import errors from '@feathersjs/errors'
 import makeCote from 'cote'
 import makeDebug from 'debug'
 import portfinder from 'portfinder'
-import { v4 as uuid } from 'uuid'
 import { DEFAULT_METHODS, DEFAULT_EVENTS, COMPONENTS, HealthcheckService } from './utils.js'
 import { publishService, unpublishService, publishServices } from './publish.js'
 import { registerService, unregisterService, registerApplication, unregisterApplication } from './register.js'
@@ -247,7 +247,7 @@ export function finalize (app) {
 export default function init (options = {}) {
   return function (app) {
     // We need to uniquely identify the app to avoid infinite loop by registering our own services
-    app.uuid = uuid()
+    app.uuid = randomUUID()
     // For display purpose
     app.shortUuid = app.uuid.split('-')[0]
     app.coteOptions = {
