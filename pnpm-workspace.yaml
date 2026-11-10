@@ -1,5 +1,5 @@
 # meta-workspace version: 0.11.0
-# meta-workspace synced at: 2026-11-09T09:49:58.015Z
+# meta-workspace synced at: 2026-11-10T09:46:50.107Z
 
 packages:
   - packages/**
@@ -34,6 +34,7 @@ catalog:
   '@casl/ability': 6.3.0
   '@casl/mongoose': 7.1.0
   '@changesets/cli': 2.30.0
+  '@duckdb/node-api': 1.5.6-r.2
   '@eslint/js': 9.14.0
   '@feathersjs/adapter-commons': 5.0.50
   '@feathersjs/adapter-tests': 5.0.50
@@ -111,8 +112,8 @@ catalog:
   '@turf/simplify': 7.3.5
   '@turf/truncate': 7.3.5
   '@turf/union': 7.3.5
-  '@vitest/coverage-v8': 4.1.4
-  '@vitejs/plugin-vue': 6.0.4
+  '@vitest/coverage-v8': 5.1.0
+  '@vitejs/plugin-vue': 6.0.10
   '@vue/eslint-config-prettier': ^10.1.0
   '@vue/test-utils': 2.4.6
   '@weacast/core': 2.3.1
@@ -234,12 +235,12 @@ catalog:
   tough-cookie: 6.0.2
   typescript: 6.0.3
   unzipper: 0.12.3
-  vite: 7.3.1
+  vite: 8.3.6
   vite-plugin-checker: 0.11.0
   vitepress: 1.6.3
   vitepress-openapi: 0.2.1
   vitepress-plugin-mermaid: 2.0.16
-  vitest: 4.1.4
+  vitest: 5.1.0
   vue: 3.5.30
   vue-eslint-parser: 10.2.0
   vue-i18n: 11.3.0
